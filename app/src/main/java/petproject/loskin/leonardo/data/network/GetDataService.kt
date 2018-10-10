@@ -29,7 +29,7 @@ interface GetDataService {
     fun getArticles(): Observable<String>
 
     @GET("https://leonardohobby.ru/ishop/")
-    fun getMagazine(): Observable<String>
+    fun loadGoodsCategories(): Observable<String>
 
     @FormUrlEncoded
     @POST("https://leonardohobby.ru/profile/")

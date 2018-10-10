@@ -155,7 +155,7 @@ class MainInteractor @Inject constructor(
                 }
             }
 
-    fun getMagazine() = mainRepositories.getMagazine()
+    fun loadGoodsCategories() = mainRepositories.loadGoodsCategories()
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -163,7 +163,7 @@ class MainInteractor @Inject constructor(
             .map {
                 it.select("div.ishop-half-block").map {
                     val title = it.select("div.name a")
-                    MagazineItem(
+                    GoodsCategories(
                             "https://leonardohobby.ru${it.select("img").attr("src")}",
                             title.text(),
                             "https://leonardohobby.ru${title.attr("href")}"
@@ -171,7 +171,7 @@ class MainInteractor @Inject constructor(
                 }
             }
 
-    fun load(item: MagazineItem) = mainRepositories.getUrl(item.categoryLink)
+    fun load(item: String) = mainRepositories.getUrl(item)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())

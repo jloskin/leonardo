@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/goodsCategoriesFragment">
+    <fragment
+        android:id="@+id/goodsCategoriesFragment"
+        android:name="petproject.loskin.leonardo.presentation.ui.magazine.GoodsCategoriesFragment"
+        android:label="GoodsCategoriesFragment" >
+        <action
+            android:id="@+id/action_magazineFragment_to_magazineCategoryFragment2"
+            app:destination="@id/magazineCategoryFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/magazineCategoryFragment2"
+        android:name="petproject.loskin.leonardo.presentation.ui.GoodsSubCategoriesFragment"
+        android:label="MagazineCategoryFragment" />
+</navigation>

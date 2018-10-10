@@ -1,16 +1,16 @@
 package petproject.loskin.leonardo.presentation.ui.news
 
+import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import petproject.loskin.leonardo.SampleApplication
 import petproject.loskin.leonardo.data.entity.news.NewsBlock
 import petproject.loskin.leonardo.presentation.presenter.news.NewsPresenter
-import petproject.loskin.leonardo.presentation.ui.articles.RecyclerViewFragment
+import petproject.loskin.leonardo.presentation.ui.magazine.NewsComponentHandler
 import petproject.loskin.leonardo.presentation.view.news.NewsView
 import javax.inject.Inject
 
 
-class NewsFragment : RecyclerViewFragment(), NewsView {
+class NewsFragment : MvpAppCompatFragment(), NewsView {
 
     @InjectPresenter
     @Inject
@@ -20,12 +20,10 @@ class NewsFragment : RecyclerViewFragment(), NewsView {
     fun presenter() = newsPresenter
 
     init {
-        SampleApplication.INSTANCE.appComponent.inject(this)
+        NewsComponentHandler.newsComponent.inject(this)
     }
 
-    override val adapter: NewsAdapter by lazy {
-        NewsAdapter()
-    }
+    val adapter: NewsAdapter by lazy { NewsAdapter() }
 
     override fun updateNews(item: List<NewsBlock>) {
         adapter.update(item)

@@ -19,7 +19,7 @@ class MainRepositories @Inject constructor() {
 
     fun getArticles() = service.getArticles()
 
-    fun getMagazine() = service.getMagazine()
+    fun loadGoodsCategories() = service.loadGoodsCategories()
 
     fun authorize(login: String, password: String) = service.authorize(login, password)
 

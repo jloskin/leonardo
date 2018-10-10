@@ -2,10 +2,10 @@ package petproject.loskin.leonardo.presentation.ui.mclasses
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
-import petproject.loskin.leonardo.SampleApplication
 import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
 import petproject.loskin.leonardo.presentation.presenter.mclasses.MClassesPresenter
 import petproject.loskin.leonardo.presentation.ui.articles.RecyclerViewFragment
+import petproject.loskin.leonardo.presentation.ui.magazine.NewsComponentHandler
 import petproject.loskin.leonardo.presentation.view.mclasses.MClassesView
 import javax.inject.Inject
 
@@ -19,14 +19,12 @@ class MClassesFragment : RecyclerViewFragment(), MClassesView {
     fun presenter() = newsPresenter
 
     init {
-        SampleApplication.INSTANCE.appComponent.inject(this)
+        NewsComponentHandler.newsComponent.inject(this)
     }
 
     override fun updateMClasses(item: List<CompetitionsBlock>) {
         adapter.update(item)
     }
 
-    override val adapter: MClassesAdapter by lazy {
-        MClassesAdapter()
-    }
+    override val adapter: MClassesAdapter by lazy { MClassesAdapter() }
 }

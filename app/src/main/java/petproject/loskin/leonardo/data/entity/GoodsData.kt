@@ -1,6 +1,6 @@
 package petproject.loskin.leonardo.data.entity
 
-data class ItemL(
+data class GoodsData(
         val img: String,
         val itemName: String,
         val urlItem: String,

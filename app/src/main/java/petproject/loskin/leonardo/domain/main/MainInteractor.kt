@@ -3,7 +3,7 @@ package petproject.loskin.leonardo.domain.main
 import io.reactivex.schedulers.Schedulers
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
-import petproject.loskin.leonardo.data.entity.ItemL
+import petproject.loskin.leonardo.data.entity.GoodsData
 import petproject.loskin.leonardo.data.entity.MenuL
 import petproject.loskin.leonardo.data.entity.Price
 import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
@@ -41,7 +41,7 @@ class MainInteractor @Inject constructor(
                                 Price(ruble, kopeek, currency)
                         )
                     }
-                    ItemL(
+                    GoodsData(
                             "https:$img",
                             itemName,
                             urlItem,
@@ -163,7 +163,7 @@ class MainInteractor @Inject constructor(
             .map {
                 it.select("div.ishop-half-block").map {
                     val title = it.select("div.name a")
-                    GoodsCategories(
+                    CategoriesData(
                             "https://leonardohobby.ru${it.select("img").attr("src")}",
                             title.text(),
                             "https://leonardohobby.ru${title.attr("href")}"
@@ -180,7 +180,7 @@ class MainInteractor @Inject constructor(
                 it.select("div.main-column div.row div.content-wrapper div.row.adaptive-columns div.block")
                         .map { it.children().first() }
                         .map {
-                            ItemMagazine(
+                            SubCategoriesData(
                                     "https://leonardohobby.ru${it.attr("href")}",
                                     it.text()
                             )

@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui.magazine
+package petproject.loskin.leonardo.presentation.ui.magazine.goods
 
 import android.view.View
 import com.bumptech.glide.Glide

@@ -6,6 +6,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
@@ -54,7 +55,7 @@ class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSele
         val navController = findNavController(my_nav_host_fragment)
         setupWithNavController(nav_view, navController)
         nav_view.getHeaderView(0).personLogo.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.magazineCategoryFragment2, null)
+                Navigation.createNavigateOnClickListener(R.id.subCategoriesFragment, null)
         )
     }
 
@@ -101,5 +102,14 @@ class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSele
 
         closeDrawer()
         return true
+    }
+
+    companion object {
+        val options = NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_right)
+                .setExitAnim(R.anim.slide_out_left)
+                .setPopEnterAnim(R.anim.slide_in_left)
+                .setPopExitAnim(R.anim.slide_out_right)
+                .build()
     }
 }

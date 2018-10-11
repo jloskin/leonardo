@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui
+package petproject.loskin.leonardo.presentation.ui.magazine.subcategories
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
@@ -7,16 +7,10 @@ import petproject.loskin.leonardo.domain.main.MainInteractor
 import javax.inject.Inject
 
 @InjectViewState
-class GoodsSubCategoriesPresenter @Inject constructor(
+class SubCategoriesPresenter @Inject constructor(
         private val mainInteractor: MainInteractor
-) : MvpPresenter<GoodsSubCategoriesView>() {
-    fun goodsPage(item: String) {
-        mainInteractor.getGoods(item)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({}, Throwable::printStackTrace)
-    }
-
-    fun listPage(item: String) {
+) : MvpPresenter<SubCategoriesView>() {
+    fun loadSubCategories(item: String) {
         mainInteractor.load(item)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(viewState::loadPage, Throwable::printStackTrace)

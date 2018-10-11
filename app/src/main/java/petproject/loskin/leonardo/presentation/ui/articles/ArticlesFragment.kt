@@ -4,7 +4,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import petproject.loskin.leonardo.data.entity.news.NewsBlock
 import petproject.loskin.leonardo.presentation.presenter.articles.ArticlesPresenter
-import petproject.loskin.leonardo.presentation.ui.magazine.NewsComponentHandler
+import petproject.loskin.leonardo.presentation.ui.news.NewsComponentHandler
 import petproject.loskin.leonardo.presentation.view.articles.ArticlesView
 import javax.inject.Inject
 

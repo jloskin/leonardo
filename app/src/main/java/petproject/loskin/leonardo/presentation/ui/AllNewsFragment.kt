@@ -5,7 +5,6 @@ import android.view.View
 import com.arellomobile.mvp.MvpAppCompatFragment
 import kotlinx.android.synthetic.main.news_screen.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.presentation.ui.magazine.NewsComponentHandler
 
 class AllNewsFragment : MvpAppCompatFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

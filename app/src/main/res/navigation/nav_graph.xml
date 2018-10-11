@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/goodsCategoriesFragment">
+    app:startDestination="@id/categoriesFragment">
     <fragment
-        android:id="@+id/goodsCategoriesFragment"
-        android:name="petproject.loskin.leonardo.presentation.ui.magazine.GoodsCategoriesFragment"
-        android:label="GoodsCategoriesFragment" >
+        android:id="@+id/categoriesFragment"
+        android:name="petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment"
+        android:label="CategoriesFragment">
         <action
             android:id="@+id/action_magazineFragment_to_magazineCategoryFragment2"
-            app:destination="@id/magazineCategoryFragment2" />
+            app:destination="@id/subCategoriesFragment" />
     </fragment>
     <fragment
-        android:id="@+id/magazineCategoryFragment2"
-        android:name="petproject.loskin.leonardo.presentation.ui.GoodsSubCategoriesFragment"
-        android:label="MagazineCategoryFragment" />
+        android:id="@+id/subCategoriesFragment"
+        android:name="petproject.loskin.leonardo.presentation.ui.magazine.subcategories.SubCategoriesFragment"
+        android:label="SubCategoriesFragment">
+        <action
+            android:id="@+id/action_magazineCategoryFragment2_to_goodsFragment"
+            app:destination="@id/goodsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/goodsFragment"
+        android:name="petproject.loskin.leonardo.presentation.ui.magazine.goods.GoodsFragment"
+        android:label="GoodsFragment" />
 </navigation>

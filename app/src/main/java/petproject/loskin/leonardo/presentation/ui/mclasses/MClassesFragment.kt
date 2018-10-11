@@ -5,7 +5,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
 import petproject.loskin.leonardo.presentation.presenter.mclasses.MClassesPresenter
 import petproject.loskin.leonardo.presentation.ui.articles.RecyclerViewFragment
-import petproject.loskin.leonardo.presentation.ui.magazine.NewsComponentHandler
+import petproject.loskin.leonardo.presentation.ui.news.NewsComponentHandler
 import petproject.loskin.leonardo.presentation.view.mclasses.MClassesView
 import javax.inject.Inject
 

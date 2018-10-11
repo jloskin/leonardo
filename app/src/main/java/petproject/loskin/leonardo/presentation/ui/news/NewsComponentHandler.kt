@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui.magazine
+package petproject.loskin.leonardo.presentation.ui.news
 
 import petproject.loskin.leonardo.di.DaggerNewsComponent
 import petproject.loskin.leonardo.di.NewsComponent

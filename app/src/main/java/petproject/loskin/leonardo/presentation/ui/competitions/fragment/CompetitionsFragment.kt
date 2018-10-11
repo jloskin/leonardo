@@ -6,7 +6,7 @@ import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
 import petproject.loskin.leonardo.presentation.presenter.competitions.CompetitionsPresenter
 import petproject.loskin.leonardo.presentation.ui.articles.RecyclerViewFragment
 import petproject.loskin.leonardo.presentation.ui.competitions.adapter.CompetitionsAdapter
-import petproject.loskin.leonardo.presentation.ui.magazine.NewsComponentHandler
+import petproject.loskin.leonardo.presentation.ui.news.NewsComponentHandler
 import petproject.loskin.leonardo.presentation.view.competitions.CompetitionsView
 import javax.inject.Inject
 

@@ -1,6 +1,6 @@
 package petproject.loskin.leonardo.domain.main
 
-data class GoodsCategories(
+data class CategoriesData(
         val imageUrl: String,
         val categoryName: String,
         val categoryLink: String

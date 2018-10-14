@@ -1,34 +1,29 @@
 package petproject.loskin.leonardo.presentation.ui.magazine.categories
 
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.domain.main.CategoriesData
-import petproject.loskin.leonardo.presentation.ui.magazine.MagazineComponentHandler
+import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
+import petproject.loskin.leonardo.di.Injectable
 import petproject.loskin.leonardo.presentation.ui.main.MainActivity
 import javax.inject.Inject
 
-class CategoriesFragment : MvpAppCompatFragment(), CategoriesView {
 
-    @InjectPresenter
+class CategoriesFragment : Fragment(), Injectable {
+
     @Inject
-    lateinit var presenter: CategoriesPresenter
-
-    init {
-        MagazineComponentHandler.MAGAZINE_COMPONENT.inject(this)
-        presenter.loadGoodsCategories()
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: CategoriesViewModel by lazy {
+        ViewModelProviders.of(activity!!, viewModelFactory).get(CategoriesViewModel::class.java)
     }
-
-    @ProvidePresenter
-    fun presenter() = presenter
 
     private val adapter: CategoriesAdapter by lazy {
         CategoriesAdapter {
@@ -42,17 +37,23 @@ class CategoriesFragment : MvpAppCompatFragment(), CategoriesView {
         }
     }
 
-    override fun loadGoodsCategories(items: List<CategoriesData>) {
+    fun loadGoodsCategories(items: List<CategoriesData>) {
         adapter.update(items)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
             inflater.inflate(R.layout.recycler_view, container, false)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AndroidSupportInjection.inject(this)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.categories().subscribe(adapter::update, Throwable::printStackTrace)
         with(recyclerView) {
-            layoutManager = GridLayoutManager(context, 3)
+            layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 3)
             adapter = this@CategoriesFragment.adapter
         }
     }

@@ -1,20 +1,20 @@
 package petproject.loskin.leonardo.presentation.presenter.news
 
-import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.domain.main.MainInteractor
 import petproject.loskin.leonardo.presentation.view.news.NewsView
 import javax.inject.Inject
 
-@InjectViewState
 class NewsPresenter @Inject constructor(
-        private val mainInteractor: MainInteractor
-) : MvpPresenter<NewsView>() {
+        private val mainInteractor: MainInteractor,
+        application: Application
+) : AndroidViewModel(application) {
 
     init {
         mainInteractor.getNews()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(viewState::updateNews, Throwable::printStackTrace)
+                .subscribe({}, Throwable::printStackTrace)
     }
 }

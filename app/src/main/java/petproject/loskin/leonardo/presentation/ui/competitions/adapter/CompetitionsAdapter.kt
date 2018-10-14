@@ -10,6 +10,7 @@ import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
+import petproject.loskin.leonardo.util.GlideApp
 
 class CompetitionsAdapter : BaseRecyclerAdapter<CompetitionsBlock, CompetitionsAdapter.Holder>() {
     override fun item(itemView: View) = Holder(itemView)
@@ -22,7 +23,7 @@ class CompetitionsAdapter : BaseRecyclerAdapter<CompetitionsBlock, CompetitionsA
             itemView.newsDescription.text = item.text
             var requestOptions = RequestOptions()
             requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(8))
-            Glide.with(itemView.newsImage)
+            GlideApp.with(itemView.newsImage)
                     .load(item.imgUrl)
                     .apply(requestOptions)
                     .into(itemView.newsImage)

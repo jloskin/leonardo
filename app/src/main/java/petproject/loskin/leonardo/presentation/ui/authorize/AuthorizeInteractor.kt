@@ -1,10 +1,11 @@
-package petproject.loskin.leonardo.presentation.ui.main
+package petproject.loskin.leonardo.presentation.ui.authorize
 
 import io.reactivex.schedulers.Schedulers
 import petproject.loskin.leonardo.repositories.MainRepositories
+import javax.inject.Inject
 
-class AuthorizeInteractor(
-        private val mainRepositories: MainRepositories = MainRepositories()
+class AuthorizeInteractor @Inject constructor(
+        private val mainRepositories: MainRepositories
 ) {
     fun authorize(login: String, password: String) = mainRepositories.authorize(login, password)
             .subscribeOn(Schedulers.io())

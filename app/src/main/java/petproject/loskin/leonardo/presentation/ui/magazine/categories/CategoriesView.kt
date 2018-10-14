@@ -1,8 +1,7 @@
 package petproject.loskin.leonardo.presentation.ui.magazine.categories
 
-import com.arellomobile.mvp.MvpView
-import petproject.loskin.leonardo.domain.main.CategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
 
-interface CategoriesView : MvpView {
+interface CategoriesView {
     fun loadGoodsCategories(items: List<CategoriesData>)
 }

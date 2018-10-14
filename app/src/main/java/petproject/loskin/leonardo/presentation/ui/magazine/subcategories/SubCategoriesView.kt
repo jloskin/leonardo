@@ -1,8 +1,7 @@
 package petproject.loskin.leonardo.presentation.ui.magazine.subcategories
 
-import com.arellomobile.mvp.MvpView
-import petproject.loskin.leonardo.domain.main.SubCategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.SubCategoriesData
 
-interface SubCategoriesView : MvpView {
+interface SubCategoriesView {
     fun loadPage(items: List<SubCategoriesData>)
 }

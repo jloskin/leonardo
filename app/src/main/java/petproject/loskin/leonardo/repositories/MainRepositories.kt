@@ -19,8 +19,6 @@ class MainRepositories @Inject constructor() {
 
     fun getArticles() = service.getArticles()
 
-    fun loadGoodsCategories() = service.loadGoodsCategories()
-
     fun authorize(login: String, password: String) = service.authorize(login, password)
 
     fun orders() = service.orders()

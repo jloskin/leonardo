@@ -1,43 +1,40 @@
 package petproject.loskin.leonardo.presentation.ui.main
 
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.arellomobile.mvp.MvpAppCompatActivity
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.arellomobile.mvp.presenter.ProvidePresenter
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.SampleApplication
-import petproject.loskin.leonardo.presentation.presenter.MainPresenter
 import petproject.loskin.leonardo.presentation.view.BackButtonListener
-import petproject.loskin.leonardo.presentation.view.main.MainView
+import petproject.loskin.leonardo.util.ext.setContentFragment
 import javax.inject.Inject
 
 
-class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
-    @InjectPresenter
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject
-    lateinit var presenter: MainPresenter
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
 
-    init {
-        SampleApplication.INSTANCE.appComponent.inject(this)
-    }
-
-    @ProvidePresenter
-    fun presenter() = presenter
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = androidInjector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidInjection.inject(this)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
@@ -46,17 +43,26 @@ class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSele
                     drawer_layout.addDrawerListener(this)
                     syncState()
                 }
-        nav_view.setNavigationItemSelectedListener(this)
-
         setupNavigation()
     }
 
     private fun setupNavigation() {
         val navController = findNavController(my_nav_host_fragment)
         setupWithNavController(nav_view, navController)
-        nav_view.getHeaderView(0).personLogo.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.subCategoriesFragment, null)
-        )
+        nav_view.getHeaderView(0).personLogo.setOnClickListener {
+            navController.navigate(R.id.authorizeFragment)
+            closeDrawer()
+        }
+
+        nav_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_goods -> navController.navigate(R.id.categoriesFragment, Bundle(), options)
+                else -> {
+                }
+            }
+            closeDrawer()
+            true
+        }
     }
 
     override fun onSupportNavigateUp() = findNavController(my_nav_host_fragment).navigateUp()
@@ -90,18 +96,6 @@ class MainActivity : MvpAppCompatActivity(), NavigationView.OnNavigationItemSele
             R.id.action_settings -> return true
             else -> return super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_goods -> {}
-            R.id.nav_news -> {}
-            R.id.nav_share -> {
-            }
-        }
-
-        closeDrawer()
-        return true
     }
 
     companion object {

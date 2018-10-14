@@ -2,11 +2,11 @@ package petproject.loskin.leonardo.presentation.ui
 
 import android.os.Bundle
 import android.view.View
-import com.arellomobile.mvp.MvpAppCompatFragment
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.news_screen.*
 import petproject.loskin.leonardo.R
 
-class AllNewsFragment : MvpAppCompatFragment() {
+class AllNewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

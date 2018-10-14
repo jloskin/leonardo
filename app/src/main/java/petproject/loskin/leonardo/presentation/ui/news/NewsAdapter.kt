@@ -10,6 +10,7 @@ import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.entity.news.NewsBlock
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
+import petproject.loskin.leonardo.util.GlideApp
 
 
 class NewsAdapter : BaseRecyclerAdapter<NewsBlock, NewsAdapter.Holder>() {
@@ -23,7 +24,7 @@ class NewsAdapter : BaseRecyclerAdapter<NewsBlock, NewsAdapter.Holder>() {
             itemView.newsDescription.text = item.text
             var requestOptions = RequestOptions()
             requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(8))
-            Glide.with(itemView.newsImage)
+            GlideApp.with(itemView.newsImage)
                     .load(item.imgUrl)
                     .apply(requestOptions)
                     .into(itemView.newsImage)

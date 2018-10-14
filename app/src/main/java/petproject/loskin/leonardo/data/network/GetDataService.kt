@@ -28,9 +28,6 @@ interface GetDataService {
     @GET("https://leonardo.ru/articles")
     fun getArticles(): Observable<String>
 
-    @GET("https://leonardohobby.ru/ishop/")
-    fun loadGoodsCategories(): Observable<String>
-
     @FormUrlEncoded
     @POST("https://leonardohobby.ru/profile/")
     fun authorize(@Field("login") login: String, @Field("pass")  password: String): Observable<String>

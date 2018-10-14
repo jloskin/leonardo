@@ -4,9 +4,10 @@ import android.view.View
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.news_cell.view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.data.entity.GoodsData
+import petproject.loskin.leonardo.data.entity.magazine.GoodsData
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
+import petproject.loskin.leonardo.util.GlideApp
 
 
 class GoodsAdapter(private val click: (GoodsData) -> Unit) : BaseRecyclerAdapter<GoodsData, GoodsAdapter.Holder>() {
@@ -18,7 +19,7 @@ class GoodsAdapter(private val click: (GoodsData) -> Unit) : BaseRecyclerAdapter
         override fun bind(item: GoodsData) {
             itemView.setOnClickListener { click(item) }
             itemView.newsTitle.text = item.itemName
-            Glide.with(itemView.newsImage)
+            GlideApp.with(itemView.newsImage)
                     .load(item.img)
                     .into(itemView.newsImage)
         }

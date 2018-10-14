@@ -1,11 +1,10 @@
 package petproject.loskin.leonardo.presentation.view.magazine
 
-import com.arellomobile.mvp.MvpView
-import petproject.loskin.leonardo.data.entity.GoodsData
-import petproject.loskin.leonardo.domain.main.SubCategoriesData
-import petproject.loskin.leonardo.domain.main.CategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.GoodsData
+import petproject.loskin.leonardo.data.entity.magazine.SubCategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
 
-interface MagazineView : MvpView {
+interface MagazineView {
     fun updateMagazine(items: List<CategoriesData>)
 
     fun loadPage(items: List<SubCategoriesData>)

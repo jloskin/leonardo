@@ -9,7 +9,6 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment
 import petproject.loskin.leonardo.presentation.ui.main.MainActivity
 
 class GoodsFragment : Fragment() {
@@ -27,14 +26,12 @@ class GoodsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.getString(CategoriesFragment.CATEGORY_LINK)?.let(viewModel::loadGoods)
-                ?.subscribe(adapter::update, Throwable::printStackTrace)
-        return inflater.inflate(R.layout.recycler_view, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+            inflater.inflate(R.layout.recycler_view, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.loadGoods(GoodsFragmentArgs.fromBundle(arguments).goodsLink).subscribe(adapter::update, Throwable::printStackTrace)
         with(recyclerView) {
             layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
             adapter = this@GoodsFragment.adapter

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/categoriesFragment">
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment"
         android:label="CategoriesFragment">
         <action
-            android:id="@+id/action_magazineFragment_to_magazineCategoryFragment2"
-            app:destination="@id/subCategoriesFragment" />
+            android:id="@+id/categories2subcategories"
+            app:destination="@id/subCategoriesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_categoriesFragment_to_authorizeFragment"
             app:destination="@id/authorizeFragment" />
@@ -18,24 +23,28 @@
         android:name="petproject.loskin.leonardo.presentation.ui.magazine.subcategories.SubCategoriesFragment"
         android:label="SubCategoriesFragment">
         <action
-            android:id="@+id/action_magazineCategoryFragment2_to_goodsFragment"
-            app:destination="@id/goodsFragment" />
-        <action
-            android:id="@+id/action_subCategoriesFragment_to_authorizeFragment"
-            app:destination="@id/authorizeFragment" />
+            app:destination="@id/goodsFragment"
+            android:id="@+id/subcategories2goods"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="subCategoriesLink"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/goodsFragment"
         android:name="petproject.loskin.leonardo.presentation.ui.magazine.goods.GoodsFragment"
-        android:label="GoodsFragment" >
-        <action
-            android:id="@+id/action_goodsFragment_to_authorizeFragment"
-            app:destination="@id/authorizeFragment" />
+        android:label="GoodsFragment">
+        <argument
+            android:name="goodsLink"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/authorizeFragment"
         android:name="petproject.loskin.leonardo.presentation.ui.authorize.AuthorizeFragment"
-        android:label="AuthorizeFragment" >
+        android:label="AuthorizeFragment">
         <action
             android:id="@+id/action_authorizeFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />

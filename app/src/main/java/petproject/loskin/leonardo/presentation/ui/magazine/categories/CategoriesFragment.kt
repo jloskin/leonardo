@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
-import petproject.loskin.leonardo.presentation.ui.main.MainActivity
 
 
 class CategoriesFragment : Fragment() {
@@ -20,17 +17,9 @@ class CategoriesFragment : Fragment() {
     private val adapter: CategoriesAdapter by lazy {
         CategoriesAdapter {
             this@CategoriesFragment.view
-                    ?.let(Navigation::findNavController)
-                    ?.navigate(
-                            R.id.subCategoriesFragment,
-                            Bundle().apply { putString(CATEGORY_LINK, it.categoryLink) },
-                            MainActivity.options
-                    )
+                    ?.findNavController()
+                    ?.navigate(CategoriesFragmentDirections.categories2subcategories(it.categoryLink))
         }
-    }
-
-    fun loadGoodsCategories(items: List<CategoriesData>) {
-        adapter.update(items)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =

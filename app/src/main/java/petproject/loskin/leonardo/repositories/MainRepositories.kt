@@ -2,9 +2,8 @@ package petproject.loskin.leonardo.repositories
 
 import petproject.loskin.leonardo.data.network.GetDataService
 import petproject.loskin.leonardo.data.network.RetrofitClientInstance
-import javax.inject.Inject
 
-class MainRepositories @Inject constructor() {
+class MainRepositories {
     private val service = RetrofitClientInstance.retrofit.create(GetDataService::class.java)
 
     fun getAllPhotos() = service.getAllPhotos()

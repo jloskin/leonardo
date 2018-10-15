@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.domain.main.MainInteractor
-import petproject.loskin.leonardo.presentation.view.news.NewsView
-import javax.inject.Inject
 
-class NewsPresenter @Inject constructor(
+class NewsPresenter(
         private val mainInteractor: MainInteractor,
         application: Application
 ) : AndroidViewModel(application) {

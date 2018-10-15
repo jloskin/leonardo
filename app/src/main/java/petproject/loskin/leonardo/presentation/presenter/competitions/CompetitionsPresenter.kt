@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.domain.main.MainInteractor
-import petproject.loskin.leonardo.presentation.view.competitions.CompetitionsView
-import javax.inject.Inject
 
-class CompetitionsPresenter @Inject constructor(
+class CompetitionsPresenter(
         mainInteractor: MainInteractor,
         application: Application
 ) : AndroidViewModel(application) {

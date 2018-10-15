@@ -3,9 +3,8 @@ package petproject.loskin.leonardo.presentation.ui.authorize
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
-import javax.inject.Inject
 
-class AuthorizePresenter @Inject constructor(
+class AuthorizePresenter(
         private val authorzeInteractor: AuthorizeInteractor,
         application: Application
 ) : AndroidViewModel(application) {

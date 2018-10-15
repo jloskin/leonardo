@@ -5,23 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.recycler_view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.di.Injectable
 import petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment
 import petproject.loskin.leonardo.presentation.ui.main.MainActivity
-import javax.inject.Inject
 
-class GoodsFragment : Fragment(), Injectable {
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: GoodsViewModel by lazy {
-        ViewModelProviders.of(activity!!, viewModelFactory).get(GoodsViewModel::class.java)
-    }
+class GoodsFragment : Fragment() {
+    private val viewModel: GoodsViewModel by viewModel()
 
     private val adapter: GoodsAdapter by lazy {
         GoodsAdapter {

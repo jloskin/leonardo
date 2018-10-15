@@ -3,19 +3,16 @@ package petproject.loskin.leonardo.domain.main
 import io.reactivex.schedulers.Schedulers
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
-import petproject.loskin.leonardo.data.entity.*
+import petproject.loskin.leonardo.data.entity.MenuL
 import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
-import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
 import petproject.loskin.leonardo.data.entity.magazine.GoodsData
 import petproject.loskin.leonardo.data.entity.magazine.Price
 import petproject.loskin.leonardo.data.entity.magazine.SubCategoriesData
 import petproject.loskin.leonardo.data.entity.news.NewsBlock
 import petproject.loskin.leonardo.repositories.MainRepositories
-import javax.inject.Inject
 
-class MainInteractor @Inject constructor(
-        private val mainRepositories: MainRepositories,
-        val categoriesDataStore: CategoriesDataStore
+class MainInteractor(
+        private val mainRepositories: MainRepositories
 ) {
     fun getGoods(url: String) = mainRepositories.getUrl(url)
             .subscribeOn(Schedulers.io())
@@ -156,7 +153,6 @@ class MainInteractor @Inject constructor(
                     )
                 }
             }
-
 
 
     fun load(item: String) = mainRepositories.getUrl(item)

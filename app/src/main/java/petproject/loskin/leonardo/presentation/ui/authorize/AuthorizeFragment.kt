@@ -7,12 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.authorization_screen.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.di.Injectable
-import javax.inject.Inject
 
-class AuthorizeFragment : Fragment(), Injectable {
-
-    @Inject
+class AuthorizeFragment : Fragment() {
     lateinit var presenter: AuthorizePresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =

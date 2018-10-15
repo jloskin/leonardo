@@ -44,11 +44,13 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:+'
     implementation 'org.jsoup:jsoup:+'
 
-    implementation "com.google.dagger:dagger:2.16"
-    implementation "com.google.dagger:dagger-android:2.16"
-    implementation "com.google.dagger:dagger-android-support:2.16"
-    kapt "com.google.dagger:dagger-compiler:2.16"
-    kapt "com.google.dagger:dagger-android-processor:2.16"
+
+    // Koin for Android
+    implementation 'org.koin:koin-android:1.0.1'
+    // Android Scope feature - AndroidX
+    implementation 'org.koin:koin-androidx-scope:1.0.1'
+    // Android Architecture ViewModel feature - AndroidX
+    implementation 'org.koin:koin-androidx-viewmodel:1.0.1'
 
     kapt "androidx.room:room-compiler:+"
     implementation "android.arch.navigation:navigation-fragment-ktx:+"

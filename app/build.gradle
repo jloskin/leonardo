@@ -54,6 +54,7 @@ dependencies {
     implementation 'org.koin:koin-androidx-viewmodel:1.0.1'
 
     kapt "androidx.room:room-compiler:+"
+    implementation "androidx.room:room-runtime:+"
     implementation "android.arch.navigation:navigation-fragment-ktx:+"
     implementation "android.arch.navigation:navigation-ui-ktx:+"
     implementation "android.arch.work:work-runtime-ktx:+"
@@ -63,7 +64,6 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:+"
     implementation "androidx.lifecycle:lifecycle-extensions:+"
     implementation "androidx.recyclerview:recyclerview:+"
-    implementation "androidx.room:room-runtime:+"
     implementation "com.google.android.material:material:+"
     implementation "com.google.code.gson:gson:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:+"

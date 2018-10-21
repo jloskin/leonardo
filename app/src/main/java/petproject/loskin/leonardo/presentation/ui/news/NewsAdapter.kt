@@ -22,11 +22,9 @@ class NewsAdapter : BaseRecyclerAdapter<NewsBlock, NewsAdapter.Holder>() {
         override fun bind(item: NewsBlock) {
             itemView.newsTitle.text = item.titleName
             itemView.newsDescription.text = item.text
-            var requestOptions = RequestOptions()
-            requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(8))
             GlideApp.with(itemView.newsImage)
                     .load(item.imgUrl)
-                    .apply(requestOptions)
+                    .apply(RequestOptions().transforms(CenterCrop(), RoundedCorners(8)))
                     .into(itemView.newsImage)
         }
     }

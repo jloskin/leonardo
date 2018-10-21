@@ -1,20 +1,21 @@
 package petproject.loskin.leonardo.domain.main
 
+import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import petproject.loskin.leonardo.data.entity.MenuL
-import petproject.loskin.leonardo.data.entity.competitions.CompetitionsBlock
-import petproject.loskin.leonardo.data.entity.magazine.GoodsData
-import petproject.loskin.leonardo.data.entity.magazine.Price
-import petproject.loskin.leonardo.data.entity.magazine.SubCategoriesData
+import petproject.loskin.leonardo.data.entity.news.competitions.CompetitionsBlock
+import petproject.loskin.leonardo.data.entity.magazine.goods.GoodsData
+import petproject.loskin.leonardo.data.entity.magazine.goods.Price
+import petproject.loskin.leonardo.data.entity.magazine.subcategories.SubCategoriesData
 import petproject.loskin.leonardo.data.entity.news.NewsBlock
 import petproject.loskin.leonardo.repositories.MainRepositories
 
 class MainInteractor(
         private val mainRepositories: MainRepositories
 ) {
-    fun getGoods(url: String) = mainRepositories.getUrl(url)
+    fun getGoods(url: String): Observable<List<GoodsData>> = mainRepositories.getUrl(url)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -50,7 +51,7 @@ class MainInteractor(
                 }
             }
 
-    fun getMenu() = mainRepositories.getAllPhotos()
+    fun getMenu(): Observable<List<MenuL>> = mainRepositories.getAllPhotos()
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -78,7 +79,7 @@ class MainInteractor(
                 }
             }
 
-    fun getNews() = mainRepositories.getNews()
+    fun getNews(): Observable<List<NewsBlock>> = mainRepositories.getNews()
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -97,7 +98,7 @@ class MainInteractor(
                 }
             }
 
-    fun getCompetitions() = mainRepositories.getCompetitions()
+    fun getCompetitions(): Observable<List<CompetitionsBlock>> = mainRepositories.getCompetitions()
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -116,7 +117,7 @@ class MainInteractor(
                 }
             }
 
-    fun getMClasses() = mainRepositories.getMClasses()
+    fun getMClasses(): Observable<List<CompetitionsBlock>> = mainRepositories.getMClasses()
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -135,7 +136,7 @@ class MainInteractor(
                 }
             }
 
-    fun getArticles() = mainRepositories.getArticles()
+    fun getArticles(): Observable<List<NewsBlock>> = mainRepositories.getArticles()
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -155,7 +156,7 @@ class MainInteractor(
             }
 
 
-    fun load(item: String) = mainRepositories.getUrl(item)
+    fun load(item: String): Observable<List<SubCategoriesData>> = mainRepositories.getUrl(item)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())

@@ -17,43 +17,30 @@ import javax.net.ssl.X509TrustManager
 
 @GlideModule
 class AppGlideModule : AppGlideModule() {
-
     override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
         registry.replace(GlideUrl::class.java, InputStream::class.java, OkHttpUrlLoader.Factory(getUnsafeOkHttpClient()))
     }
 
     private fun getUnsafeOkHttpClient(): OkHttpClient {
-        try {
-            // Create a trust manager that does not validate certificate chains
-            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
-                override fun getAcceptedIssuers(): Array<X509Certificate> {
-                    return arrayOf()
-                }
+        val trustAllCerts: TrustManager = object : X509TrustManager {
+            override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
 
-                @Throws(CertificateException::class)
-                override fun checkClientTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
-                }
+            @Throws(CertificateException::class)
+            override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+            }
 
-                @Throws(CertificateException::class)
-                override fun checkServerTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
-                }
-            })
-
-            // Install the all-trusting trust manager
-            val sslContext = SSLContext.getInstance("SSL")
-            sslContext.init(null, trustAllCerts, java.security.SecureRandom())
-
-            // Create an ssl socket factory with our all-trusting manager
-            val sslSocketFactory = sslContext.socketFactory
-
-            val builder = OkHttpClient.Builder()
-            builder.sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
-            builder.hostnameVerifier { _, _ -> true }
-
-            return builder.build()
-        } catch (e: Exception) {
-            throw RuntimeException(e)
+            @Throws(CertificateException::class)
+            override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+            }
         }
-    }
 
+        val socketFactory = SSLContext.getInstance("SSL").apply {
+            init(null, arrayOf(trustAllCerts), java.security.SecureRandom())
+        }.socketFactory
+
+        return OkHttpClient.Builder().apply {
+            sslSocketFactory(socketFactory, trustAllCerts as X509TrustManager)
+            hostnameVerifier { _, _ -> true }
+        }.build()
+    }
 }

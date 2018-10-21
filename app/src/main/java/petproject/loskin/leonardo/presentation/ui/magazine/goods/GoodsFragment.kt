@@ -9,7 +9,8 @@ import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.presentation.ui.main.MainActivity
+import petproject.loskin.leonardo.domain.magazine.goods.GoodsViewModel
+import petproject.loskin.leonardo.presentation.ui.MainActivity
 
 class GoodsFragment : Fragment() {
     private val viewModel: GoodsViewModel by viewModel()

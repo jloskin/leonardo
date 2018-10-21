@@ -3,7 +3,7 @@ package petproject.loskin.leonardo.presentation.ui.magazine.subcategories
 import android.view.View
 import kotlinx.android.synthetic.main.item_magazine.view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.data.entity.magazine.SubCategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.subcategories.SubCategoriesData
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
 

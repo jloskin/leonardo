@@ -5,10 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import petproject.loskin.leonardo.data.entity.magazine.CategoriesDao
-import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
-import petproject.loskin.leonardo.data.entity.magazine.GoodsData
-import petproject.loskin.leonardo.data.entity.magazine.SubCategoriesData
+import petproject.loskin.leonardo.data.db.dao.magazine.categories.CategoriesDao
+import petproject.loskin.leonardo.data.entity.magazine.categories.CategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.goods.GoodsData
+import petproject.loskin.leonardo.data.entity.magazine.subcategories.SubCategoriesData
 
 @Database(entities = [CategoriesData::class, GoodsData::class, SubCategoriesData::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

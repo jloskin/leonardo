@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
+import petproject.loskin.leonardo.domain.magazine.categories.CategoriesViewModel
 
 
 class CategoriesFragment : Fragment() {

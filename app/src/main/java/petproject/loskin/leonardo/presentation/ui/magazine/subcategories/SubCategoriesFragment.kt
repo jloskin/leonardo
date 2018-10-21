@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
+import petproject.loskin.leonardo.domain.magazine.subcategories.SubCategoriesViewModel
 
 class SubCategoriesFragment : Fragment() {
     val presenter: SubCategoriesViewModel by viewModel()

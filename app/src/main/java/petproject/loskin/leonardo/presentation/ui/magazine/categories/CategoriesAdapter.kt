@@ -1,10 +1,9 @@
 package petproject.loskin.leonardo.presentation.ui.magazine.categories
 
 import android.view.View
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.news_cell.view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.data.entity.magazine.CategoriesData
+import petproject.loskin.leonardo.data.entity.magazine.categories.CategoriesData
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
 import petproject.loskin.leonardo.util.GlideApp

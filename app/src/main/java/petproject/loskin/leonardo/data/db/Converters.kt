@@ -17,7 +17,6 @@
 package petproject.loskin.leonardo.data.db
 
 import androidx.room.TypeConverter
-import petproject.loskin.leonardo.data.entity.magazine.Price
 import java.util.Calendar
 
 /**

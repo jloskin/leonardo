@@ -21,8 +21,7 @@ class GoodsFragment : Fragment() {
                     ?.let(Navigation::findNavController)
                     ?.navigate(
                             R.id.subCategoriesFragment,
-                            Bundle().apply { putString(CATEGORY_LINK, it.urlItem) },
-                            MainActivity.options
+                            Bundle().apply { putString(CATEGORY_LINK, it.urlItem) }
                     )
         }
     }

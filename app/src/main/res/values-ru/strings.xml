@@ -4,4 +4,6 @@
     <string name="text_competitions">Конкурсы</string>
     <string name="text_articles">Статьи</string>
     <string name="text_mclasses">Уроки творчества</string>
+    <string name="news">Новости</string>
+    <string name="goods">Товары</string>
 </resources>

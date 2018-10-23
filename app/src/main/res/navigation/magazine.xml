@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/magazine"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/magaine"
     app:startDestination="@id/categoriesFragment">
-
-    <include app:graph="@navigation/news" />
-
     <fragment
         android:id="@+id/goodsFragment"
         android:name="petproject.loskin.leonardo.presentation.ui.magazine.goods.GoodsFragment"
@@ -32,7 +28,7 @@
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment"
-        android:label="CategoriesFragment">
+        android:label="@string/goods">
         <action
             android:id="@+id/categories2subcategories"
             app:destination="@id/subCategoriesFragment"

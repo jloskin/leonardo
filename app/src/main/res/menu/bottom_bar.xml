@@ -2,25 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_news"
+        android:id="@+id/newsNavFragment"
         android:enabled="true"
         android:icon="@drawable/ic_news_24dp"
         android:title="@string/text_news"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_competitions"
+        android:id="@+id/competitionsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_competitions_24dp"
         android:title="@string/text_competitions"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_mclasses"
+        android:id="@+id/MClassesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_mclasses_24dp"
         android:title="@string/text_mclasses"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_articles"
+        android:id="@+id/articlesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_articles_24dp"
         android:title="@string/text_articles"

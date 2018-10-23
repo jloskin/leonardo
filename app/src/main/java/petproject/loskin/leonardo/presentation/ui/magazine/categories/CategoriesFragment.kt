@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
@@ -31,12 +32,8 @@ class CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.categories().subscribe(adapter::update, Throwable::printStackTrace)
         with(recyclerView) {
-            layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 3)
+            layoutManager = GridLayoutManager(context, 3)
             adapter = this@CategoriesFragment.adapter
         }
-    }
-
-    companion object {
-        const val CATEGORY_LINK = "CATEGORY_LINK"
     }
 }

@@ -15,16 +15,7 @@ import petproject.loskin.leonardo.presentation.ui.MainActivity
 class GoodsFragment : Fragment() {
     private val viewModel: GoodsViewModel by viewModel()
 
-    private val adapter: GoodsAdapter by lazy {
-        GoodsAdapter {
-            this@GoodsFragment.view
-                    ?.let(Navigation::findNavController)
-                    ?.navigate(
-                            R.id.subCategoriesFragment,
-                            Bundle().apply { putString(CATEGORY_LINK, it.urlItem) }
-                    )
-        }
-    }
+    private val adapter: GoodsAdapter by lazy { GoodsAdapter {} }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.recycler_view, container, false)
@@ -36,9 +27,5 @@ class GoodsFragment : Fragment() {
             layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)
             adapter = this@GoodsFragment.adapter
         }
-    }
-
-    companion object {
-        const val CATEGORY_LINK = "CATEGORY_LINK"
     }
 }

@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/news"
     app:startDestination="@id/newsFragment">
-    <fragment
-        android:id="@+id/newsNavFragment"
-        android:name="petproject.loskin.leonardo.presentation.ui.news.NewsNavFragment"
-        android:label="@string/news"
-        tools:layout="@layout/fragment_bottom_nav" />
     <fragment
         android:id="@+id/articlesFragment"
         android:name="petproject.loskin.leonardo.presentation.ui.news.articles.ArticlesFragment"
@@ -23,6 +16,6 @@
         android:label="MClassesFragment" />
     <fragment
         android:id="@+id/newsFragment"
-        android:name="petproject.loskin.leonardo.presentation.ui.news.NewsFragment"
+        android:name="petproject.loskin.leonardo.presentation.ui.news.news.NewsFragment"
         android:label="NewsFragment" />
 </navigation>

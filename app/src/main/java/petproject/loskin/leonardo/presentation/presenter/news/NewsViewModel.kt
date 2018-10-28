@@ -5,14 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.domain.main.MainInteractor
 
-class NewsPresenter(
+class NewsViewModel(
         private val mainInteractor: MainInteractor,
         application: Application
 ) : AndroidViewModel(application) {
 
-    init {
-        mainInteractor.getNews()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({}, Throwable::printStackTrace)
-    }
+    fun news() = mainInteractor.getNews().observeOn(AndroidSchedulers.mainThread())
 }

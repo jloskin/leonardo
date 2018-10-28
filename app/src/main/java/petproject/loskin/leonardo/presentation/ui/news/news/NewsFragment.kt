@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui.news.articles
+package petproject.loskin.leonardo.presentation.ui.news.news
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.presentation.presenter.news.articles.ArticlesPresenter
+import petproject.loskin.leonardo.presentation.presenter.news.NewsViewModel
 
-class ArticlesFragment : Fragment() {
-    private val newsPresenter: ArticlesPresenter by viewModel()
 
-    val adapter: ArticlesAdapter by lazy { ArticlesAdapter() }
+class NewsFragment : Fragment() {
+    private val newsViewModel: NewsViewModel by viewModel()
+
+    val adapter: NewsAdapter by lazy { NewsAdapter() }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -22,10 +23,10 @@ class ArticlesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newsPresenter.articles().subscribe(adapter::update, Throwable::printStackTrace)
+        newsViewModel.news().subscribe(adapter::update, Throwable::printStackTrace)
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
-            adapter = this@ArticlesFragment.adapter
+            adapter = this@NewsFragment.adapter
         }
     }
 }

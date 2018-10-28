@@ -17,7 +17,6 @@ class NewsNavFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navController = Navigation.findNavController(requireActivity(), R.id.bottomNavFragment)
-        bottomNavigation.setupWithNavController(navController)
+        bottomNavigation.setupWithNavController(Navigation.findNavController(requireActivity(), R.id.bottomNavFragment))
     }
 }

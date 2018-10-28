@@ -3,6 +3,7 @@ package petproject.loskin.leonardo.presentation.ui.base
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.Adapter
 
 abstract class BaseRecyclerAdapter<B, C : BaseRecyclerViewHolder<B>> : Adapter<C>() {
@@ -19,8 +20,20 @@ abstract class BaseRecyclerAdapter<B, C : BaseRecyclerViewHolder<B>> : Adapter<C
     }
 
     fun update(item: List<B>) {
+        val calculateDiff = DiffUtil.calculateDiff(object : DiffUtil.Callback() {
+            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+                    mutableList[oldItemPosition] == item[newItemPosition]
+
+            override fun getOldListSize(): Int = mutableList.size
+
+            override fun getNewListSize(): Int = item.size
+
+            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+                    mutableList[oldItemPosition] == item[newItemPosition]
+
+        })
         mutableList.clear()
         mutableList.addAll(item)
-        notifyDataSetChanged()
+        calculateDiff.dispatchUpdatesTo(this)
     }
 }

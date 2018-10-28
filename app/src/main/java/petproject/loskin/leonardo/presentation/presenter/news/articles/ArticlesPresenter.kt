@@ -6,14 +6,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.domain.main.MainInteractor
 
 class ArticlesPresenter(
-        mainInteractor: MainInteractor,
+        val mainInteractor: MainInteractor,
         application: Application
 ) : AndroidViewModel(application) {
 
-    init {
-        mainInteractor.getArticles()
-                .firstElement()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({}, Throwable::printStackTrace)
-    }
+    fun articles() = mainInteractor.getArticles()
+            .observeOn(AndroidSchedulers.mainThread())
 }

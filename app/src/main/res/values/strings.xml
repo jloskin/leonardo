@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">Leonardo</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">yuraloskin@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="text_news">News</string>
     <string name="text_competitions">Competitions</string>
     <string name="text_articles">Articles</string>
     <string name="text_mclasses">Lessons of creativity</string>
-    <string name="news">Новости</string>
-    <string name="goods">Товары</string>
+    <string name="news">News</string>
+    <string name="goods">Goods</string>
+    <string name="profile">Profile</string>
 </resources>

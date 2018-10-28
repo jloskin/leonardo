@@ -9,9 +9,6 @@ class MClassesPresenter(
         private val mainInteractor: MainInteractor,
         application: Application
 ) : AndroidViewModel(application) {
-    init {
-        mainInteractor.getMClasses()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({}, Throwable::printStackTrace)
-    }
+    fun mclasses() = mainInteractor.getMClasses()
+            .observeOn(AndroidSchedulers.mainThread())
 }

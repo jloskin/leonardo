@@ -1,16 +1,32 @@
 package petproject.loskin.leonardo.presentation.ui.news.competitions.fragment
 
-import petproject.loskin.leonardo.data.entity.news.competitions.CompetitionsBlock
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.recycler_view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.presentation.presenter.news.competitions.CompetitionsPresenter
-import petproject.loskin.leonardo.presentation.ui.news.articles.RecyclerViewFragment
 import petproject.loskin.leonardo.presentation.ui.news.competitions.adapter.CompetitionsAdapter
 
-class CompetitionsFragment : RecyclerViewFragment() {
-    lateinit var competitionsPresenter: CompetitionsPresenter
+class CompetitionsFragment : Fragment() {
+    private val competitionsPresenter: CompetitionsPresenter by viewModel()
 
-    override val adapter: CompetitionsAdapter by lazy { CompetitionsAdapter() }
+    val adapter: CompetitionsAdapter by lazy { CompetitionsAdapter() }
 
-    fun updateCompetitions(conpetitions: List<CompetitionsBlock>) {
-        adapter.update(conpetitions)
+    override fun onCreateView(
+            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.recycler_view, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        competitionsPresenter.competitons().subscribe(adapter::update, Throwable::printStackTrace)
+        with(recyclerView) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = this@CompetitionsFragment.adapter
+        }
     }
 }

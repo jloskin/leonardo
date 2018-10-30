@@ -4,10 +4,18 @@
     tools:showIn="bottom_view">
     <item
         android:id="@+id/categoriesFragment"
-        android:icon="@drawable/ic_shopping_cart"
+        android:icon="@drawable/ic_book"
         android:title="@string/goods" />
+    <item
+        android:id="@+id/cartFragment"
+        android:icon="@drawable/ic_shopping_cart"
+        android:title="@string/cart" />
     <item
         android:id="@+id/newsNavFragment"
         android:icon="@drawable/ic_idea"
         android:title="@string/news" />
+    <item
+        android:id="@+id/authorizeFragment"
+        android:icon="@drawable/ic_id_card"
+        android:title="@string/profile" />
 </menu>

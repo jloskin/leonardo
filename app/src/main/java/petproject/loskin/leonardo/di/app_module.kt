@@ -15,6 +15,9 @@ import petproject.loskin.leonardo.presentation.presenter.news.competitions.Compe
 import petproject.loskin.leonardo.presentation.presenter.news.mclasses.MClassesPresenter
 import petproject.loskin.leonardo.repositories.MainRepositories
 import petproject.loskin.leonardo.repositories.magazine.categories.CategoriesRepository
+import ru.terrakok.cicerone.Cicerone
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.Router
 
 val appModule = module {
     viewModel<CategoriesViewModel>()
@@ -29,6 +32,10 @@ val appModule = module {
     factory<CategoriesMapper>()
     factory<MainInteractor>()
     factory<MainRepositories>()
+
+    single<Cicerone<Router>> { Cicerone.create() }
+    single<NavigatorHolder> { get<Cicerone<Router>>().navigatorHolder }
+    single<Router> { get<Cicerone<Router>>().router }
 
     // Single instance of Repository
     single { CategoriesRepository(AppDatabase.getInstance(get()).categoriesDao(), get()) }

@@ -7,4 +7,5 @@
     <string name="news">Новости</string>
     <string name="goods">Товары</string>
     <string name="profile">Профиль</string>
+    <string name="cart">Корзина</string>
 </resources>

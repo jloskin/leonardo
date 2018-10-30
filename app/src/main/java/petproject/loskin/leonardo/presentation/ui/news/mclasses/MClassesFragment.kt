@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.data.entity.news.competitions.CompetitionsBlock
 import petproject.loskin.leonardo.presentation.presenter.news.mclasses.MClassesPresenter
 
 

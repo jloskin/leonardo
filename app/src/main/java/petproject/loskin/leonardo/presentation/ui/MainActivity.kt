@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         with(toolbar) {
             setNavigationOnClickListener { onBackPressed() }
-//            navigationIcon = VectorDrawableCompat.create(resources, R.drawable.abc_ic_ab_back_material, null)
         }
 
         bottom_view.setOnNavigationItemSelectedListener {

@@ -8,8 +8,8 @@ import petproject.loskin.leonardo.presentation.ui.news.news.NewsFragment
 import petproject.loskin.leonardo.util.cicerone.SupportAppxScreen
 
 object Screens {
-    class SubCategories(link: String) : SupportAppxScreen() {
-        override val fragment: Fragment = SubCategoriesFragment.instance(link)
+    class SubCategories(title: String, link: String) : SupportAppxScreen() {
+        override val fragment: Fragment = SubCategoriesFragment.instance(title, link)
     }
 
     class NewsScreen : SupportAppxScreen() {
@@ -20,8 +20,7 @@ object Screens {
         override val fragment: Fragment = CategoriesFragment()
     }
 
-    class GoodsFragmentScreen(itemUrl: String) : SupportAppxScreen() {
-        override val fragment: Fragment = GoodsFragment.instance(itemUrl)
-
+    class GoodsFragmentScreen(title: String, link: String) : SupportAppxScreen() {
+        override val fragment: Fragment = GoodsFragment.instance(title, link)
     }
 }

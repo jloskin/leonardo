@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.domain.magazine.subcategories.SubCategoriesViewModel
+import petproject.loskin.leonardo.presentation.ui.MainActivity
 import petproject.loskin.leonardo.presentation.ui.Screens
 import ru.terrakok.cicerone.Router
 
@@ -19,7 +21,7 @@ class SubCategoriesFragment : Fragment() {
     private val router: Router by inject()
 
     private val adapter: SubCategoriesAdapter by lazy {
-        SubCategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.itemUrl)) }
+        SubCategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.itemName, it.itemUrl)) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,6 +29,8 @@ class SubCategoriesFragment : Fragment() {
         arguments?.getString(SUBCATEGORY_LINK)
                 ?.let(presenter::loadSubCategories)
                 ?.subscribe(adapter::update, Throwable::printStackTrace)
+
+        (activity as MainActivity).toolbar.title = arguments?.getString(SUBCATEGORY_TITLE)
 
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
@@ -39,11 +43,13 @@ class SubCategoriesFragment : Fragment() {
 
     companion object {
         private const val SUBCATEGORY_LINK = "LINK"
+        private const val SUBCATEGORY_TITLE = "TITLE"
 
-        fun instance(link: String): SubCategoriesFragment =
+        fun instance(title: String, link: String): SubCategoriesFragment =
                 SubCategoriesFragment().apply {
                     arguments = Bundle().apply {
                         putString(SUBCATEGORY_LINK, link)
+                        putString(SUBCATEGORY_TITLE, title)
                     }
                 }
     }

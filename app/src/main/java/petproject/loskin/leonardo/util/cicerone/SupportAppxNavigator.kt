@@ -1,6 +1,5 @@
 package petproject.loskin.leonardo.util.cicerone
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,19 +16,11 @@ import java.util.*
  * Recommendation: most useful for Single-Activity application.
  */
 class SupportAppxNavigator(
-        activity: FragmentActivity,
-        private val fragmentManager: FragmentManager,
-        private val containerId: Int
+        private val activity: FragmentActivity,
+        private val containerId: Int,
+        private val fragmentManager: FragmentManager = activity.supportFragmentManager
 ) : Navigator {
-
-    private val activity: Activity
     private var localStackCopy: LinkedList<String> = LinkedList()
-
-    constructor(activity: FragmentActivity, containerId: Int) : this(activity, activity.supportFragmentManager, containerId)
-
-    init {
-        this.activity = activity
-    }
 
     override fun applyCommands(commands: Array<Command>) {
         fragmentManager.executePendingTransactions()
@@ -37,9 +28,7 @@ class SupportAppxNavigator(
         //copy stack before apply commands
         copyStackToLocal()
 
-        for (command in commands) {
-            applyCommand(command)
-        }
+        commands.forEach(this::applyCommand)
     }
 
     private fun copyStackToLocal() {

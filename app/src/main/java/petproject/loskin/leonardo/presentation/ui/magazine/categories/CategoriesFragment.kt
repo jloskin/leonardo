@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.android.ext.android.inject
@@ -33,10 +34,15 @@ class CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.categories().subscribe(adapter::update, Throwable::printStackTrace)
 
-        (activity as MainActivity).toolbar.title = getString(R.string.goods_catalog)
-
+        with((activity as MainActivity).toolbar) {
+            title = getString(R.string.goods_catalog)
+            navigationIcon = null
+        }
         with(recyclerView) {
-            layoutManager = GridLayoutManager(context, 3)
+            val linearLayoutManager = LinearLayoutManager(context)
+            val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
+            layoutManager = linearLayoutManager
+            addItemDecoration(dividerItemDecoration)
             adapter = this@CategoriesFragment.adapter
         }
     }

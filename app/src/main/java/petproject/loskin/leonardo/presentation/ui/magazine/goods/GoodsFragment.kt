@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +27,10 @@ class GoodsFragment : Fragment() {
                 ?.let(viewModel::loadGoods)
                 ?.subscribe(adapter::update, Throwable::printStackTrace)
 
-        (activity as MainActivity).toolbar.title = arguments?.getString(SUBCATEGORY_TITLE)
+        with((activity as MainActivity).toolbar) {
+            title = arguments?.getString(SUBCATEGORY_TITLE)
+            navigationIcon = VectorDrawableCompat.create(resources, R.drawable.abc_ic_ab_back_material, null)
+        }
 
         with(recyclerView) {
             layoutManager = androidx.recyclerview.widget.GridLayoutManager(context, 2)

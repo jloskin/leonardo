@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.android.ext.android.inject
@@ -30,10 +32,16 @@ class SubCategoriesFragment : Fragment() {
                 ?.let(presenter::loadSubCategories)
                 ?.subscribe(adapter::update, Throwable::printStackTrace)
 
-        (activity as MainActivity).toolbar.title = arguments?.getString(SUBCATEGORY_TITLE)
+        with((activity as MainActivity).toolbar) {
+            title = arguments?.getString(SUBCATEGORY_TITLE)
+            navigationIcon = VectorDrawableCompat.create(resources, R.drawable.abc_ic_ab_back_material, null)
+        }
 
         with(recyclerView) {
-            layoutManager = LinearLayoutManager(context)
+            val linearLayoutManager = LinearLayoutManager(context)
+            val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
+            layoutManager = linearLayoutManager
+            addItemDecoration(dividerItemDecoration)
             adapter = this@SubCategoriesFragment.adapter
         }
     }

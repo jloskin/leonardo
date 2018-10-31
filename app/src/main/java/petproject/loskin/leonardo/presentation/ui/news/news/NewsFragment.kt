@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.recycler_view.*
@@ -30,7 +31,10 @@ class NewsFragment : Fragment() {
         (activity as MainActivity).toolbar.title = getString(R.string.news)
 
         with(recyclerView) {
-            layoutManager = LinearLayoutManager(context)
+            val linearLayoutManager = LinearLayoutManager(context)
+            val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
+            layoutManager = linearLayoutManager
+            addItemDecoration(dividerItemDecoration)
             adapter = this@NewsFragment.adapter
         }
     }

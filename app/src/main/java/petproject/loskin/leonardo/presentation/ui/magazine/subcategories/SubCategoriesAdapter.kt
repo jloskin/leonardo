@@ -15,7 +15,9 @@ class SubCategoriesAdapter(
 
     override fun getItemViewType(position: Int) = R.layout.item_magazine
 
-    class Holder(itemView: View, val click: (SubCategoriesData) -> Unit) : BaseRecyclerViewHolder<SubCategoriesData>(itemView) {
+    class Holder(
+            itemView: View, val click: (SubCategoriesData) -> Unit
+    ) : BaseRecyclerViewHolder<SubCategoriesData>(itemView) {
         override fun bind(item: SubCategoriesData) {
             with(itemView) {
                 magazine.text = item.itemName

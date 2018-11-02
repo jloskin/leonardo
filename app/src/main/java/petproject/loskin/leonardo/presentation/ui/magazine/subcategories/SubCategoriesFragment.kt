@@ -32,10 +32,17 @@ class SubCategoriesFragment : Fragment() {
                 ?.let(presenter::loadSubCategories)
                 ?.subscribe(adapter::update, Throwable::printStackTrace)
 
-        with((activity as MainActivity).toolbar) {
+        val mainActivity = activity as MainActivity
+        with(mainActivity.toolbar) {
             title = arguments?.getString(SUBCATEGORY_TITLE)
             navigationIcon = VectorDrawableCompat.create(resources, R.drawable.abc_ic_ab_back_material, null)
         }
+        mainActivity.setMenu(R.menu.info, {
+            when (it?.itemId) {
+                R.id.info -> true
+                else -> false
+            }
+        })
 
         with(recyclerView) {
             val linearLayoutManager = LinearLayoutManager(context)
@@ -44,6 +51,11 @@ class SubCategoriesFragment : Fragment() {
             addItemDecoration(dividerItemDecoration)
             adapter = this@SubCategoriesFragment.adapter
         }
+    }
+
+    override fun onPause() {
+        (activity as MainActivity).clearMenu()
+        super.onPause()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =

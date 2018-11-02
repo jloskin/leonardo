@@ -1,6 +1,8 @@
 package petproject.loskin.leonardo.presentation.ui
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.koin.android.ext.android.inject
@@ -41,7 +43,24 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
 
+    private var menuId: Int? = null
+    private var menuSelected: ((MenuItem?) -> Boolean)? = null
+        set(value) {
+            field = value
+            invalidateOptionsMenu()
+        }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuId?.let { menuInflater.inflate(it, menu) }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (menuSelected?.invoke(item) == true) return true
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onPause() {
@@ -52,5 +71,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
+    }
+
+    fun clearMenu() {
+        menuId = null
+        menuSelected = null
+    }
+
+    fun setMenu(info: Int, function: (MenuItem?) -> Boolean) {
+        menuId = info
+        menuSelected = function
     }
 }

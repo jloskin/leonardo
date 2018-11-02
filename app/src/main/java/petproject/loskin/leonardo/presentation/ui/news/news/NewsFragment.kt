@@ -32,9 +32,8 @@ class NewsFragment : Fragment() {
 
         with(recyclerView) {
             val linearLayoutManager = LinearLayoutManager(context)
-            val dividerItemDecoration = DividerItemDecoration(recyclerView.context, linearLayoutManager.orientation)
             layoutManager = linearLayoutManager
-            addItemDecoration(dividerItemDecoration)
+            addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
             adapter = this@NewsFragment.adapter
         }
     }

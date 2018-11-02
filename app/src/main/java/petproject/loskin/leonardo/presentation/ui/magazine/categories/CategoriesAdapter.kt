@@ -21,7 +21,7 @@ class CategoriesAdapter(
             with(itemView) {
                 setOnClickListener { click(item) }
                 newsTitle.text = item.categoryName
-                GlideApp.with(newsImage).load(item.imageUrl).into(newsImage)
+                GlideApp.with(newsImage).load(item.imageUrl).circleCrop().into(newsImage)
             }
         }
     }

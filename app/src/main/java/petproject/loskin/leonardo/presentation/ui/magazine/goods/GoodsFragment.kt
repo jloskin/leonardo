@@ -11,13 +11,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.goods_view.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.domain.magazine.goods.GoodsViewModel
 import petproject.loskin.leonardo.presentation.ui.MainActivity
+import petproject.loskin.leonardo.presentation.ui.Screens
+import ru.terrakok.cicerone.Router
 
 class GoodsFragment : Fragment() {
     private val viewModel: GoodsViewModel by viewModel()
+    private val router: Router by inject()
 
     private val adapter: GoodsAdapter by lazy { GoodsAdapter {} }
     private val chipsAdapter: ChipsAdapter by lazy { ChipsAdapter {} }
@@ -27,22 +31,28 @@ class GoodsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mainActivity = activity as MainActivity
+
         arguments?.getString(GOODS_LINK)?.let(viewModel::loadGoods)
         viewModel.chips.observe(this, Observer(chipsAdapter::update))
         viewModel.goods.observe(this, Observer(adapter::update))
 
-        val mainActivity = activity as MainActivity
+        viewModel.filters.observe(this, Observer { filters ->
+            mainActivity.setMenu(R.menu.goods, {
+                when (it?.itemId) {
+                    R.id.filter -> {
+                        router.navigateTo(Screens.FilterScreen(filters))
+                        true
+                    }
+                    else -> false
+                }
+            })
+        })
+
         with(mainActivity.toolbar) {
             title = arguments?.getString(SUBCATEGORY_TITLE)
             navigationIcon = VectorDrawableCompat.create(resources, R.drawable.abc_ic_ab_back_material, null)
         }
-        mainActivity.setMenu(R.menu.goods, {
-            when (it?.itemId) {
-                R.id.filter -> true
-                else -> false
-            }
-        })
-
         with(goods) {
             layoutManager = GridLayoutManager(context, 2)
             adapter = this@GoodsFragment.adapter

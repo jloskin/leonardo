@@ -14,11 +14,17 @@ class GoodsRepository(
 ) {
     private val service = RetrofitClientInstance.retrofit.create(GoodsService::class.java)
 
+    val filters: MutableList<Filter> = mutableListOf()
+
     fun chips(item: String): Flowable<List<MenuL>> = magazineDao.getMenus(item)
 
-    fun getGoods(url: String): Observable<List<GoodsData>> = service.getUrl(url)
+    fun getGoods(item: String, page: String = ""): Observable<List<GoodsData>> = service.getUrl(item)
             .subscribeOn(Schedulers.io())
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
+            .doOnNext {
+                if (filters.isEmpty())
+                    filters.addAll(goodsMapper.string2Filter(it))
+            }
             .map(goodsMapper::string2Goods)
 }

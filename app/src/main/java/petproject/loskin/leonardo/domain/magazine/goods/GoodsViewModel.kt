@@ -11,6 +11,7 @@ class GoodsViewModel(
 ) : ViewModel() {
     val goods = MutableLiveData<List<GoodsData>>()
     val chips = MutableLiveData<List<MenuL>>()
+    val filters = MutableLiveData<List<Filter>>()
 
     fun loadGoods(item: String) {
         goodsRepository.chips(item)
@@ -19,6 +20,9 @@ class GoodsViewModel(
 
         goodsRepository.getGoods(item)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(goods::setValue, Throwable::printStackTrace)
+                .subscribe({
+                    goods.value = it
+                    filters.value = goodsRepository.filters
+                }, Throwable::printStackTrace)
     }
 }

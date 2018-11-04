@@ -37,4 +37,14 @@ class GoodsMapper {
             )
         }
     }
+
+    fun string2Filter(page: String): List<Filter> = Jsoup.parse(page)
+            .select("div.filterscontainer")
+            .select(".sidebar-filter-block")
+            .map {
+                Filter(
+                        it.select(".sbmenublocktitle div").text(),
+                        it.select(".sbcatmenu label").map { FilterEntity(it.attr("for"), it.text()) }
+                )
+            }
 }

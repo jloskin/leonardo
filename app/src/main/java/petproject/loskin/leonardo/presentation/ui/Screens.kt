@@ -1,6 +1,7 @@
 package petproject.loskin.leonardo.presentation.ui
 
 import androidx.fragment.app.Fragment
+import petproject.loskin.leonardo.domain.magazine.goods.Filter
 import petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment
 import petproject.loskin.leonardo.presentation.ui.magazine.goods.GoodsFragment
 import petproject.loskin.leonardo.presentation.ui.magazine.subcategories.SubCategoriesFragment
@@ -22,5 +23,9 @@ object Screens {
 
     class GoodsFragmentScreen(title: String, link: String) : SupportAppxScreen() {
         override val fragment: Fragment = GoodsFragment.instance(title, link)
+    }
+
+    class FilterScreen(filters: List<Filter>) : SupportAppxScreen() {
+        override val fragment: Fragment = FilterFragment.instance(filters)
     }
 }

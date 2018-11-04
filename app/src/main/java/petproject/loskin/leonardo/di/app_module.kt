@@ -4,9 +4,12 @@ import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.factory
 import petproject.loskin.leonardo.data.db.AppDatabase
-import petproject.loskin.leonardo.data.mapper.magazine.categories.CategoriesMapper
+import petproject.loskin.leonardo.data.mapper.magazine.categories.MagazineMapper
 import petproject.loskin.leonardo.domain.magazine.categories.CategoriesViewModel
+import petproject.loskin.leonardo.domain.magazine.goods.GoodsMapper
+import petproject.loskin.leonardo.domain.magazine.goods.GoodsRepository
 import petproject.loskin.leonardo.domain.magazine.goods.GoodsViewModel
+import petproject.loskin.leonardo.domain.magazine.subcategories.SubCategoriesRepository
 import petproject.loskin.leonardo.domain.magazine.subcategories.SubCategoriesViewModel
 import petproject.loskin.leonardo.domain.main.MainInteractor
 import petproject.loskin.leonardo.presentation.presenter.news.NewsViewModel
@@ -29,14 +32,18 @@ val appModule = module {
     viewModel<ArticlesPresenter>()
     viewModel<CompetitionsPresenter>()
 
-    factory<CategoriesMapper>()
+    factory<MagazineMapper>()
     factory<MainInteractor>()
     factory<MainRepositories>()
+    factory<CategoriesRepository>()
+    factory<SubCategoriesRepository>()
+    factory<GoodsRepository>()
+    factory<GoodsMapper>()
 
     single<Cicerone<Router>> { Cicerone.create() }
     single<NavigatorHolder> { get<Cicerone<Router>>().navigatorHolder }
     single<Router> { get<Cicerone<Router>>().router }
 
     // Single instance of Repository
-    single { CategoriesRepository(AppDatabase.getInstance(get()).categoriesDao(), get()) }
+    single { AppDatabase.getInstance(get()).categoriesDao() }
 }

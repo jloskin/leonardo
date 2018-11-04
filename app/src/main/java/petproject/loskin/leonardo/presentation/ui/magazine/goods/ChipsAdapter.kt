@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui.magazine.categories
+package petproject.loskin.leonardo.presentation.ui.magazine.goods
 
 import android.view.View
 import kotlinx.android.synthetic.main.news_cell.view.*
@@ -9,22 +9,18 @@ import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
 import petproject.loskin.leonardo.util.GlideApp
 
 
-class CategoriesAdapter(
+class ChipsAdapter(
         private val click: (MenuL) -> Unit
-) : BaseRecyclerAdapter<MenuL, CategoriesAdapter.Holder>() {
+) : BaseRecyclerAdapter<MenuL, ChipsAdapter.Holder>() {
     override fun item(itemView: View) = Holder(itemView, click)
 
-    override fun getItemViewType(position: Int) = R.layout.magazine_cell
+    override fun getItemViewType(position: Int) = R.layout.chips_cell
 
     class Holder(itemView: View, val click: (MenuL) -> Unit) : BaseRecyclerViewHolder<MenuL>(itemView) {
         override fun bind(item: MenuL) {
             with(itemView) {
                 setOnClickListener { click(item) }
                 newsTitle.text = item.name
-                GlideApp.with(newsImage)
-                        .load(item.image())
-                        .placeholder(R.drawable.ic_leonardo_logo)
-                        .circleCrop().into(newsImage)
             }
         }
     }

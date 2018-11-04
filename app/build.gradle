@@ -55,6 +55,7 @@ dependencies {
     implementation "androidx.room:room-runtime:+"
     implementation "android.arch.work:work-runtime-ktx:+"
     implementation "androidx.appcompat:appcompat:+"
+    implementation "androidx.room:room-rxjava2:+"
     implementation "androidx.constraintlayout:constraintlayout:+"
     implementation "androidx.core:core-ktx:+"
     implementation "androidx.legacy:legacy-support-v4:+"

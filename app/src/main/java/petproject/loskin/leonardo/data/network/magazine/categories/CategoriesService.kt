@@ -1,9 +1,9 @@
 package petproject.loskin.leonardo.data.network.magazine.categories
 
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import retrofit2.http.GET
 
 interface CategoriesService {
     @GET("https://leonardohobby.ru/ishop/")
-    fun loadGoodsCategories(): Observable<String>
+    fun initMenu(): Flowable<String>
 }

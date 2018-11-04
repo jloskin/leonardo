@@ -17,6 +17,12 @@ class MainActivity : AppCompatActivity() {
     private val router: Router by inject()
     private val navigatorHolder: NavigatorHolder by inject()
     private val navigator: Navigator = SupportAppxNavigator(this, R.id.nav_host_fragment)
+    private var menuId: Int? = null
+    private var menuSelected: ((MenuItem?) -> Boolean)? = null
+        set(value) {
+            field = value
+            invalidateOptionsMenu()
+        }
 
     init {
         router.newRootScreen(Screens.GoodsScreen())
@@ -44,14 +50,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-    private var menuId: Int? = null
-    private var menuSelected: ((MenuItem?) -> Boolean)? = null
-        set(value) {
-            field = value
-            invalidateOptionsMenu()
-        }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuId?.let { menuInflater.inflate(it, menu) }

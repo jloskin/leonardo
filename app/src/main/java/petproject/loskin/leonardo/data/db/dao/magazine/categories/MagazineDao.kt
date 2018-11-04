@@ -16,24 +16,24 @@
 
 package petproject.loskin.leonardo.data.db.dao.magazine.categories
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import petproject.loskin.leonardo.data.entity.magazine.categories.CategoriesData
+import io.reactivex.Flowable
+import petproject.loskin.leonardo.data.entity.magazine.MenuL
 
 /**
  * The Data Access Object for the Plant class.
  */
 @Dao
-interface CategoriesDao {
-    @Query("SELECT * FROM categories ORDER BY categoryName")
-    fun getCategories(): LiveData<List<CategoriesData>>
+interface MagazineDao {
+    @Query("SELECT * FROM menus WHERE parentId = :item ORDER BY name")
+    fun getMenus(item: String = ""): Flowable<List<MenuL>>
 
-    @Query("SELECT * FROM categories WHERE categoryName = :categoryName")
-    fun getCategory(categoryName: String): LiveData<CategoriesData>
+    @Query("SELECT * FROM menus")
+    fun getAll(): Flowable<List<MenuL>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(categories: List<CategoriesData>)
+    fun insertMenus(categories: List<MenuL>)
 }

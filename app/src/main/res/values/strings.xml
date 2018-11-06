@@ -13,4 +13,5 @@
     <string name="goods_catalog">Каталог товаров</string>
     <string name="info">Инфо</string>
     <string name="filter">Фильтр</string>
+    <string name="city">Город</string>
 </resources>

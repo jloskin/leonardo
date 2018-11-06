@@ -19,12 +19,13 @@ class CategoriesRepository(
             .unsubscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .flatMap {
-                if (it.isEmpty())
+                if (it.isEmpty()) {
                     service.initMenu()
+                            .doOnNext { magazineDao.insertCities(magazineMapper.string2Cities(it)) }
                             .map(magazineMapper::string2Menu)
                             .doOnNext(magazineDao::insertMenus)
                             .flatMap { magazineDao.getMenus() }
-                else
+                } else
                     Flowable.just(it)
             }
 }

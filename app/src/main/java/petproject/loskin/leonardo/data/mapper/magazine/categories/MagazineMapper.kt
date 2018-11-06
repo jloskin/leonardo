@@ -6,8 +6,7 @@ import petproject.loskin.leonardo.data.entity.magazine.MenuL
 
 class MagazineMapper {
     fun string2Menu(page: String): List<MenuL> {
-        val parse = Jsoup.parse(page)
-        return parse.select(".cd-dropdown-content").first().children()
+        return Jsoup.parse(page).select(".cd-dropdown-content").first().children()
                 .map { it.children() }
                 .map {
                     val url = getLink(it.first())
@@ -27,4 +26,9 @@ class MagazineMapper {
     }
 
     private fun getLink(element: Element): String = element.attr("href").replace(Regex(".+(tree_.+)/"), "$1")
+
+    fun string2Cities(page: String): List<City> {
+        return Jsoup.parse(page).select("a.city_select")
+                .map { City(it.attr("data-city"), it.text()) }
+    }
 }

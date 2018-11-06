@@ -27,14 +27,7 @@ class FilterAdapter(
             with(itemView) {
                 setOnClickListener { click(item) }
                 title.text = item.id
-                title.setOnClickListener {
-                    val invisible = bottom_view.visibility == GONE
-                    bottom_view.visibility = if (invisible) VISIBLE else GONE
-                    expand.setImageResource(
-                            if (invisible) R.drawable.ic_collapse_button
-                            else R.drawable.ic_expand_button
-                    )
-                }
+                title.setOnClickListener { invertButton() }
                 with(bottom_view) {
                     val linearLayoutManager = LinearLayoutManager(context)
                     layoutManager = linearLayoutManager
@@ -42,7 +35,19 @@ class FilterAdapter(
                 }
             }
         }
+
+        private fun invertButton() {
+            with(itemView) {
+                val invisible = bottom_view.visibility == GONE
+                bottom_view.visibility = if (invisible) VISIBLE else GONE
+                expand.setImageResource(
+                        if (invisible) R.drawable.ic_collapse_button
+                        else R.drawable.ic_expand_button
+                )
+            }
+        }
     }
+
 
     class FilterAdapter(
             private val click: (FilterEntity) -> Unit

@@ -7,8 +7,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import petproject.loskin.leonardo.data.db.dao.magazine.categories.MagazineDao
 import petproject.loskin.leonardo.data.entity.magazine.MenuL
+import petproject.loskin.leonardo.data.mapper.magazine.categories.City
 
-@Database(entities = [MenuL::class], version = 1, exportSchema = false)
+@Database(entities = [MenuL::class, City::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun categoriesDao(): MagazineDao

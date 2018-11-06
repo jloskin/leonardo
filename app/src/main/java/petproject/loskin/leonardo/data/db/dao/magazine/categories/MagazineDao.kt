@@ -22,6 +22,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import io.reactivex.Flowable
 import petproject.loskin.leonardo.data.entity.magazine.MenuL
+import petproject.loskin.leonardo.data.mapper.magazine.categories.City
 
 /**
  * The Data Access Object for the Plant class.
@@ -36,4 +37,10 @@ interface MagazineDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMenus(categories: List<MenuL>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCities(cities: List<City>)
+
+    @Query("SELECT * FROM city")
+    fun getCities(): Flowable<List<City>>
 }

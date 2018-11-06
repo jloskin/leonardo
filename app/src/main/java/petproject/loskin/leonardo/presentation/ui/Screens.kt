@@ -9,6 +9,10 @@ import petproject.loskin.leonardo.presentation.ui.news.news.NewsFragment
 import petproject.loskin.leonardo.util.cicerone.SupportAppxScreen
 
 object Screens {
+    class FilterCity : SupportAppxScreen() {
+        override val fragment: Fragment = FilterCityFragment()
+    }
+
     class SubCategories(title: String, link: String) : SupportAppxScreen() {
         override val fragment: Fragment = SubCategoriesFragment.instance(title, link)
     }

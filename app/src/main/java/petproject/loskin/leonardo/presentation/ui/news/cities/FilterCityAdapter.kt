@@ -1,7 +1,7 @@
-package petproject.loskin.leonardo.presentation.ui
+package petproject.loskin.leonardo.presentation.ui.news.cities
 
 import android.view.View
-import kotlinx.android.synthetic.main.news_cell.view.*
+import kotlinx.android.synthetic.main.chips_cell.view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.mapper.magazine.categories.City
 import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
@@ -12,7 +12,7 @@ class FilterCityAdapter(
 ) : BaseRecyclerAdapter<City, FilterCityAdapter.Holder>() {
     override fun item(itemView: View) = Holder(itemView, click)
 
-    override fun getItemViewType(position: Int) = R.layout.magazine_cell
+    override fun getItemViewType(position: Int) = R.layout.chips_cell
 
     class Holder(itemView: View, val click: (City) -> Unit) : BaseRecyclerViewHolder<City>(itemView) {
         override fun bind(item: City) {

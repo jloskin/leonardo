@@ -2,16 +2,17 @@
     <string name="app_name">Leonardo</string>
     <string name="nav_header_subtitle">yuraloskin@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="text_news">News</string>
-    <string name="text_competitions">Competitions</string>
-    <string name="text_articles">Articles</string>
-    <string name="text_mclasses">Lessons of creativity</string>
-    <string name="news">News</string>
-    <string name="goods">Goods</string>
-    <string name="profile">Profile</string>
+    <string name="text_competitions">Конкурсы</string>
+    <string name="text_articles">Статьи</string>
+    <string name="text_mclasses">Уроки творчества</string>
+    <string name="news">Новости</string>
+    <string name="goods">Товары</string>
+    <string name="profile">Профиль</string>
     <string name="cart">Корзина</string>
     <string name="goods_catalog">Каталог товаров</string>
     <string name="info">Инфо</string>
     <string name="filter">Фильтр</string>
     <string name="city">Город</string>
+    <string name="clear">Очистить</string>
+    <string name="accept">Применить</string>
 </resources>

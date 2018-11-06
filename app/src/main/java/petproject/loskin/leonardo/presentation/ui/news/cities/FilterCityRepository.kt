@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui
+package petproject.loskin.leonardo.presentation.ui.news.cities
 
 import io.reactivex.Flowable
 import petproject.loskin.leonardo.data.db.dao.magazine.categories.MagazineDao

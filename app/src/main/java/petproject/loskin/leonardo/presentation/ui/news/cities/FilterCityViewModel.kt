@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui
+package petproject.loskin.leonardo.presentation.ui.news.cities
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

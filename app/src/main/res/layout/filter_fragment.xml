@@ -17,7 +17,7 @@
         android:id="@+id/clear_filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Очистить фильтр"
+        android:text="@string/clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/apply"
         app:layout_constraintHorizontal_chainStyle="spread"
@@ -27,7 +27,7 @@
         android:id="@+id/apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Применить"
+        android:text="@string/accept"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/clear_filter" />

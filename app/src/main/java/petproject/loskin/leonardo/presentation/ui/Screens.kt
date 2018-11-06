@@ -5,6 +5,8 @@ import petproject.loskin.leonardo.domain.magazine.goods.Filter
 import petproject.loskin.leonardo.presentation.ui.magazine.categories.CategoriesFragment
 import petproject.loskin.leonardo.presentation.ui.magazine.goods.GoodsFragment
 import petproject.loskin.leonardo.presentation.ui.magazine.subcategories.SubCategoriesFragment
+import petproject.loskin.leonardo.presentation.ui.news.cities.FilterCityFragment
+import petproject.loskin.leonardo.presentation.ui.magazine.filters.FilterFragment
 import petproject.loskin.leonardo.presentation.ui.news.news.NewsFragment
 import petproject.loskin.leonardo.util.cicerone.SupportAppxScreen
 

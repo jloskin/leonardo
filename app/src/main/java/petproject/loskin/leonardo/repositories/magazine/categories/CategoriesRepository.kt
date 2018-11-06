@@ -1,6 +1,7 @@
 package petproject.loskin.leonardo.repositories.magazine.categories
 
 import io.reactivex.Flowable
+import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import petproject.loskin.leonardo.data.db.dao.magazine.categories.MagazineDao
 import petproject.loskin.leonardo.data.entity.magazine.MenuL
@@ -20,11 +21,11 @@ class CategoriesRepository(
             .observeOn(Schedulers.io())
             .flatMap {
                 if (it.isEmpty()) {
-                    service.initMenu()
-                            .doOnNext { magazineDao.insertCities(magazineMapper.string2Cities(it)) }
-                            .map(magazineMapper::string2Menu)
-                            .doOnNext(magazineDao::insertMenus)
-                            .flatMap { magazineDao.getMenus() }
+                    Flowable.zip(
+                            service.cities().map(magazineMapper::string2Cities).doOnNext(magazineDao::insertCities),
+                            service.initMenu().map(magazineMapper::string2Menu).doOnNext(magazineDao::insertMenus).flatMap { magazineDao.getMenus() },
+                            BiFunction { _, t2 -> t2 }
+                    )
                 } else
                     Flowable.just(it)
             }

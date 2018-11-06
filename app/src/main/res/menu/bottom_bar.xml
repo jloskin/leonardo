@@ -5,7 +5,7 @@
         android:id="@+id/newsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_news_24dp"
-        android:title="@string/text_news"
+        android:title="@string/news"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/competitionsFragment"

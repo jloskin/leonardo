@@ -1,28 +1,25 @@
-package petproject.loskin.leonardo.presentation.ui
+package petproject.loskin.leonardo.presentation.ui.magazine.filters
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.domain.magazine.goods.Filter
-import petproject.loskin.leonardo.presentation.ui.magazine.FilterAdapter
+import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
 
-class FilterFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
-            inflater.inflate(R.layout.filter_fragment, container, false)
-
+class FilterFragment : BaseFragment() {
     private val filterAdapter by lazy { FilterAdapter({}) }
+
+    override fun layoutId(): Int = R.layout.filter_fragment
+
+    override fun titleId(): Int = R.string.filter
+
+    override fun navigationIconId(): Int? = R.drawable.abc_ic_ab_back_material
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (activity as MainActivity).clearMenu()
 
         arguments?.getParcelableArray(FILTER_ITEMS)?.let { (it as Array<Filter>).toList() }?.let { items ->
             with(recyclerView) {

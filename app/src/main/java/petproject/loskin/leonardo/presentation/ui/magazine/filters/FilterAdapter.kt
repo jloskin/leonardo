@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.presentation.ui.magazine
+package petproject.loskin.leonardo.presentation.ui.magazine.filters
 
 import android.view.View
 import android.view.View.GONE

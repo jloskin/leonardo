@@ -24,7 +24,7 @@ class SubCategoriesFragment : BaseFragment() {
 
     override fun title(): String = arguments?.getString(SUBCATEGORY_TITLE) ?: ""
 
-    override fun navigationIconId(): Int? = R.drawable.abc_ic_ab_back_material
+    override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

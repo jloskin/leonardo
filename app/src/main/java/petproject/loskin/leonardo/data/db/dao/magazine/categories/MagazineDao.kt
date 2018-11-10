@@ -41,6 +41,6 @@ interface MagazineDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCities(cities: List<City>)
 
-    @Query("SELECT * FROM city")
+    @Query("SELECT * FROM city ORDER BY title")
     fun getCities(): Flowable<List<City>>
 }

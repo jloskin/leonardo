@@ -15,4 +15,5 @@
     <string name="city">Город</string>
     <string name="clear">Очистить</string>
     <string name="accept">Применить</string>
+    <string name="your_city">Ваш город</string>
 </resources>

@@ -17,7 +17,9 @@ class FilterCityFragment : BaseFragment() {
 
     override fun layoutId(): Int = R.layout.recycler_view
 
-    override fun titleId(): Int = R.string.goods_catalog
+    override fun titleId(): Int = R.string.your_city
+
+    override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

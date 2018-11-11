@@ -7,8 +7,8 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.news_cell.view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.entity.news.competitions.CompetitionsBlock
-import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerAdapter
-import petproject.loskin.leonardo.presentation.ui.base.BaseRecyclerViewHolder
+import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapter
+import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 import petproject.loskin.leonardo.util.GlideApp
 
 

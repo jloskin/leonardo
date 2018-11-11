@@ -5,14 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import petproject.loskin.leonardo.data.db.dao.magazine.categories.MagazineDao
-import petproject.loskin.leonardo.data.entity.magazine.MenuL
-import petproject.loskin.leonardo.data.mapper.magazine.categories.City
+import petproject.loskin.leonardo.data.db.dao.magazine.categories.ShopDao
+import petproject.loskin.leonardo.data.entity.shop.MenuL
+import petproject.loskin.leonardo.data.mapper.shop.categories.City
 
 @Database(entities = [MenuL::class, City::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun categoriesDao(): MagazineDao
+    abstract fun categoriesDao(): ShopDao
 
     companion object {
 

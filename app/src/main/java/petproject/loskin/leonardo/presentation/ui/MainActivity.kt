@@ -38,16 +38,14 @@ class MainActivity : AppCompatActivity() {
 
         bottom_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.categoriesFragment -> {
-                    router.newRootScreen(Screens.GoodsScreen())
-                    true
-                }
-                R.id.newsNavFragment -> {
-                    router.newRootScreen(Screens.NewsScreen())
-                    true
-                }
-                else -> false
-            }
+                R.id.categoriesFragment -> Screens.GoodsScreen()
+                R.id.newsNavFragment -> Screens.NewsScreen()
+                R.id.authorizeFragment -> Screens.AuthorizeScreen()
+                else -> null
+            }?.let {
+                router.newRootScreen(it)
+                true
+            } ?: false
         }
     }
 

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.presentation.presenter.news.competitions.CompetitionsPresenter
+import petproject.loskin.leonardo.domain.model.news.competitions.CompetitionsPresenter
 import petproject.loskin.leonardo.presentation.ui.news.competitions.adapter.CompetitionsAdapter
 
 class CompetitionsFragment : Fragment() {

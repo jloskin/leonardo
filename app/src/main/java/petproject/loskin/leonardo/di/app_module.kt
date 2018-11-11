@@ -4,22 +4,23 @@ import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.factory
 import petproject.loskin.leonardo.data.db.AppDatabase
-import petproject.loskin.leonardo.data.mapper.magazine.categories.MagazineMapper
-import petproject.loskin.leonardo.domain.magazine.categories.CategoriesViewModel
-import petproject.loskin.leonardo.domain.magazine.goods.GoodsMapper
-import petproject.loskin.leonardo.domain.magazine.goods.GoodsRepository
-import petproject.loskin.leonardo.domain.magazine.goods.GoodsViewModel
-import petproject.loskin.leonardo.domain.magazine.subcategories.SubCategoriesRepository
-import petproject.loskin.leonardo.domain.magazine.subcategories.SubCategoriesViewModel
-import petproject.loskin.leonardo.domain.main.MainInteractor
-import petproject.loskin.leonardo.presentation.presenter.news.NewsViewModel
-import petproject.loskin.leonardo.presentation.presenter.news.articles.ArticlesPresenter
-import petproject.loskin.leonardo.presentation.presenter.news.competitions.CompetitionsPresenter
-import petproject.loskin.leonardo.presentation.presenter.news.mclasses.MClassesPresenter
-import petproject.loskin.leonardo.presentation.ui.news.cities.FilterCityRepository
-import petproject.loskin.leonardo.presentation.ui.news.cities.FilterCityViewModel
-import petproject.loskin.leonardo.repositories.MainRepositories
-import petproject.loskin.leonardo.repositories.magazine.categories.CategoriesRepository
+import petproject.loskin.leonardo.data.mapper.shop.categories.MagazineMapper
+import petproject.loskin.leonardo.domain.model.shop.categories.CategoriesViewModel
+import petproject.loskin.leonardo.domain.model.shop.goods.GoodsMapper
+import petproject.loskin.leonardo.domain.model.shop.goods.GoodsRepository
+import petproject.loskin.leonardo.domain.model.shop.goods.GoodsViewModel
+import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesRepository
+import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesViewModel
+import petproject.loskin.leonardo.domain.model.main.MainInteractor
+import petproject.loskin.leonardo.domain.model.news.NewsViewModel
+import petproject.loskin.leonardo.domain.model.news.articles.ArticlesPresenter
+import petproject.loskin.leonardo.domain.model.news.competitions.CompetitionsPresenter
+import petproject.loskin.leonardo.domain.model.news.mclasses.MClassesPresenter
+import petproject.loskin.leonardo.domain.model.profile.authorize.AuthorizeViewModel
+import petproject.loskin.leonardo.domain.repositories.shop.cities.CitiesRepository
+import petproject.loskin.leonardo.domain.model.shop.cities.FilterCityViewModel
+import petproject.loskin.leonardo.domain.repositories.MainRepositories
+import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -29,6 +30,7 @@ val appModule = module {
     viewModel<SubCategoriesViewModel>()
     viewModel<GoodsViewModel>()
     viewModel<FilterCityViewModel>()
+    viewModel<AuthorizeViewModel>()
 
     viewModel<NewsViewModel>()
     viewModel<MClassesPresenter>()
@@ -42,7 +44,7 @@ val appModule = module {
     factory<SubCategoriesRepository>()
     factory<GoodsRepository>()
     factory<GoodsMapper>()
-    factory<FilterCityRepository>()
+    factory<CitiesRepository>()
 
     single<Cicerone<Router>> { Cicerone.create() }
     single<NavigatorHolder> { get<Cicerone<Router>>().navigatorHolder }

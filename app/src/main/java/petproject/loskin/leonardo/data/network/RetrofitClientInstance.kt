@@ -27,5 +27,5 @@ object RetrofitClientInstance {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
     }
-    private const val BASE_URL = "https://leonardohobby.ru/ishop/"
+    private const val BASE_URL = "https://leonardohobby.ru/"
 }

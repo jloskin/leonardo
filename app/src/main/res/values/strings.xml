@@ -16,4 +16,5 @@
     <string name="clear">Очистить</string>
     <string name="accept">Применить</string>
     <string name="your_city">Ваш город</string>
+    <string name="authorization">Авторизация</string>
 </resources>

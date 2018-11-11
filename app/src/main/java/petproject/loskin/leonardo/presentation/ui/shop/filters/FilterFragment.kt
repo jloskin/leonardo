@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.domain.model.shop.goods.Filter
-import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
+import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
-class FilterFragment : BaseFragment() {
+class FilterFragment : RootFragment() {
     private val filterAdapter by lazy { FilterAdapter({}) }
 
     override fun layoutId(): Int = R.layout.filter_fragment

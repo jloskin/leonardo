@@ -89,4 +89,5 @@ dependencies {
     implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:+"
 
     implementation 'ru.terrakok.cicerone:cicerone:+'
+    implementation 'androidx.viewpager:viewpager:+'
 }

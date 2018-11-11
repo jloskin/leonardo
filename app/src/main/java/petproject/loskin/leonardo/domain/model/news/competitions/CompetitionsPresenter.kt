@@ -1,14 +1,12 @@
 package petproject.loskin.leonardo.domain.model.news.competitions
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.domain.model.main.MainInteractor
 
 class CompetitionsPresenter(
-        val mainInteractor: MainInteractor,
-        application: Application
-) : AndroidViewModel(application) {
+        private val mainInteractor: MainInteractor
+) : ViewModel() {
     fun competitons() = mainInteractor.getCompetitions()
             .observeOn(AndroidSchedulers.mainThread())
 }

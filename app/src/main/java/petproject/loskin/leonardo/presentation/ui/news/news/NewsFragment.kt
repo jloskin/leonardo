@@ -16,8 +16,6 @@ class NewsFragment : BaseFragment() {
 
     private val newsViewModel: NewsViewModel by viewModel()
 
-    override fun titleId(): Int = R.string.news
-
     val adapter: NewsAdapter by lazy { NewsAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

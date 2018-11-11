@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         bottom_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.categoriesFragment -> Screens.GoodsScreen()
-                R.id.newsNavFragment -> Screens.NewsScreen()
+                R.id.newsNavFragment -> Screens.MainNewsScreen()
                 R.id.authorizeFragment -> Screens.AuthorizeScreen()
                 else -> null
             }?.let {

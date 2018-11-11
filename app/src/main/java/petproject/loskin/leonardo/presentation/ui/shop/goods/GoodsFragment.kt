@@ -10,9 +10,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.domain.model.shop.goods.GoodsViewModel
 import petproject.loskin.leonardo.presentation.ui.Screens
-import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
+import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
-class GoodsFragment : BaseFragment() {
+class GoodsFragment : RootFragment() {
     private val viewModel: GoodsViewModel by viewModel()
     private val adapter: GoodsAdapter by lazy { GoodsAdapter {} }
     private val chipsAdapter: ChipsAdapter by lazy { ChipsAdapter {} }

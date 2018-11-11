@@ -10,9 +10,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.mapper.shop.categories.City
 import petproject.loskin.leonardo.domain.model.shop.cities.FilterCityViewModel
-import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
+import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
-class FilterCityFragment : BaseFragment() {
+class FilterCityFragment : RootFragment() {
     private val viewModel: FilterCityViewModel by viewModel()
     private val adapter: FilterCityAdapter by lazy { FilterCityAdapter { } }
 

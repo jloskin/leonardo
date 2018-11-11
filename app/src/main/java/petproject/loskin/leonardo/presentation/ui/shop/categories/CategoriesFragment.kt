@@ -11,10 +11,9 @@ import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.entity.shop.MenuL
 import petproject.loskin.leonardo.domain.model.shop.categories.CategoriesViewModel
 import petproject.loskin.leonardo.presentation.ui.Screens
-import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
+import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
-
-class CategoriesFragment : BaseFragment() {
+class CategoriesFragment : RootFragment() {
     private val viewModel: CategoriesViewModel by viewModel()
     private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }
 

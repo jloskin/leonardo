@@ -34,12 +34,13 @@ class AppGlideModule : AppGlideModule() {
             }
         }
 
-        val socketFactory = SSLContext.getInstance("SSL").apply {
-            init(null, arrayOf(trustAllCerts), java.security.SecureRandom())
-        }.socketFactory
-
         return OkHttpClient.Builder().apply {
-            sslSocketFactory(socketFactory, trustAllCerts as X509TrustManager)
+            sslSocketFactory(
+                    SSLContext.getInstance("SSL").apply {
+                        init(null, arrayOf(trustAllCerts), java.security.SecureRandom())
+                    }.socketFactory,
+                    trustAllCerts as X509TrustManager
+            )
             hostnameVerifier { _, _ -> true }
         }.build()
     }

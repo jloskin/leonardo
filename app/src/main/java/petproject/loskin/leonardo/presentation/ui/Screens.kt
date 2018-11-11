@@ -2,13 +2,13 @@ package petproject.loskin.leonardo.presentation.ui
 
 import androidx.fragment.app.Fragment
 import petproject.loskin.leonardo.domain.model.shop.goods.Filter
+import petproject.loskin.leonardo.presentation.ui.news.MainNewsPage
 import petproject.loskin.leonardo.presentation.ui.profile.authorize.AuthorizeFragment
 import petproject.loskin.leonardo.presentation.ui.shop.categories.CategoriesFragment
+import petproject.loskin.leonardo.presentation.ui.shop.cities.FilterCityFragment
 import petproject.loskin.leonardo.presentation.ui.shop.filters.FilterFragment
 import petproject.loskin.leonardo.presentation.ui.shop.goods.GoodsFragment
 import petproject.loskin.leonardo.presentation.ui.shop.subcategories.SubCategoriesFragment
-import petproject.loskin.leonardo.presentation.ui.shop.cities.FilterCityFragment
-import petproject.loskin.leonardo.presentation.ui.news.news.NewsFragment
 import petproject.loskin.leonardo.util.cicerone.SupportAppxScreen
 
 object Screens {
@@ -28,8 +28,8 @@ object Screens {
         override val fragment: Fragment = SubCategoriesFragment.instance(title, link)
     }
 
-    class NewsScreen : SupportAppxScreen() {
-        override val fragment: Fragment = NewsFragment()
+    class MainNewsScreen : SupportAppxScreen() {
+        override val fragment: Fragment = MainNewsPage()
     }
 
     class GoodsScreen : SupportAppxScreen() {

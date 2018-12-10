@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Filter(
-        val id: String,
-        val parentId: List<FilterEntity>
+  val id: String,
+  val parentId: List<FilterEntity>
 ) : Parcelable

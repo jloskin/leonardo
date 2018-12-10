@@ -9,11 +9,11 @@ import org.koin.android.ext.android.inject
 import ru.terrakok.cicerone.Router
 
 abstract class BaseFragment : Fragment() {
-    val router: Router by inject()
+  val router: Router by inject()
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(layoutId(), container, false)
+  override fun onCreateView(
+    inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+  ): View = inflater.inflate(layoutId(), container, false)
 
-    abstract fun layoutId(): Int
+  abstract fun layoutId(): Int
 }

@@ -5,6 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class FilterEntity(
-        val value: String,
-        val description: String
+  val value: String,
+  val description: String
 ) : Parcelable

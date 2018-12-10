@@ -7,24 +7,24 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import petproject.loskin.leonardo.presentation.ui.MainActivity
 
 abstract class RootFragment : BaseFragment() {
-    val mainActivity: MainActivity get() = activity as MainActivity
+  val mainActivity: MainActivity get() = activity as MainActivity
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        with(mainActivity.toolbar) {
-            title = (titleId()?.let(this@RootFragment::getString) ?: title())
-            navigationIcon = navigationIconId()?.let { VectorDrawableCompat.create(resources, it, null) }
-        }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    with(mainActivity.toolbar) {
+      title = (titleId()?.let(this@RootFragment::getString) ?: title())
+      navigationIcon = navigationIconId()?.let { VectorDrawableCompat.create(resources, it, null) }
     }
+  }
 
-    open fun navigationIconId(): Int? = null
+  open fun navigationIconId(): Int? = null
 
-    open fun titleId(): Int? = null
+  open fun titleId(): Int? = null
 
-    open fun title(): String? = null
+  open fun title(): String? = null
 
-    override fun onPause() {
-        super.onPause()
-        mainActivity.clearMenu()
-    }
+  override fun onPause() {
+    super.onPause()
+    mainActivity.clearMenu()
+  }
 }

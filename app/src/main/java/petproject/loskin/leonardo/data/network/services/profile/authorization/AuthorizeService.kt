@@ -6,7 +6,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface AuthorizeService {
-    @FormUrlEncoded
-    @POST("/profile/")
-    fun authorize(@Field("login") login: String, @Field("pass") password: String): Observable<String>
+  @FormUrlEncoded
+  @POST("/profile/")
+  fun authorize(@Field("login") login: String, @Field("pass") password: String): Observable<String>
 }

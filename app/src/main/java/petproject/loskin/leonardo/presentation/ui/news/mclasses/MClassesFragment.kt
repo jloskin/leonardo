@@ -7,25 +7,25 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.domain.model.news.mclasses.MClassesPresenter
+import petproject.loskin.leonardo.domain.model.news.mclasses.MClassesViewModel
 import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
 
 
 class MClassesFragment : BaseFragment() {
-    private val newsPresenter: MClassesPresenter by viewModel()
+  private val viewModel: MClassesViewModel by viewModel()
 
-    val adapter: MClassesAdapter by lazy { MClassesAdapter() }
+  val adapter: MClassesAdapter by lazy { MClassesAdapter() }
 
-    override fun layoutId(): Int = R.layout.recycler_view
+  override fun layoutId(): Int = R.layout.recycler_view
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        newsPresenter.mclasses().subscribe(adapter::update, Throwable::printStackTrace)
-        with(recyclerView) {
-            val linearLayoutManager = LinearLayoutManager(context)
-            layoutManager = linearLayoutManager
-            addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
-            adapter = this@MClassesFragment.adapter
-        }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    viewModel.mclasses().subscribe(adapter::update, Throwable::printStackTrace)
+    with(recyclerView) {
+      val linearLayoutManager = LinearLayoutManager(context)
+      layoutManager = linearLayoutManager
+      addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
+      adapter = this@MClassesFragment.adapter
     }
+  }
 }

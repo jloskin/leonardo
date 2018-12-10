@@ -7,7 +7,7 @@ import ru.terrakok.cicerone.Screen
 
 abstract class SupportAppxScreen : Screen() {
 
-    abstract val fragment: Fragment
+  abstract val fragment: Fragment
 
-    open fun getActivityIntent(context: Context): Intent? = null
+  open fun getActivityIntent(context: Context): Intent? = null
 }

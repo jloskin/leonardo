@@ -15,47 +15,47 @@ import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 import petproject.loskin.leonardo.presentation.ui.shop.categories.CategoriesAdapter
 
 class SubCategoriesFragment : RootFragment() {
-    private val presenter: SubCategoriesViewModel by viewModel()
-    private val adapter: CategoriesAdapter by lazy {
-        CategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.name, it.url)) }
+  private val presenter: SubCategoriesViewModel by viewModel()
+  private val adapter: CategoriesAdapter by lazy {
+    CategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.name, it.url)) }
+  }
+
+  override fun layoutId(): Int = R.layout.recycler_view
+
+  override fun title(): String = arguments?.getString(SUBCATEGORY_TITLE) ?: ""
+
+  override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    arguments?.getString(SUBCATEGORY_LINK)?.let(presenter::loadSubCategories)
+    presenter.subCategories.observe(this, Observer<List<MenuL>>(adapter::update))
+
+    mainActivity.setMenu(R.menu.info, {
+      when (it?.itemId) {
+        R.id.info -> true
+        else -> false
+      }
+    })
+
+    with(recyclerView) {
+      val linearLayoutManager = LinearLayoutManager(context)
+      layoutManager = linearLayoutManager
+      addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
+      adapter = this@SubCategoriesFragment.adapter
     }
+  }
 
-    override fun layoutId(): Int = R.layout.recycler_view
+  companion object {
+    private const val SUBCATEGORY_LINK = "LINK"
+    private const val SUBCATEGORY_TITLE = "TITLE"
 
-    override fun title(): String = arguments?.getString(SUBCATEGORY_TITLE) ?: ""
-
-    override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        arguments?.getString(SUBCATEGORY_LINK)?.let(presenter::loadSubCategories)
-        presenter.subCategories.observe(this, Observer<List<MenuL>>(adapter::update))
-
-        mainActivity.setMenu(R.menu.info, {
-            when (it?.itemId) {
-                R.id.info -> true
-                else -> false
-            }
-        })
-
-        with(recyclerView) {
-            val linearLayoutManager = LinearLayoutManager(context)
-            layoutManager = linearLayoutManager
-            addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
-            adapter = this@SubCategoriesFragment.adapter
+    fun instance(title: String, link: String): SubCategoriesFragment =
+      SubCategoriesFragment().apply {
+        arguments = Bundle().apply {
+          putString(SUBCATEGORY_LINK, link)
+          putString(SUBCATEGORY_TITLE, title)
         }
-    }
-
-    companion object {
-        private const val SUBCATEGORY_LINK = "LINK"
-        private const val SUBCATEGORY_TITLE = "TITLE"
-
-        fun instance(title: String, link: String): SubCategoriesFragment =
-                SubCategoriesFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(SUBCATEGORY_LINK, link)
-                        putString(SUBCATEGORY_TITLE, title)
-                    }
-                }
-    }
+      }
+  }
 }

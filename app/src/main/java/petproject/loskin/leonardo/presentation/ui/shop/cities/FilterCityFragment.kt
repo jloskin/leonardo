@@ -8,28 +8,28 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.data.mapper.shop.categories.City
+import petproject.loskin.leonardo.data.entity.shop.City
 import petproject.loskin.leonardo.domain.model.shop.cities.FilterCityViewModel
 import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
 class FilterCityFragment : RootFragment() {
-    private val viewModel: FilterCityViewModel by viewModel()
-    private val adapter: FilterCityAdapter by lazy { FilterCityAdapter { } }
+  private val viewModel: FilterCityViewModel by viewModel()
+  private val adapter: FilterCityAdapter by lazy { FilterCityAdapter { } }
 
-    override fun layoutId(): Int = R.layout.recycler_view
+  override fun layoutId(): Int = R.layout.recycler_view
 
-    override fun titleId(): Int = R.string.your_city
+  override fun titleId(): Int = R.string.your_city
 
-    override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
+  override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.cities.observe(this, Observer<List<City>>(adapter::update))
-        with(recyclerView) {
-            val linearLayoutManager = LinearLayoutManager(context)
-            layoutManager = linearLayoutManager
-            addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
-            adapter = this@FilterCityFragment.adapter
-        }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    viewModel.cities.observe(this, Observer<List<City>>(adapter::update))
+    with(recyclerView) {
+      val linearLayoutManager = LinearLayoutManager(context)
+      layoutManager = linearLayoutManager
+      addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
+      adapter = this@FilterCityFragment.adapter
     }
+  }
 }

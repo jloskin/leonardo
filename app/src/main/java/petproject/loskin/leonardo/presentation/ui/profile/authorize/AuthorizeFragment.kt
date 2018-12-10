@@ -9,16 +9,19 @@ import petproject.loskin.leonardo.domain.model.profile.authorize.AuthorizeViewMo
 import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
 class AuthorizeFragment : RootFragment() {
-    override fun layoutId(): Int = R.layout.authorization_screen
+  private val viewModel: AuthorizeViewModel by viewModel()
 
-    override fun titleId(): Int = R.string.authorization
+  override fun layoutId(): Int = R.layout.authorization_screen
 
-    val viewModel: AuthorizeViewModel by viewModel()
+  override fun titleId(): Int = R.string.authorization
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        enter.setOnClickListener {
-            viewModel.authorize(email.text.toString(), password.text.toString())
-        }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    enter.setOnClickListener {
+      viewModel.authorize(email.text.toString(), password.text.toString())
+        .subscribe({
+
+        }, Throwable::printStackTrace)
     }
+  }
 }

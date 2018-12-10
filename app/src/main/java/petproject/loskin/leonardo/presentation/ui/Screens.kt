@@ -12,35 +12,35 @@ import petproject.loskin.leonardo.presentation.ui.shop.subcategories.SubCategori
 import petproject.loskin.leonardo.util.cicerone.SupportAppxScreen
 
 object Screens {
-    fun create(fragment: Fragment): SupportAppxScreen = object : SupportAppxScreen() {
-        override val fragment: Fragment = fragment
-    }
+  class ProfileScreen : SupportAppxScreen() {
+    override val fragment: Fragment = ProfileFragment()
+  }
 
-    class AuthorizeScreen : SupportAppxScreen() {
-        override val fragment: Fragment = AuthorizeFragment()
-    }
+  class AuthorizeScreen : SupportAppxScreen() {
+    override val fragment: Fragment = AuthorizeFragment()
+  }
 
-    class FilterCity : SupportAppxScreen() {
-        override val fragment: Fragment = FilterCityFragment()
-    }
+  class FilterCity : SupportAppxScreen() {
+    override val fragment: Fragment = FilterCityFragment()
+  }
 
-    class SubCategories(title: String, link: String) : SupportAppxScreen() {
-        override val fragment: Fragment = SubCategoriesFragment.instance(title, link)
-    }
+  class SubCategories(title: String, link: String) : SupportAppxScreen() {
+    override val fragment: Fragment = SubCategoriesFragment.instance(title, link)
+  }
 
-    class MainNewsScreen : SupportAppxScreen() {
-        override val fragment: Fragment = MainNewsPage()
-    }
+  class MainNewsScreen : SupportAppxScreen() {
+    override val fragment: Fragment = MainNewsPage()
+  }
 
-    class GoodsScreen : SupportAppxScreen() {
-        override val fragment: Fragment = CategoriesFragment()
-    }
+  class GoodsScreen : SupportAppxScreen() {
+    override val fragment: Fragment = CategoriesFragment()
+  }
 
-    class GoodsFragmentScreen(title: String, link: String) : SupportAppxScreen() {
-        override val fragment: Fragment = GoodsFragment.instance(title, link)
-    }
+  class GoodsFragmentScreen(title: String, link: String) : SupportAppxScreen() {
+    override val fragment: Fragment = GoodsFragment.instance(title, link)
+  }
 
-    class FilterScreen(filters: List<Filter>) : SupportAppxScreen() {
-        override val fragment: Fragment = FilterFragment.instance(filters)
-    }
+  class FilterScreen(filters: List<Filter>) : SupportAppxScreen() {
+    override val fragment: Fragment = FilterFragment.instance(filters)
+  }
 }

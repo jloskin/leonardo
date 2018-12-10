@@ -12,20 +12,20 @@ import petproject.loskin.leonardo.presentation.ui.base.BaseFragment
 
 
 class NewsFragment : BaseFragment() {
-    override fun layoutId(): Int = R.layout.recycler_view
+  override fun layoutId(): Int = R.layout.recycler_view
 
-    private val newsViewModel: NewsViewModel by viewModel()
+  private val newsViewModel: NewsViewModel by viewModel()
 
-    val adapter: NewsAdapter by lazy { NewsAdapter() }
+  val adapter: NewsAdapter by lazy { NewsAdapter() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        newsViewModel.news().subscribe(adapter::update, Throwable::printStackTrace)
-        with(recyclerView) {
-            val linearLayoutManager = LinearLayoutManager(context)
-            layoutManager = linearLayoutManager
-            addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
-            adapter = this@NewsFragment.adapter
-        }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    newsViewModel.news().subscribe(adapter::update, Throwable::printStackTrace)
+    with(recyclerView) {
+      val linearLayoutManager = LinearLayoutManager(context)
+      layoutManager = linearLayoutManager
+      addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
+      adapter = this@NewsFragment.adapter
     }
+  }
 }

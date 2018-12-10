@@ -17,31 +17,31 @@ import javax.net.ssl.X509TrustManager
 
 @GlideModule
 class AppGlideModule : AppGlideModule() {
-    override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
-        registry.replace(GlideUrl::class.java, InputStream::class.java, OkHttpUrlLoader.Factory(getUnsafeOkHttpClient()))
+  override fun registerComponents(context: Context, glide: Glide, registry: Registry) {
+    registry.replace(GlideUrl::class.java, InputStream::class.java, OkHttpUrlLoader.Factory(getUnsafeOkHttpClient()))
+  }
+
+  private fun getUnsafeOkHttpClient(): OkHttpClient {
+    val trustAllCerts: TrustManager = object : X509TrustManager {
+      override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+
+      @Throws(CertificateException::class)
+      override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+      }
+
+      @Throws(CertificateException::class)
+      override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+      }
     }
 
-    private fun getUnsafeOkHttpClient(): OkHttpClient {
-        val trustAllCerts: TrustManager = object : X509TrustManager {
-            override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
-
-            @Throws(CertificateException::class)
-            override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
-            }
-
-            @Throws(CertificateException::class)
-            override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
-            }
-        }
-
-        return OkHttpClient.Builder().apply {
-            sslSocketFactory(
-                    SSLContext.getInstance("SSL").apply {
-                        init(null, arrayOf(trustAllCerts), java.security.SecureRandom())
-                    }.socketFactory,
-                    trustAllCerts as X509TrustManager
-            )
-            hostnameVerifier { _, _ -> true }
-        }.build()
-    }
+    return OkHttpClient.Builder().apply {
+      sslSocketFactory(
+        SSLContext.getInstance("SSL").apply {
+          init(null, arrayOf(trustAllCerts), java.security.SecureRandom())
+        }.socketFactory,
+        trustAllCerts as X509TrustManager
+      )
+      hostnameVerifier { _, _ -> true }
+    }.build()
+  }
 }

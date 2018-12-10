@@ -14,30 +14,30 @@ import petproject.loskin.leonardo.presentation.ui.Screens
 import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
 class CategoriesFragment : RootFragment() {
-    private val viewModel: CategoriesViewModel by viewModel()
-    private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }
+  private val viewModel: CategoriesViewModel by viewModel()
+  private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }
 
-    override fun titleId(): Int = R.string.goods_catalog
+  override fun titleId(): Int = R.string.goods_catalog
 
-    override fun layoutId(): Int = R.layout.recycler_view
+  override fun layoutId(): Int = R.layout.recycler_view
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.categories.observe(this, Observer<List<MenuL>>(adapter::update))
-        mainActivity.setMenu(R.menu.categories, {
-            when (it?.itemId) {
-                R.id.city -> {
-                    router.navigateTo(Screens.FilterCity())
-                    true
-                }
-                else -> false
-            }
-        })
-        with(recyclerView) {
-            val linearLayoutManager = LinearLayoutManager(context)
-            layoutManager = linearLayoutManager
-            addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
-            adapter = this@CategoriesFragment.adapter
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    viewModel.categories.observe(this, Observer<List<MenuL>>(adapter::update))
+    mainActivity.setMenu(R.menu.categories, {
+      when (it?.itemId) {
+        R.id.city -> {
+          router.navigateTo(Screens.FilterCity())
+          true
         }
+        else -> false
+      }
+    })
+    with(recyclerView) {
+      val linearLayoutManager = LinearLayoutManager(context)
+      layoutManager = linearLayoutManager
+      addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
+      adapter = this@CategoriesFragment.adapter
     }
+  }
 }

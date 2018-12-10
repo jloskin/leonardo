@@ -6,15 +6,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import petproject.loskin.leonardo.data.entity.shop.MenuL
 import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
 
-
 class CategoriesViewModel(
-        categoriesRepository: CategoriesRepository
+  categoriesRepository: CategoriesRepository
 ) : ViewModel() {
-    val categories = MutableLiveData<List<MenuL>>()
+  val categories = MutableLiveData<List<MenuL>>()
 
-    init {
-        categoriesRepository.initMenu()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(categories::setValue, Throwable::printStackTrace)
-    }
+  init {
+    categoriesRepository.initMenu()
+      .observeOn(AndroidSchedulers.mainThread())
+      .subscribe(categories::setValue, Throwable::printStackTrace)
+  }
 }

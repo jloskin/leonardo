@@ -6,18 +6,18 @@ import kotlinx.android.synthetic.main.recycler_view.*
 import org.koin.android.ext.android.inject
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.presentation.ui.base.RootFragment
-import petproject.loskin.leonardo.presentation.ui.profile.Const.BILLS
-import petproject.loskin.leonardo.presentation.ui.profile.Const.EDIT
-import petproject.loskin.leonardo.presentation.ui.profile.Const.FEEDBACK
-import petproject.loskin.leonardo.presentation.ui.profile.Const.KONKURS
-import petproject.loskin.leonardo.presentation.ui.profile.Const.MASTER_LIST
-import petproject.loskin.leonardo.presentation.ui.profile.Const.MASTER_MKRATING
-import petproject.loskin.leonardo.presentation.ui.profile.Const.MCLASSSUBSCRIBE
-import petproject.loskin.leonardo.presentation.ui.profile.Const.ORDERS
-import petproject.loskin.leonardo.presentation.ui.profile.Const.PROFILE
-import petproject.loskin.leonardo.presentation.ui.profile.Const.REVIEWS
-import petproject.loskin.leonardo.presentation.ui.profile.Const.TICKETS
-import petproject.loskin.leonardo.presentation.ui.profile.Menu
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.BILLS
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.EDIT
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.FEEDBACK
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.KONKURS
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.MASTER_LIST
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.MASTER_MKRATING
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.MCLASSSUBSCRIBE
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.ORDERS
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.PROFILE
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.REVIEWS
+import petproject.loskin.leonardo.presentation.ui.profile.Menu.TICKETS
+import petproject.loskin.leonardo.presentation.ui.profile.MenuType
 
 class ProfileFragment : RootFragment() {
   private val viewModel: ProfileViewModel by inject()
@@ -28,11 +28,11 @@ class ProfileFragment : RootFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    recyclerView.adapter = ProfileAdapter(menus, {})
+    recyclerView.adapter = ProfileAdapter(MENUS, {})
   }
 
   companion object {
-    private val menus: Set<Menu> = setOf(
+    private val MENUS: Set<MenuType> = setOf(
       PROFILE,
       EDIT,
       KONKURS,

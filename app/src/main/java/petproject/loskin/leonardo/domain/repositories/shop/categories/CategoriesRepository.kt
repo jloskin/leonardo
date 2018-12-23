@@ -7,7 +7,7 @@ import petproject.loskin.leonardo.data.db.dao.magazine.categories.ShopDao
 import petproject.loskin.leonardo.data.entity.shop.MenuL
 import petproject.loskin.leonardo.data.mapper.shop.categories.MagazineMapper
 import petproject.loskin.leonardo.data.network.services.shop.CategoriesService
-import petproject.loskin.leonardo.domain.repositories.profile.authorize.RetrofitRepository
+import petproject.loskin.leonardo.domain.repositories.RetrofitRepository
 
 class CategoriesRepository(
   private val shopDao: ShopDao,

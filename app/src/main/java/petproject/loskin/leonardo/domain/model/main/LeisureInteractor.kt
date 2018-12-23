@@ -5,7 +5,7 @@ import io.reactivex.schedulers.Schedulers
 import org.jsoup.Jsoup
 import petproject.loskin.leonardo.data.entity.news.NewsBlock
 import petproject.loskin.leonardo.data.entity.news.competitions.CompetitionsBlock
-import petproject.loskin.leonardo.domain.repositories.LeisureRepositories
+import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
 
 class LeisureInteractor(
   private val leisureRepositories: LeisureRepositories

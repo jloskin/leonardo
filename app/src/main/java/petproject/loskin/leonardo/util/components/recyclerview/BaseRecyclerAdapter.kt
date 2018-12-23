@@ -18,7 +18,7 @@ abstract class BaseRecyclerAdapter<B, C : BaseRecyclerViewHolder<B>> : Adapter<C
     holder.bind(mutableList[position])
   }
 
-  fun update(item: List<B>) {
+  fun update(item: Collection<B>) {
     mutableList.clear()
     mutableList.addAll(item)
     notifyDataSetChanged()

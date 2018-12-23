@@ -19,13 +19,13 @@ import petproject.loskin.leonardo.domain.model.shop.goods.GoodsRepository
 import petproject.loskin.leonardo.domain.model.shop.goods.GoodsViewModel
 import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesRepository
 import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesViewModel
-import petproject.loskin.leonardo.domain.repositories.LeisureRepositories
+import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
 import petproject.loskin.leonardo.domain.repositories.profile.authorize.AuthorizeRepository
 import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
 import petproject.loskin.leonardo.domain.repositories.shop.cities.CitiesRepository
 import petproject.loskin.leonardo.presentation.ui.MainViewModel
-import petproject.loskin.leonardo.presentation.ui.ProfileRepository
-import petproject.loskin.leonardo.presentation.ui.ProfileViewModel
+import petproject.loskin.leonardo.domain.repositories.profile.ProfileRepository
+import petproject.loskin.leonardo.domain.model.profile.ProfileViewModel
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router

@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.domain.repositories.profile.authorize
+package petproject.loskin.leonardo.domain.repositories
 
 import okhttp3.OkHttpClient
 import petproject.loskin.leonardo.data.network.interceptor.AddCookiesInterceptor
@@ -37,6 +37,8 @@ open class RetrofitRepository<T>(
   val service: T = retrofit.create(clazz)
 
   companion object {
-    private val mutableSet: MutableSet<String> = mutableSetOf()
+    private val mutableSet: MutableSet<String> = mutableSetOf(
+      "PHPSESSID=qsdct4amnu11r6snfdfb0ukaj4; path=/"
+    )
   }
 }

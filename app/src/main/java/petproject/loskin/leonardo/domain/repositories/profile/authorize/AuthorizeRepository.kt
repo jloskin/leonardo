@@ -5,6 +5,7 @@ import petproject.loskin.leonardo.data.db.dao.profile.ProfileDao
 import petproject.loskin.leonardo.data.db.dao.profile.User
 import petproject.loskin.leonardo.data.mapper.authorization.AuthorizationMapper
 import petproject.loskin.leonardo.data.network.services.profile.authorization.AuthorizeService
+import petproject.loskin.leonardo.domain.repositories.RetrofitRepository
 
 class AuthorizeRepository(
   private val authorizationMapper: AuthorizationMapper,

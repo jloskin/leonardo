@@ -16,4 +16,15 @@
     <string name="your_city">Ваш город</string>
     <string name="authorization">Авторизация</string>
     <string name="leisure">Досуг</string>
+    <string name="profile_profile">Мой профиль</string>
+    <string name="profile_edit">Редактировать профиль</string>
+    <string name="profile_konkurs">Конкурсы</string>
+    <string name="profile_feedback">Обратная связь</string>
+    <string name="profile_master_list">Мастер-классы</string>
+    <string name="profile_master_mkrating">Рейтинг мастер-классов</string>
+    <string name="profile_orders">Заказы</string>
+    <string name="profile_tickets">Билеты на мастер-классы</string>
+    <string name="profile_mclasssubscribe">Подписаться на новые мастер-классы</string>
+    <string name="profile_reviews">Отзывы</string>
+    <string name="profile_bills">Розыгрыш по чекам</string>
 </resources>

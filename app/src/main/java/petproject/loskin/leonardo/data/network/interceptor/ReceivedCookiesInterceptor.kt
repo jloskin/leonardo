@@ -8,6 +8,6 @@ class ReceivedCookiesInterceptor(
 ) : Interceptor {
   override fun intercept(chain: Interceptor.Chain): Response =
     chain.proceed(chain.request()).apply {
-      cookies.addAll(headers("Set-Cookie").filter { it.contains("PHPSESSID") })
+      if (cookies.isEmpty()) cookies.addAll(headers("Set-Cookie").filter { it.contains("PHPSESSID") })
     }
 }

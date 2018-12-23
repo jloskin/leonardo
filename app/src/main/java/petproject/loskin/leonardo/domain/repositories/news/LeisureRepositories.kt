@@ -1,7 +1,7 @@
-package petproject.loskin.leonardo.domain.repositories
+package petproject.loskin.leonardo.domain.repositories.news
 
 import petproject.loskin.leonardo.data.network.services.news.NewsService
-import petproject.loskin.leonardo.domain.repositories.profile.authorize.RetrofitRepository
+import petproject.loskin.leonardo.domain.repositories.RetrofitRepository
 
 class LeisureRepositories : RetrofitRepository<NewsService>(NewsService::class.java, "https://leonardo.ru/") {
   fun getNews() = service.news()

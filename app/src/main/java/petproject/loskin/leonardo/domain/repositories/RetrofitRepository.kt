@@ -38,7 +38,7 @@ open class RetrofitRepository<T>(
 
   companion object {
     private val mutableSet: MutableSet<String> = mutableSetOf(
-      "PHPSESSID=qsdct4amnu11r6snfdfb0ukaj4; path=/"
+      "PHPSESSID=q7se2tm1715rrjo6d1c3ut0j81; path=/"
     )
   }
 }

@@ -11,6 +11,7 @@ import petproject.loskin.leonardo.domain.model.news.NewsViewModel
 import petproject.loskin.leonardo.domain.model.news.articles.ArticlesViewModel
 import petproject.loskin.leonardo.domain.model.news.competitions.CompetitionsViewModel
 import petproject.loskin.leonardo.domain.model.news.mclasses.MClassesViewModel
+import petproject.loskin.leonardo.domain.model.profile.MyProfileViewModel
 import petproject.loskin.leonardo.domain.model.profile.authorize.AuthorizeViewModel
 import petproject.loskin.leonardo.domain.model.shop.categories.CategoriesViewModel
 import petproject.loskin.leonardo.domain.model.shop.cities.FilterCityViewModel
@@ -20,12 +21,12 @@ import petproject.loskin.leonardo.domain.model.shop.goods.GoodsViewModel
 import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesRepository
 import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesViewModel
 import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
+import petproject.loskin.leonardo.domain.repositories.profile.MyProfileMapper
+import petproject.loskin.leonardo.domain.repositories.profile.MyProfileRepository
 import petproject.loskin.leonardo.domain.repositories.profile.authorize.AuthorizeRepository
 import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
 import petproject.loskin.leonardo.domain.repositories.shop.cities.CitiesRepository
 import petproject.loskin.leonardo.presentation.ui.MainViewModel
-import petproject.loskin.leonardo.domain.repositories.profile.ProfileRepository
-import petproject.loskin.leonardo.domain.model.profile.ProfileViewModel
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
@@ -38,7 +39,7 @@ val appModule = module {
   viewModel<AuthorizeViewModel>()
   viewModel<MainViewModel>()
   viewModel<NewsViewModel>()
-  viewModel<ProfileViewModel>()
+  viewModel<MyProfileViewModel>()
   viewModel<MClassesViewModel>()
   viewModel<ArticlesViewModel>()
   viewModel<CompetitionsViewModel>()
@@ -49,10 +50,11 @@ val appModule = module {
   factory<GoodsRepository>()
   factory<AuthorizeRepository>()
   factory<CitiesRepository>()
-  factory<ProfileRepository>()
+  factory<MyProfileRepository>()
 
   factory<AuthorizationMapper>()
   factory<MagazineMapper>()
+  factory<MyProfileMapper>()
   factory<GoodsMapper>()
 
   factory<LeisureInteractor>()

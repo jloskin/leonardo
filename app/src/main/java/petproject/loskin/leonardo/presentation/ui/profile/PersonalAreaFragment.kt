@@ -5,10 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
-import org.koin.android.ext.android.inject
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.presentation.ui.Screens
-import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 import petproject.loskin.leonardo.data.entity.profile.Menu.BILLS
 import petproject.loskin.leonardo.data.entity.profile.Menu.EDIT
 import petproject.loskin.leonardo.data.entity.profile.Menu.FEEDBACK
@@ -21,11 +18,10 @@ import petproject.loskin.leonardo.data.entity.profile.Menu.PROFILE
 import petproject.loskin.leonardo.data.entity.profile.Menu.REVIEWS
 import petproject.loskin.leonardo.data.entity.profile.Menu.TICKETS
 import petproject.loskin.leonardo.data.entity.profile.MenuType
-import petproject.loskin.leonardo.domain.model.profile.ProfileViewModel
+import petproject.loskin.leonardo.presentation.ui.Screens
+import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
 class PersonalAreaFragment : RootFragment() {
-  private val viewModel: ProfileViewModel by inject()
-
   override fun layoutId(): Int = R.layout.recycler_view
 
   override fun titleId(): Int = R.string.profile
@@ -61,18 +57,7 @@ class PersonalAreaFragment : RootFragment() {
   }
 
   companion object {
-    private val MENUS: Set<MenuType> = setOf(
-      PROFILE,
-      EDIT,
-      KONKURS,
-      FEEDBACK,
-      MASTER_LIST,
-      MASTER_MKRATING,
-      ORDERS,
-      TICKETS,
-      MCLASSSUBSCRIBE,
-      REVIEWS,
-      BILLS
-    )
+    private val MENUS: Set<MenuType> = setOf(PROFILE, EDIT, KONKURS, FEEDBACK, MASTER_LIST,
+      MASTER_MKRATING, ORDERS, TICKETS, MCLASSSUBSCRIBE, REVIEWS, BILLS)
   }
 }

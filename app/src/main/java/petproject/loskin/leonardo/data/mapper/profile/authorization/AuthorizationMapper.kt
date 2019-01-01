@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.data.mapper.authorization
+package petproject.loskin.leonardo.data.mapper.profile.authorization
 
 import org.jsoup.Jsoup
 

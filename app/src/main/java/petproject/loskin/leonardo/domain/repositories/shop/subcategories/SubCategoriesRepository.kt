@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.domain.model.shop.subcategories
+package petproject.loskin.leonardo.domain.repositories.shop.subcategories
 
 import io.reactivex.Flowable
 import petproject.loskin.leonardo.data.db.dao.magazine.categories.ShopDao

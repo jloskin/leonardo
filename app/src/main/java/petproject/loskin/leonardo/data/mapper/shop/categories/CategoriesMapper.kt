@@ -5,7 +5,7 @@ import org.jsoup.nodes.Element
 import petproject.loskin.leonardo.data.entity.shop.City
 import petproject.loskin.leonardo.data.entity.shop.MenuL
 
-class MagazineMapper {
+class CategoriesMapper {
   fun string2Menu(page: String): List<MenuL> = Jsoup.parse(page)
     .select(".cd-dropdown-content")
     .first()

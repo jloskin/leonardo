@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.data.network.services.shop
+package petproject.loskin.leonardo.data.network.services.shop.goods
 
 import io.reactivex.Observable
 import retrofit2.http.GET

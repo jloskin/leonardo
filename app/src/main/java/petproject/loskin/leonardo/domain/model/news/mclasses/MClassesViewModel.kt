@@ -1,12 +1,11 @@
 package petproject.loskin.leonardo.domain.model.news.mclasses
 
 import androidx.lifecycle.ViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import petproject.loskin.leonardo.domain.model.main.LeisureInteractor
+import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
+import petproject.loskin.leonardo.util.rx.applySchedulers
 
 class MClassesViewModel(
-  private val leisureInteractor: LeisureInteractor
+  private val leisureInteractor: LeisureRepositories
 ) : ViewModel() {
-  fun mclasses() = leisureInteractor.getMClasses()
-    .observeOn(AndroidSchedulers.mainThread())
+  fun mclasses() = leisureInteractor.getMClasses().applySchedulers()
 }

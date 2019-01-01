@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
+import petproject.loskin.leonardo.domain.model.main.MainViewModel
 import petproject.loskin.leonardo.util.cicerone.SupportAppxNavigator
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder

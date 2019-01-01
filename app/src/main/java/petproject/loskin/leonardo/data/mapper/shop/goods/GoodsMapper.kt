@@ -1,9 +1,11 @@
-package petproject.loskin.leonardo.domain.model.shop.goods
+package petproject.loskin.leonardo.data.mapper.shop.goods
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
 import petproject.loskin.leonardo.data.entity.shop.goods.GoodsData
 import petproject.loskin.leonardo.data.entity.shop.goods.Price
+import petproject.loskin.leonardo.data.entity.shop.goods.Filter
+import petproject.loskin.leonardo.data.entity.shop.goods.FilterEntity
 
 class GoodsMapper {
   fun string2Goods(page: String): List<GoodsData> {

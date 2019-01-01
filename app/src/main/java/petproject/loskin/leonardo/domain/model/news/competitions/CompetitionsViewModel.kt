@@ -1,12 +1,11 @@
 package petproject.loskin.leonardo.domain.model.news.competitions
 
 import androidx.lifecycle.ViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import petproject.loskin.leonardo.domain.model.main.LeisureInteractor
+import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
+import petproject.loskin.leonardo.util.rx.applySchedulers
 
 class CompetitionsViewModel(
-  private val leisureInteractor: LeisureInteractor
+  private val leisureInteractor: LeisureRepositories
 ) : ViewModel() {
-  fun competitons() = leisureInteractor.getCompetitions()
-    .observeOn(AndroidSchedulers.mainThread())
+  fun competitons() = leisureInteractor.getCompetitions().applySchedulers()
 }

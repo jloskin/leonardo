@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.domain.model.shop.goods
+package petproject.loskin.leonardo.data.entity.shop.goods
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

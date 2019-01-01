@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.domain.repositories.profile
+package petproject.loskin.leonardo.data.mapper.profile
 
 import org.jsoup.Jsoup
 import petproject.loskin.leonardo.presentation.ui.profile.myprofile.ProfileData

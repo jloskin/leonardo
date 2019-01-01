@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.domain.model.shop.goods.Filter
+import petproject.loskin.leonardo.data.entity.shop.goods.Filter
 import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
 class FilterFragment : RootFragment() {

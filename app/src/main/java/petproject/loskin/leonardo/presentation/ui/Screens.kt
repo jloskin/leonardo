@@ -1,7 +1,7 @@
 package petproject.loskin.leonardo.presentation.ui
 
 import androidx.fragment.app.Fragment
-import petproject.loskin.leonardo.domain.model.shop.goods.Filter
+import petproject.loskin.leonardo.data.entity.shop.goods.Filter
 import petproject.loskin.leonardo.presentation.ui.news.MainNewsPage
 import petproject.loskin.leonardo.presentation.ui.profile.edit.EditFragment
 import petproject.loskin.leonardo.presentation.ui.profile.myprofile.MyProfileFragment

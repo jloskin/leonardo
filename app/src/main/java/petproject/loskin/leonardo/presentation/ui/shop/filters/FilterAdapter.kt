@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.filter_box.view.*
 import kotlinx.android.synthetic.main.filter_cell.view.*
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.domain.model.shop.goods.Filter
-import petproject.loskin.leonardo.domain.model.shop.goods.FilterEntity
+import petproject.loskin.leonardo.data.entity.shop.goods.Filter
+import petproject.loskin.leonardo.data.entity.shop.goods.FilterEntity
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapter
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 

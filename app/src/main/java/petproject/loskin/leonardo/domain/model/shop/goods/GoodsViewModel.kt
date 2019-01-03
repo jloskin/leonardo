@@ -21,8 +21,8 @@ class GoodsViewModel(
 
     goodsRepository.getGoods(item).applySchedulers()
       .subscribe({
-        goods.value = it
-        filters.value = goodsRepository.filters
+        goods.value = it.first
+        filters.value = it.second
       }, Throwable::printStackTrace)
   }
 }

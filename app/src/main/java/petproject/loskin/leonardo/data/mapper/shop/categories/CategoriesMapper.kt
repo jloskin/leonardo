@@ -10,7 +10,7 @@ class CategoriesMapper {
     .select(".cd-dropdown-content")
     .first()
     .children()
-    .map { it.children() }
+    .map(Element::children)
     .map {
       val first = it.first()
       val url = parseHref(first)

@@ -7,5 +7,6 @@ import petproject.loskin.leonardo.util.rx.applySchedulers
 class AuthorizeViewModel(
   private val authorizeRepository: AuthorizeRepository
 ) : ViewModel() {
-  fun authorize(login: String, password: String) = authorizeRepository.authorize(login, password).applySchedulers()
+  fun authorize(login: String, password: String) =
+    authorizeRepository.authorize(login, password).applySchedulers()
 }

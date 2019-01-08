@@ -5,13 +5,11 @@ import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.factory
 import petproject.loskin.leonardo.data.db.AppDatabase
-import petproject.loskin.leonardo.data.mapper.profile.authorization.AuthorizationMapper
+import petproject.loskin.leonardo.data.mapper.profile.authorization.ProfileMapper
 import petproject.loskin.leonardo.data.mapper.shop.categories.CategoriesMapper
 import petproject.loskin.leonardo.data.network.interceptor.AddCookiesInterceptor
 import petproject.loskin.leonardo.data.network.interceptor.ReceivedCookiesInterceptor
 import petproject.loskin.leonardo.data.network.services.news.NewsService
-import petproject.loskin.leonardo.data.network.services.profile.ProfileService
-import petproject.loskin.leonardo.data.network.services.profile.authorization.AuthorizeService
 import petproject.loskin.leonardo.data.network.services.shop.categories.CategoriesService
 import petproject.loskin.leonardo.data.network.services.shop.goods.GoodsService
 import petproject.loskin.leonardo.domain.model.news.NewsViewModel
@@ -19,7 +17,7 @@ import petproject.loskin.leonardo.domain.model.news.articles.ArticlesViewModel
 import petproject.loskin.leonardo.domain.model.news.competitions.CompetitionsViewModel
 import petproject.loskin.leonardo.domain.model.news.mclasses.MClassesViewModel
 import petproject.loskin.leonardo.domain.model.profile.MyProfileViewModel
-import petproject.loskin.leonardo.domain.model.profile.authorize.AuthorizeViewModel
+import petproject.loskin.leonardo.domain.model.profile.authorize.AuthorizationViewModel
 import petproject.loskin.leonardo.domain.model.shop.categories.CategoriesViewModel
 import petproject.loskin.leonardo.domain.model.shop.cities.FilterCityViewModel
 import petproject.loskin.leonardo.data.mapper.shop.goods.GoodsMapper
@@ -30,10 +28,10 @@ import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesV
 import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
 import petproject.loskin.leonardo.data.mapper.profile.MyProfileMapper
 import petproject.loskin.leonardo.domain.repositories.profile.MyProfileRepository
-import petproject.loskin.leonardo.domain.repositories.profile.authorize.AuthorizeRepository
+import petproject.loskin.leonardo.domain.repositories.profile.authorize.ProfileRepository
 import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
 import petproject.loskin.leonardo.domain.repositories.shop.cities.CitiesRepository
-import petproject.loskin.leonardo.domain.model.main.MainViewModel
+import petproject.loskin.leonardo.domain.model.main.ProfileViewModel
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -48,8 +46,8 @@ val appModule = module {
   viewModel<SubCategoriesViewModel>()
   viewModel<GoodsViewModel>()
   viewModel<FilterCityViewModel>()
-  viewModel<AuthorizeViewModel>()
-  viewModel<MainViewModel>()
+  viewModel<AuthorizationViewModel>()
+  viewModel<ProfileViewModel>()
   viewModel<NewsViewModel>()
   viewModel<MyProfileViewModel>()
   viewModel<MClassesViewModel>()
@@ -60,18 +58,18 @@ val appModule = module {
   factory<CategoriesRepository>()
   factory<SubCategoriesRepository>()
   factory<GoodsRepository>()
-  factory<AuthorizeRepository>()
+  factory<ProfileRepository>()
   factory<CitiesRepository>()
   factory<MyProfileRepository>()
 
-  factory<AuthorizationMapper>()
+  factory<ProfileMapper>()
   factory<CategoriesMapper>()
   factory<MyProfileMapper>()
   factory<GoodsMapper>()
 
   factory { get<Retrofit>().create(ProfileService::class.java) }
   factory { get<Retrofit>().create(NewsService::class.java) }
-  factory { get<Retrofit>().create(AuthorizeService::class.java) }
+  factory { get<Retrofit>().create(ProfileService::class.java) }
   factory { get<Retrofit>().create(CategoriesService::class.java) }
   factory { get<Retrofit>().create(GoodsService::class.java) }
 

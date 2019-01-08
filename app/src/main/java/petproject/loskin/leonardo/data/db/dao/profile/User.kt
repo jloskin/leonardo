@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 @Entity
 class User(
   @PrimaryKey @ColumnInfo(name = "id") val id: Long,
-  val username: String,
-  val avatar: String
+  val login: String,
+  val password: String
 )

@@ -2,9 +2,11 @@ package petproject.loskin.leonardo.presentation.ui.profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.recycler_view.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.data.entity.profile.Menu.BILLS
 import petproject.loskin.leonardo.data.entity.profile.Menu.EDIT
@@ -18,10 +20,13 @@ import petproject.loskin.leonardo.data.entity.profile.Menu.PROFILE
 import petproject.loskin.leonardo.data.entity.profile.Menu.REVIEWS
 import petproject.loskin.leonardo.data.entity.profile.Menu.TICKETS
 import petproject.loskin.leonardo.data.entity.profile.MenuType
+import petproject.loskin.leonardo.domain.model.main.ProfileViewModel
 import petproject.loskin.leonardo.presentation.ui.Screens
 import petproject.loskin.leonardo.presentation.ui.base.RootFragment
 
-class PersonalAreaFragment : RootFragment() {
+class ProfileFragment : RootFragment() {
+  private val viewModel: ProfileViewModel by viewModel()
+
   override fun layoutId(): Int = R.layout.recycler_view
 
   override fun titleId(): Int = R.string.profile
@@ -46,14 +51,20 @@ class PersonalAreaFragment : RootFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    adapter.update(MENUS)
 
-    with(recyclerView) {
-      val linearLayoutManager = LinearLayoutManager(context)
-      adapter = this@PersonalAreaFragment.adapter
-      layoutManager = linearLayoutManager
-      addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
-    }
+    viewModel.authorized.observe(this, Observer({
+      if (it) {
+        adapter.update(MENUS)
+        with(recyclerView) {
+          val linearLayoutManager = LinearLayoutManager(context)
+          adapter = this@ProfileFragment.adapter
+          layoutManager = linearLayoutManager
+          addItemDecoration(DividerItemDecoration(context, linearLayoutManager.orientation))
+        }
+      } else {
+        router.newRootScreen(Screens.AuthorizeScreen())
+      }
+    }))
   }
 
   companion object {

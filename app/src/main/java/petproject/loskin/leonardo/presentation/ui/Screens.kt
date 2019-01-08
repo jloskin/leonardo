@@ -5,8 +5,8 @@ import petproject.loskin.leonardo.data.entity.shop.goods.Filter
 import petproject.loskin.leonardo.presentation.ui.news.MainNewsPage
 import petproject.loskin.leonardo.presentation.ui.profile.edit.EditFragment
 import petproject.loskin.leonardo.presentation.ui.profile.myprofile.MyProfileFragment
-import petproject.loskin.leonardo.presentation.ui.profile.PersonalAreaFragment
-import petproject.loskin.leonardo.presentation.ui.profile.authorize.AuthorizeFragment
+import petproject.loskin.leonardo.presentation.ui.profile.ProfileFragment
+import petproject.loskin.leonardo.presentation.ui.profile.authorize.AuthorizationFragment
 import petproject.loskin.leonardo.presentation.ui.shop.categories.CategoriesFragment
 import petproject.loskin.leonardo.presentation.ui.shop.cities.FilterCityFragment
 import petproject.loskin.leonardo.presentation.ui.shop.filters.FilterFragment
@@ -16,11 +16,11 @@ import petproject.loskin.leonardo.util.cicerone.SupportAppxScreen
 
 object Screens {
   class ProfileScreen : SupportAppxScreen() {
-    override val fragment: Fragment = PersonalAreaFragment()
+    override val fragment: Fragment = ProfileFragment()
   }
 
   class AuthorizeScreen : SupportAppxScreen() {
-    override val fragment: Fragment = AuthorizeFragment()
+    override val fragment: Fragment = AuthorizationFragment()
   }
 
   class FilterCity : SupportAppxScreen() {

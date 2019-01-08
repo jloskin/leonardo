@@ -27,6 +27,6 @@ class MyProfileFragment : RootFragment() {
       layoutManager = LinearLayoutManager(context)
     }
 
-    viewModel.subCategories.observe(this, Observer<List<ProfileData>>(adapter::update))
+    viewModel.subCategories.observe(this, Observer(adapter::update))
   }
 }

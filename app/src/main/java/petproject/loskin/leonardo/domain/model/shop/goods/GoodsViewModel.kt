@@ -9,17 +9,17 @@ import petproject.loskin.leonardo.domain.repositories.shop.GoodsRepository
 import petproject.loskin.leonardo.util.rx.applySchedulers
 
 class GoodsViewModel(
-  private val goodsRepository: GoodsRepository
+  private val repository: GoodsRepository
 ) : ViewModel() {
   val goods = MutableLiveData<List<GoodsData>>()
   val chips = MutableLiveData<List<MenuL>>()
   val filters = MutableLiveData<List<Filter>>()
 
   fun loadGoods(item: String) {
-    goodsRepository.chips(item).applySchedulers()
+    repository.chips(item).applySchedulers()
       .subscribe(chips::setValue, Throwable::printStackTrace)
 
-    goodsRepository.getGoods(item).applySchedulers()
+    repository.getGoods(item).applySchedulers()
       .subscribe({
         goods.value = it.first
         filters.value = it.second

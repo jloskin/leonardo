@@ -6,9 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import petproject.loskin.leonardo.R
-import petproject.loskin.leonardo.domain.model.main.MainViewModel
 import petproject.loskin.leonardo.util.cicerone.SupportAppxNavigator
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -17,22 +15,20 @@ import ru.terrakok.cicerone.Router
 class MainActivity : AppCompatActivity() {
   private val router: Router by inject()
   private val navigatorHolder: NavigatorHolder by inject()
-  private val viewModel: MainViewModel by viewModel()
   private val navigator: Navigator = SupportAppxNavigator(this, R.id.nav_host_fragment)
   private var menuId: Int? = null
-  private var authorize: Boolean = false
 
   private var menuSelected: ((MenuItem?) -> Boolean)? = null
     set(value) {
       field = value
       invalidateOptionsMenu()
     }
+
   init {
     router.newRootScreen(Screens.GoodsScreen())
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    viewModel.authorize().subscribe({ authorize = it.isNotEmpty() }, Throwable::printStackTrace)
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setSupportActionBar(toolbar)
@@ -42,10 +38,7 @@ class MainActivity : AppCompatActivity() {
       val supportAppxScreen = when (it.itemId) {
         R.id.categoriesFragment -> Screens.GoodsScreen()
         R.id.newsNavFragment -> Screens.MainNewsScreen()
-        R.id.authorizeFragment -> {
-          if (authorize) Screens.ProfileScreen()
-          else Screens.AuthorizeScreen()
-        }
+        R.id.authorizeFragment -> Screens.ProfileScreen()
         else -> return@setOnNavigationItemSelectedListener false
       }
       router.newRootScreen(supportAppxScreen)

@@ -23,7 +23,7 @@ class CategoriesFragment : RootFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    viewModel.categories.observe(this, Observer<List<MenuL>>(adapter::update))
+    viewModel.categories.observe(this, Observer(adapter::update))
     mainActivity.setMenu(R.menu.categories, {
       when (it?.itemId) {
         R.id.city -> {

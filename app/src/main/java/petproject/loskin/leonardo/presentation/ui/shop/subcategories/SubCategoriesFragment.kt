@@ -29,7 +29,7 @@ class SubCategoriesFragment : RootFragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     arguments?.getString(SUBCATEGORY_LINK)?.let(presenter::loadSubCategories)
-    presenter.subCategories.observe(this, Observer<List<MenuL>>(adapter::update))
+    presenter.subCategories.observe(this, Observer(adapter::update))
 
     mainActivity.setMenu(R.menu.info, {
       when (it?.itemId) {

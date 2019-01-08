@@ -2,7 +2,7 @@ package petproject.loskin.leonardo.data.mapper.profile.authorization
 
 import org.jsoup.Jsoup
 
-class AuthorizationMapper {
+class ProfileMapper {
   fun string2Response(page: String): List<Pair<String, String>> = Jsoup.parse(page)
     .select("div.profile_main_anketa div")
     .map { it.text().split(":") }

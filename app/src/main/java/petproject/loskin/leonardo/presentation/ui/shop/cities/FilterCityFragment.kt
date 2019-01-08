@@ -24,7 +24,7 @@ class FilterCityFragment : RootFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    viewModel.cities.observe(this, Observer<List<City>>(adapter::update))
+    viewModel.cities.observe(this, Observer(adapter::update))
     with(recyclerView) {
       val linearLayoutManager = LinearLayoutManager(context)
       layoutManager = linearLayoutManager

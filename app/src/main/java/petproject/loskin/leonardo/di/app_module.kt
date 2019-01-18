@@ -27,6 +27,7 @@ import petproject.loskin.leonardo.domain.repositories.shop.subcategories.SubCate
 import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesViewModel
 import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
 import petproject.loskin.leonardo.data.mapper.profile.MyProfileMapper
+import petproject.loskin.leonardo.data.network.services.profile.ProfileService
 import petproject.loskin.leonardo.domain.repositories.profile.MyProfileRepository
 import petproject.loskin.leonardo.domain.repositories.profile.authorize.ProfileRepository
 import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
@@ -69,7 +70,6 @@ val appModule = module {
 
   factory { get<Retrofit>().create(ProfileService::class.java) }
   factory { get<Retrofit>().create(NewsService::class.java) }
-  factory { get<Retrofit>().create(ProfileService::class.java) }
   factory { get<Retrofit>().create(CategoriesService::class.java) }
   factory { get<Retrofit>().create(GoodsService::class.java) }
 

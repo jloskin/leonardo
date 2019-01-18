@@ -8,7 +8,7 @@ import petproject.loskin.leonardo.util.rx.applySchedulers
 class AuthorizationViewModel(
   private val repository: ProfileRepository
 ) : ViewModel() {
-  val authorized = MutableLiveData<Boolean>(false)
+  val authorized = MutableLiveData(false)
 
   fun authorize(login: String, password: String) =
     repository.authorize(login, password).applySchedulers()

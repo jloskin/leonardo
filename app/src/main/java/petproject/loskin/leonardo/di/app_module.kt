@@ -5,13 +5,17 @@ import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.factory
 import petproject.loskin.leonardo.data.db.AppDatabase
+import petproject.loskin.leonardo.data.mapper.profile.MyProfileMapper
 import petproject.loskin.leonardo.data.mapper.profile.authorization.ProfileMapper
 import petproject.loskin.leonardo.data.mapper.shop.categories.CategoriesMapper
+import petproject.loskin.leonardo.data.mapper.shop.goods.GoodsMapper
 import petproject.loskin.leonardo.data.network.interceptor.AddCookiesInterceptor
 import petproject.loskin.leonardo.data.network.interceptor.ReceivedCookiesInterceptor
 import petproject.loskin.leonardo.data.network.services.news.NewsService
+import petproject.loskin.leonardo.data.network.services.profile.ProfileService
 import petproject.loskin.leonardo.data.network.services.shop.categories.CategoriesService
 import petproject.loskin.leonardo.data.network.services.shop.goods.GoodsService
+import petproject.loskin.leonardo.domain.model.main.ProfileViewModel
 import petproject.loskin.leonardo.domain.model.news.NewsViewModel
 import petproject.loskin.leonardo.domain.model.news.articles.ArticlesViewModel
 import petproject.loskin.leonardo.domain.model.news.competitions.CompetitionsViewModel
@@ -20,19 +24,15 @@ import petproject.loskin.leonardo.domain.model.profile.MyProfileViewModel
 import petproject.loskin.leonardo.domain.model.profile.authorize.AuthorizationViewModel
 import petproject.loskin.leonardo.domain.model.shop.categories.CategoriesViewModel
 import petproject.loskin.leonardo.domain.model.shop.cities.FilterCityViewModel
-import petproject.loskin.leonardo.data.mapper.shop.goods.GoodsMapper
-import petproject.loskin.leonardo.domain.repositories.shop.GoodsRepository
 import petproject.loskin.leonardo.domain.model.shop.goods.GoodsViewModel
-import petproject.loskin.leonardo.domain.repositories.shop.subcategories.SubCategoriesRepository
 import petproject.loskin.leonardo.domain.model.shop.subcategories.SubCategoriesViewModel
 import petproject.loskin.leonardo.domain.repositories.news.LeisureRepositories
-import petproject.loskin.leonardo.data.mapper.profile.MyProfileMapper
-import petproject.loskin.leonardo.data.network.services.profile.ProfileService
 import petproject.loskin.leonardo.domain.repositories.profile.MyProfileRepository
 import petproject.loskin.leonardo.domain.repositories.profile.authorize.ProfileRepository
+import petproject.loskin.leonardo.domain.repositories.shop.GoodsRepository
 import petproject.loskin.leonardo.domain.repositories.shop.categories.CategoriesRepository
 import petproject.loskin.leonardo.domain.repositories.shop.cities.CitiesRepository
-import petproject.loskin.leonardo.domain.model.main.ProfileViewModel
+import petproject.loskin.leonardo.domain.repositories.shop.subcategories.SubCategoriesRepository
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -78,8 +78,9 @@ val appModule = module {
   single<Router> { get<Cicerone<Router>>().router }
 
   // Single instance of Repository
-  single { AppDatabase.getInstance(get()).categoriesDao() }
-  single { AppDatabase.getInstance(get()).profileDao() }
+  single { AppDatabase.getInstance(get()) }
+  single { get<AppDatabase>().categoriesDao() }
+  single { get<AppDatabase>().profileDao() }
   single<Retrofit> {
     val baseUrl = "https://leonardohobby.ru/"
     val seconds: Long = 300

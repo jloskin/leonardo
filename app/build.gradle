@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -33,67 +35,101 @@ android {
     }
 }
 
+detekt {
+    toolVersion = "1.0.0-RC14"
+    input = files(
+            "src/main/java",
+            "gensrc/main/java"
+    )
+    parallel = false
+    disableDefaultRuleSets = false
+    debug = false
+    reports {
+        xml {
+            enabled = true
+            destination = file("build/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("build/reports/detekt.html")
+        }
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation 'androidx.test:runner:+'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
+    implementation 'com.android.support:multidex:1.0.3'
 
-    implementation 'com.squareup.retrofit2:retrofit:+'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:+'
-    implementation 'com.squareup.retrofit2:converter-gson:+'
-    implementation 'com.squareup.retrofit2:converter-scalars:+'
+    def retrofit_version = "2.5.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
 
-    implementation 'android.arch.lifecycle:reactivestreams:+'
-    implementation 'android.arch.lifecycle:runtime:+'
-    implementation 'android.arch.lifecycle:extensions:+'
-    kapt "android.arch.lifecycle:compiler:+"
+    def ok_http_version = "3.14.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:$ok_http_version"
+    implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
 
-    implementation 'io.reactivex.rxjava2:rxjava:+'
-    implementation 'io.reactivex.rxjava2:rxandroid:+'
-    implementation 'org.jsoup:jsoup:+'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
-    // Koin for Android
-    implementation 'org.koin:koin-android:1.0.1'
-    // Android Scope feature - AndroidX
-    implementation 'org.koin:koin-androidx-scope:1.0.1'
-    // Android Architecture ViewModel feature - AndroidX
-    implementation 'org.koin:koin-androidx-viewmodel:1.0.1'
+    def room_version = "2.1.0-alpha06"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
 
-    kapt "androidx.room:room-compiler:+"
-    implementation "androidx.room:room-runtime:+"
-    implementation "android.arch.work:work-runtime-ktx:+"
-    implementation "androidx.appcompat:appcompat:+"
-    implementation "androidx.room:room-rxjava2:+"
-    implementation "androidx.constraintlayout:constraintlayout:+"
-    implementation "androidx.core:core-ktx:+"
-    implementation "androidx.legacy:legacy-support-v4:+"
-    implementation "androidx.lifecycle:lifecycle-extensions:+"
-    implementation "androidx.recyclerview:recyclerview:+"
-    implementation "com.google.android.material:material:+"
-    implementation "com.google.code.gson:gson:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:+"
+    def moxy_version = "1.7.0"
+    kapt "tech.schoolhelper:moxy-x-compiler:$moxy_version"
+    implementation "tech.schoolhelper:moxy-x:$moxy_version"
+    implementation "tech.schoolhelper:moxy-x-androidx:$moxy_version"
 
-    implementation "com.github.bumptech.glide:glide:+"
-    implementation "com.github.bumptech.glide:okhttp3-integration:+"
-    kapt "com.github.bumptech.glide:compiler:+"
+
+    implementation 'org.jsoup:jsoup:1.11.3'
+
+    def dagger_version = "2.21"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation "androidx.recyclerview:recyclerview:1.0.0"
+
+    implementation 'com.google.android.material:material:1.1.0-alpha04'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.21'
+
+    def glide_version = "4.9.0"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+
+    implementation 'ru.terrakok.cicerone:cicerone:5.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
 
     // Testing dependencies
-    androidTestImplementation "androidx.arch.core:core-testing:+"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:+"
-    androidTestImplementation "androidx.test.espresso:espresso-core:+"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:+"
-    androidTestImplementation "androidx.test.uiautomator:uiautomator:+"
-    testImplementation "junit:junit:+"
+    androidTestImplementation 'androidx.arch.core:core-testing:2.0.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0-alpha02'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    testImplementation 'junit:junit:4.13-beta-2'
 
-    implementation "com.jakewharton.timber:timber:+"
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.0.0.RC9"
+}
 
-    implementation "com.squareup.moshi:moshi:+"
-    implementation "com.squareup.moshi:moshi-kotlin:+"
-    implementation "com.squareup.retrofit2:converter-moshi:+"
-    implementation "com.squareup.okhttp3:logging-interceptor:+"
-    implementation "com.squareup.okhttp3:okhttp:+"
-
-    implementation "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:+"
-
-    implementation 'ru.terrakok.cicerone:cicerone:+'
-    implementation 'androidx.viewpager:viewpager:+'
+detekt {
+    version = "1.0.0-RC14"
+    input = files("${project.rootDir}/${project.getName()}/src/main/")
+    config = files("${project.rootDir}/detekt/detekt-config.yml")
+    filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    reports {
+        xml {
+            enabled = true
+            destination = file("build/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("build/reports/detekt.html")
+        }
+    }
 }

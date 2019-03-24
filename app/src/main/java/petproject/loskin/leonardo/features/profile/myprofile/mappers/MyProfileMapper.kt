@@ -1,6 +1,7 @@
-package petproject.loskin.leonardo.features.profile.myprofile
+package petproject.loskin.leonardo.features.profile.myprofile.mappers
 
 import org.jsoup.Jsoup
+import petproject.loskin.leonardo.features.profile.myprofile.models.ProfileData
 import javax.inject.Inject
 
 class MyProfileMapper @Inject constructor() {

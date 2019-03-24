@@ -1,8 +1,9 @@
-package petproject.loskin.leonardo.features.profile.myprofile
+package petproject.loskin.leonardo.features.profile.myprofile.ui
 
 import android.view.View
 import kotlinx.android.synthetic.main.my_profile_cell.view.*
 import petproject.loskin.leonardo.R
+import petproject.loskin.leonardo.features.profile.myprofile.models.ProfileData
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapter
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 

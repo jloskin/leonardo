@@ -5,7 +5,7 @@ import petproject.loskin.leonardo.features.profile.ProfileFragment
 import petproject.loskin.leonardo.features.profile.authorize.ui.AuthorizationFragment
 import petproject.loskin.leonardo.features.profile.cities.ui.FilterCityFragment
 import petproject.loskin.leonardo.features.profile.edit.EditFragment
-import petproject.loskin.leonardo.features.profile.myprofile.MyProfileFragment
+import petproject.loskin.leonardo.features.profile.myprofile.ui.MyProfileFragment
 import petproject.loskin.leonardo.features.shop.categories.ui.CategoriesFragment
 import petproject.loskin.leonardo.features.shop.goods.features.filters.models.Filter
 import petproject.loskin.leonardo.features.shop.goods.features.filters.ui.FilterFragment

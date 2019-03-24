@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.features.profile
+package petproject.loskin.leonardo.features.profile.base.ui
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy

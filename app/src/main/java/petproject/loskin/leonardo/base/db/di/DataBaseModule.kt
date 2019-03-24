@@ -19,4 +19,9 @@ class DataBaseModule {
     fun profileDao(
         appDatabase: AppDatabase
     ) = appDatabase.profileDao()
+
+    @Provides
+    fun cityDao(
+        appDatabase: AppDatabase
+    ) = appDatabase.cityDao()
 }

@@ -7,9 +7,9 @@ import petproject.loskin.leonardo.base.db.dao.profile.City
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapter
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 
-class FilterCityAdapter(
+class CitiesAdapter(
     private val click: (City) -> Unit
-) : BaseRecyclerAdapter<City, FilterCityAdapter.Holder>() {
+) : BaseRecyclerAdapter<City, CitiesAdapter.Holder>() {
     override fun item(itemView: View) = Holder(itemView, click)
 
     override fun getItemViewType(position: Int) = R.layout.chips_cell

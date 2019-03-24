@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.features.profile
+package petproject.loskin.leonardo.features.profile.base.services
 
 import io.reactivex.Observable
 import retrofit2.http.Field

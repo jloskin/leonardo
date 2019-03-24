@@ -5,16 +5,25 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.base.db.dao.profile.City
+import petproject.loskin.leonardo.base.ui.MainActivity
 import petproject.loskin.leonardo.base.ui.RootFragment
-import petproject.loskin.leonardo.features.profile.cities.presenters.FilterCityPresenter
+import petproject.loskin.leonardo.features.profile.cities.di.DaggerCitiesComponent
+import petproject.loskin.leonardo.features.profile.cities.presenters.CitiesPresenter
 import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
-class FilterCityFragment : RootFragment(), FilterCityView {
-    @Inject @InjectPresenter lateinit var presenter: FilterCityPresenter
+class CitiesFragment : RootFragment(), CitiesView {
+    @Inject @InjectPresenter lateinit var presenter: CitiesPresenter
     @ProvidePresenter fun provide() = presenter
 
-    private val adapter: FilterCityAdapter by lazy { FilterCityAdapter { } }
+    init {
+        DaggerCitiesComponent.builder()
+            .navigationModule(MainActivity.ROOT)
+            .build()
+            .inject(this)
+    }
+
+    private val adapter: CitiesAdapter by lazy { CitiesAdapter { } }
 
     override fun layoutId(): Int = R.layout.recycler_view
 

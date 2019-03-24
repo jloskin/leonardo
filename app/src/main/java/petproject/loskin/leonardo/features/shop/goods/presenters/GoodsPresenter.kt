@@ -13,10 +13,12 @@ class GoodsPresenter @Inject constructor(
     repository: GoodsRepository
 ) : MvpPresenter<GoodsView>() {
     init {
-        repository.chips(item).applySchedulers()
+        repository.chips(item)
+            .applySchedulers()
             .subscribe(viewState::updateMenu, Throwable::printStackTrace)
 
-        repository.getGoods(item).applySchedulers()
+        repository.getGoods(item)
+            .applySchedulers()
             .subscribe({ (goods, filters) ->
                 viewState.updateGoods(goods)
                 if (filters.isNotEmpty())

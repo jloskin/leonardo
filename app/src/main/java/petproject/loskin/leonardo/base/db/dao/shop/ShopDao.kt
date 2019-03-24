@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import io.reactivex.Flowable
-import petproject.loskin.leonardo.base.db.dao.profile.City
 
 @Dao
 interface ShopDao {
@@ -17,10 +16,4 @@ interface ShopDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMenus(categories: List<MenuL>)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCities(cities: List<City>)
-
-    @Query("SELECT * FROM city ORDER BY title")
-    fun getCities(): Flowable<List<City>>
 }

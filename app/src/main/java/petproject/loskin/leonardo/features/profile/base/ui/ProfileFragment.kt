@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.features.profile
+package petproject.loskin.leonardo.features.profile.base.ui
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -7,6 +7,7 @@ import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.base.ui.MainActivity
 import petproject.loskin.leonardo.base.ui.RootFragment
 import petproject.loskin.leonardo.features.Screens
+import petproject.loskin.leonardo.features.profile.DaggerProfileComponent
 import petproject.loskin.leonardo.features.profile.Menu.BILLS
 import petproject.loskin.leonardo.features.profile.Menu.EDIT
 import petproject.loskin.leonardo.features.profile.Menu.FEEDBACK
@@ -18,6 +19,9 @@ import petproject.loskin.leonardo.features.profile.Menu.ORDERS
 import petproject.loskin.leonardo.features.profile.Menu.PROFILE
 import petproject.loskin.leonardo.features.profile.Menu.REVIEWS
 import petproject.loskin.leonardo.features.profile.Menu.TICKETS
+import petproject.loskin.leonardo.features.profile.MenuType
+import petproject.loskin.leonardo.features.profile.PersonalAreaAdapter
+import petproject.loskin.leonardo.features.profile.base.presenters.ProfilePresenter
 import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
@@ -26,7 +30,10 @@ class ProfileFragment : RootFragment(), ProfileView {
     @ProvidePresenter fun provide() = presenter
 
     init {
-        DaggerProfileComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        DaggerProfileComponent.builder()
+            .navigationModule(MainActivity.ROOT)
+            .build()
+            .inject(this)
     }
 
     override fun layoutId(): Int = R.layout.recycler_view

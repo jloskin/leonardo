@@ -1,4 +1,4 @@
-package petproject.loskin.leonardo.features.profile
+package petproject.loskin.leonardo.features.profile.base.mappers
 
 import org.jsoup.Jsoup
 import javax.inject.Inject

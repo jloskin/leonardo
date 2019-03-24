@@ -12,7 +12,8 @@ class MClassesPresenter @Inject constructor(
     repository: MClassesRepository
 ) : MvpPresenter<MClassesView>() {
     init {
-        repository.getMClasses().applySchedulers()
+        repository.getMClasses()
+            .applySchedulers()
             .subscribe(viewState::update, Throwable::printStackTrace)
     }
 }

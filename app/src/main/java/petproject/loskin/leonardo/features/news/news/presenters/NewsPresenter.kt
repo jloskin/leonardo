@@ -12,7 +12,8 @@ class NewsPresenter @Inject constructor(
     interactor: NewsRepository
 ) : MvpPresenter<NewsView>() {
     init {
-        interactor.getNews().applySchedulers()
+        interactor.getNews()
+            .applySchedulers()
             .subscribe(viewState::update, Throwable::printStackTrace)
     }
 }

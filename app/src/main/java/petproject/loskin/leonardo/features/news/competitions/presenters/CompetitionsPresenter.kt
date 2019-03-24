@@ -12,7 +12,8 @@ class CompetitionsPresenter @Inject constructor(
     repositories: CompetitionsRepositories
 ) : MvpPresenter<CompetitionsView>() {
     init {
-        repositories.getCompetitions().applySchedulers()
+        repositories.getCompetitions()
+            .applySchedulers()
             .subscribe(viewState::update, Throwable::printStackTrace)
     }
 }

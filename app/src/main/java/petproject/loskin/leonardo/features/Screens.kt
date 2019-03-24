@@ -1,9 +1,9 @@
 package petproject.loskin.leonardo.features
 
 import petproject.loskin.leonardo.features.news.base.ui.CoreNewsFragment
-import petproject.loskin.leonardo.features.profile.ProfileFragment
+import petproject.loskin.leonardo.features.profile.base.ui.ProfileFragment
 import petproject.loskin.leonardo.features.profile.authorize.ui.AuthorizationFragment
-import petproject.loskin.leonardo.features.profile.cities.ui.FilterCityFragment
+import petproject.loskin.leonardo.features.profile.cities.ui.CitiesFragment
 import petproject.loskin.leonardo.features.profile.edit.EditFragment
 import petproject.loskin.leonardo.features.profile.myprofile.ui.MyProfileFragment
 import petproject.loskin.leonardo.features.shop.categories.ui.CategoriesFragment
@@ -23,7 +23,7 @@ object Screens {
     }
 
     class FilterCity : SupportAppScreen() {
-        override fun getFragment() = FilterCityFragment()
+        override fun getFragment() = CitiesFragment()
     }
 
     class SubCategories(

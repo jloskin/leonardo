@@ -1,6 +1,6 @@
 package petproject.loskin.leonardo.features.profile.myprofile.repositories
 
-import petproject.loskin.leonardo.features.profile.ProfileService
+import petproject.loskin.leonardo.features.profile.base.services.ProfileService
 import petproject.loskin.leonardo.features.profile.myprofile.mappers.MyProfileMapper
 import javax.inject.Inject
 

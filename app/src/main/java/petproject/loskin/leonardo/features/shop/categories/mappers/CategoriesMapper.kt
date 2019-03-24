@@ -25,8 +25,4 @@ class CategoriesMapper @Inject constructor() {
         .flatten()
 
     private fun parseHref(element: Element): String = element.attr("href").replace(Regex(".+(tree_.+)/"), "$1")
-
-    fun page2Cities(page: String): List<City> = Jsoup.parse(page)
-        .select("a.city_select")
-        .map { City(it.attr("data-city"), it.text()) }
 }

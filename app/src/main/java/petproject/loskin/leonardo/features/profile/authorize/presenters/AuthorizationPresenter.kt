@@ -2,6 +2,7 @@ package petproject.loskin.leonardo.features.profile.authorize.presenters
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
+import io.reactivex.disposables.Disposable
 import petproject.loskin.leonardo.features.profile.authorize.repositories.ProfileRepository
 import petproject.loskin.leonardo.features.profile.authorize.ui.AuthorizationView
 import petproject.loskin.leonardo.util.rx.applySchedulers
@@ -13,6 +14,7 @@ class AuthorizationPresenter @Inject constructor(
 ) : MvpPresenter<AuthorizationView>() {
 
     fun authorize(login: String, password: String) =
-        repository.authorize(login, password).applySchedulers()
+        repository.authorize(login, password)
+            .applySchedulers()
             .subscribe(viewState::authorize, Throwable::printStackTrace)
 }

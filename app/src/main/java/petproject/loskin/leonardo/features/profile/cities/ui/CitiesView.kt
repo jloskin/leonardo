@@ -6,6 +6,6 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import petproject.loskin.leonardo.base.db.dao.profile.City
 
 @StateStrategyType(AddToEndSingleStrategy::class)
-interface FilterCityView : MvpView {
+interface CitiesView : MvpView {
     fun update(items: List<City>)
 }

@@ -13,7 +13,8 @@ class MyProfilePresenter @Inject constructor(
 ) : MvpPresenter<MyProfileView>() {
 
     init {
-        repository.profile().applySchedulers()
+        repository.profile()
+            .applySchedulers()
             .subscribe(viewState::update, Throwable::printStackTrace)
     }
 }

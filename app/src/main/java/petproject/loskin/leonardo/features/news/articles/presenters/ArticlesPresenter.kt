@@ -12,7 +12,8 @@ class ArticlesPresenter @Inject constructor(
     repository: ArticlesRepository
 ) : MvpPresenter<ArticlesView>() {
     init {
-        repository.getArticles().applySchedulers()
+        repository.getArticles()
+            .applySchedulers()
             .subscribe(viewState::update, Throwable::printStackTrace)
     }
 }

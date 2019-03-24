@@ -21,7 +21,7 @@ class FilterFragment : RootFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.getParcelableArray(FILTER_ITEMS)?.let { (it as Array<Filter>).toList() }?.let { items ->
-            Utils.defaultList(recyclerView, filterAdapter.also { it.update(items) })
+            Utils.linearLayout(recyclerView, filterAdapter.also { it.update(items) })
         }
     }
 

@@ -7,7 +7,7 @@ import petproject.loskin.leonardo.base.db.dao.shop.MenuL
 import javax.inject.Inject
 
 class CategoriesMapper @Inject constructor() {
-    fun string2Menu(page: String): List<MenuL> = Jsoup.parse(page)
+    fun page2Menu(page: String): List<MenuL> = Jsoup.parse(page)
         .select(".cd-dropdown-content")
         .first()
         .children()
@@ -26,7 +26,7 @@ class CategoriesMapper @Inject constructor() {
 
     private fun parseHref(element: Element): String = element.attr("href").replace(Regex(".+(tree_.+)/"), "$1")
 
-    fun string2Cities(page: String): List<City> = Jsoup.parse(page)
+    fun page2Cities(page: String): List<City> = Jsoup.parse(page)
         .select("a.city_select")
         .map { City(it.attr("data-city"), it.text()) }
 }

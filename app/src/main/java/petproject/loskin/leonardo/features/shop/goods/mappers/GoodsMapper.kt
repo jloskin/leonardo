@@ -9,10 +9,9 @@ import petproject.loskin.leonardo.features.shop.goods.models.Price
 import javax.inject.Inject
 
 class GoodsMapper @Inject constructor() {
-    fun string2Goods(page: String): List<GoodsData> {
-        val li = Jsoup.parse(page)
-        return li.select(".gooditem").map {
-            val img = it.select(".image").select("a").select("img").attr("src")
+    fun page2Goods(page: String): List<GoodsData> = Jsoup.parse(page)
+        .select(".gooditem").map {
+            val img = it.select(".image").select("a").select("img").attr("newsrc")
             val title = it.select(".title").select("a").first()
             val urlItem = title.attr("href").replace(Regex(".+(group_.+)/"), "$1")
             val itemName = title.text()
@@ -34,14 +33,13 @@ class GoodsMapper @Inject constructor() {
                 )
             }
             GoodsData(
-                "https:$img",
+                img,
                 itemName,
                 urlItem
             )
         }
-    }
 
-    fun string2Filter(page: String): List<Filter> = Jsoup.parse(page)
+    fun page2Filter(page: String): List<Filter> = Jsoup.parse(page)
         .select("div.filterscontainer")
         .select(".sidebar-filter-block")
         .map {

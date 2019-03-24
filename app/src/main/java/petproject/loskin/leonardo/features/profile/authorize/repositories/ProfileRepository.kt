@@ -14,7 +14,7 @@ class ProfileRepository @Inject constructor(
     private val service: ProfileService
 ) {
     fun authorize(login: String, password: String): Observable<Boolean> = service.authorize(login, password)
-        .map(mapper::string2Response)
+        .map(mapper::page2Response)
         .doOnNext { dao.insertUser(User(login, password)) }
         .map { it.isNotEmpty() }
 

@@ -7,6 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.base.db.dao.shop.MenuL
+import petproject.loskin.leonardo.base.ui.MainActivity
 import petproject.loskin.leonardo.base.ui.RootFragment
 import petproject.loskin.leonardo.features.Screens
 import petproject.loskin.leonardo.features.shop.categories.di.DaggerCategoriesComponent
@@ -19,7 +20,7 @@ class CategoriesFragment : RootFragment(), CategoriesView {
     @ProvidePresenter fun provide() = presenter
 
     init {
-        DaggerCategoriesComponent.create().inject(this)
+        DaggerCategoriesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
     }
 
     private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }
@@ -42,7 +43,7 @@ class CategoriesFragment : RootFragment(), CategoriesView {
     }
 
     override fun setValue(list: List<MenuL>) {
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
         adapter.update(list)
     }
 }

@@ -23,7 +23,7 @@ class FilterCityFragment : RootFragment(), FilterCityView {
     override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
 
     override fun update(items: List<City>) {
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
         adapter.update(items)
     }
 }

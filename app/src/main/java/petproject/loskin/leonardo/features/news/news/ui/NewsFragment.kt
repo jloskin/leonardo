@@ -28,7 +28,7 @@ class NewsFragment : BaseFragment(), NewsView {
     override fun layoutId(): Int = R.layout.recycler_view
 
     override fun update(items: List<NewsBlock>) {
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
         adapter.update(items)
     }
 }

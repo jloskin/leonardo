@@ -54,7 +54,7 @@ class ProfileFragment : RootFragment(), ProfileView {
     override fun authorization(success: Boolean) {
         if (success) {
             adapter.update(MENUS)
-            Utils.defaultList(recyclerView, adapter)
+            Utils.linearLayout(recyclerView, adapter)
         } else {
             router.newRootScreen(Screens.AuthorizeScreen())
         }

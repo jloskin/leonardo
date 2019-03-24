@@ -20,5 +20,5 @@ class GoodsRepository @Inject constructor(
     fun chips(item: String): Flowable<List<MenuL>> = shopDao.menus(item)
 
     fun getGoods(item: String, page: String = ""): Observable<Pair<List<GoodsData>, List<Filter>>> = service.goods(item)
-        .map { Pair(goodsMapper.string2Goods(it), goodsMapper.string2Filter(it)) }
+        .map { Pair(goodsMapper.page2Goods(it), goodsMapper.page2Filter(it)) }
 }

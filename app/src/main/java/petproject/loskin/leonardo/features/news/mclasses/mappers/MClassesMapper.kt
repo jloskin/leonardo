@@ -5,7 +5,7 @@ import petproject.loskin.leonardo.features.news.competitions.models.Competitions
 import javax.inject.Inject
 
 class MClassesMapper @Inject constructor() {
-    fun string2News(page: String): List<CompetitionsBlock> = Jsoup.parse(page)
+    fun page2News(page: String): List<CompetitionsBlock> = Jsoup.parse(page)
         .select("div.artlessonsitem").map {
             val title = it.select("div.title a")
             CompetitionsBlock(

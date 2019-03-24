@@ -8,5 +8,5 @@ class MyProfileRepository @Inject constructor(
     private val service: ProfileService
 ) {
     fun profile() = service.profile()
-        .map(mapper::string2ProfileData)
+        .map(mapper::page2ProfileData)
 }

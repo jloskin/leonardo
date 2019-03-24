@@ -10,5 +10,5 @@ class MClassesRepository @Inject constructor(
     private val service: MClassesService,
     private val mapper: MClassesMapper
 ) {
-    fun getMClasses(): Observable<List<CompetitionsBlock>> = service.mClasses().map(mapper::string2News)
+    fun getMClasses(): Observable<List<CompetitionsBlock>> = service.mClasses().map(mapper::page2News)
 }

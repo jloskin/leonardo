@@ -27,7 +27,7 @@ class FilterAdapter(
                 setOnClickListener { click(item) }
                 title.text = item.id
                 title.setOnClickListener { invertButton() }
-                Utils.defaultList(bottom_view, filterAdapter.also { it.update(item.parentId) })
+                Utils.linearLayout(bottom_view, filterAdapter.also { it.update(item.parentId) })
             }
         }
 

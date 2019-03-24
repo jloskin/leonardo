@@ -19,7 +19,7 @@ class MyProfileFragment : RootFragment(), MyProfileView {
     override fun titleId(): Int = R.string.profile_profile
 
     override fun update(items: List<ProfileData>) {
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
         adapter.update(items)
     }
 }

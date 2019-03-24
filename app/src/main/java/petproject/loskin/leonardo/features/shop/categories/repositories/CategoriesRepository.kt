@@ -17,8 +17,8 @@ class CategoriesRepository @Inject constructor(
         .flatMap {
             if (it.isEmpty()) {
                 Flowable.zip(
-                    service.cities().map(categoriesMapper::string2Cities).doOnNext(shopDao::insertCities),
-                    service.menus().map(categoriesMapper::string2Menu).doOnNext(shopDao::insertMenus).flatMap { shopDao.menus() },
+                    service.cities().map(categoriesMapper::page2Cities).doOnNext(shopDao::insertCities),
+                    service.menus().map(categoriesMapper::page2Menu).doOnNext(shopDao::insertMenus).flatMap { shopDao.menus() },
                     BiFunction { _, t2 -> t2 }
                 )
             } else

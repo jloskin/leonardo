@@ -7,6 +7,7 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import kotlinx.android.synthetic.main.recycler_view.*
 import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.base.db.dao.shop.MenuL
+import petproject.loskin.leonardo.base.ui.MainActivity
 import petproject.loskin.leonardo.base.ui.RootFragment
 import petproject.loskin.leonardo.features.Screens
 import petproject.loskin.leonardo.features.shop.categories.ui.CategoriesAdapter
@@ -40,7 +41,7 @@ class SubCategoriesFragment : RootFragment(), SubCategoriesView {
             }
         })
 
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
     }
 
     override fun update(list: List<MenuL>) {
@@ -58,6 +59,7 @@ class SubCategoriesFragment : RootFragment(), SubCategoriesView {
             }.also {
                 DaggerSubCategoriesComponent.builder()
                     .subCategoriesModule(SubCategoriesModule(link))
+                    .navigationModule(MainActivity.ROOT)
                     .build()
                     .inject(it)
             }

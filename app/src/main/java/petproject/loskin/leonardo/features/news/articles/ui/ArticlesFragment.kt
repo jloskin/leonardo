@@ -25,7 +25,7 @@ class ArticlesFragment : BaseFragment(), ArticlesView {
     val adapter: ArticlesAdapter by lazy { ArticlesAdapter() }
 
     override fun update(list: List<NewsBlock>) {
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
         adapter.update(list)
     }
 }

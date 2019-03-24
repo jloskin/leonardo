@@ -5,7 +5,7 @@ import petproject.loskin.leonardo.features.news.base.models.NewsBlock
 import javax.inject.Inject
 
 class NewsMapper @Inject constructor() {
-    fun string2News(page: String): List<NewsBlock> = Jsoup.parse(page)
+    fun page2News(page: String): List<NewsBlock> = Jsoup.parse(page)
         .select("div.item").select(".clearfix.inner").map {
             val title = it.select("div.title a")
             NewsBlock(

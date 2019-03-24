@@ -25,7 +25,7 @@ class CompetitionsFragment : BaseFragment(), CompetitionsView {
     override fun layoutId(): Int = R.layout.recycler_view
 
     override fun update(items: List<CompetitionsBlock>) {
-        Utils.defaultList(recyclerView, adapter)
+        Utils.linearLayout(recyclerView, adapter)
         adapter.update(items)
     }
 }

@@ -10,5 +10,5 @@ class ArticlesRepository @Inject constructor(
     private val service: ArticlesService,
     private val mapper: ArticlesMapper
 ) {
-    fun getArticles(): Observable<List<NewsBlock>> = service.articles().map(mapper::string2Articles)
+    fun getArticles(): Observable<List<NewsBlock>> = service.articles().map(mapper::page2Articles)
 }

@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 import petproject.loskin.leonardo.base.db.dao.profile.City
 import petproject.loskin.leonardo.base.db.dao.profile.CitiesDao
 import petproject.loskin.leonardo.base.db.dao.profile.ProfileDao
-import petproject.loskin.leonardo.base.db.dao.profile.User
+import petproject.loskin.leonardo.base.db.dao.profile.Profile
 import petproject.loskin.leonardo.base.db.dao.shop.MenuL
 import petproject.loskin.leonardo.base.db.dao.shop.ShopDao
 
-@Database(entities = [MenuL::class, City::class, User::class], version = 1, exportSchema = false)
+@Database(entities = [MenuL::class, City::class, Profile::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun categoriesDao(): ShopDao
 

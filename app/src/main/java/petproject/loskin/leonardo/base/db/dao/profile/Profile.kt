@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class User(
+class Profile(
     @PrimaryKey val login: String,
     val password: String
 )

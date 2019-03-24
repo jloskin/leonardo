@@ -7,20 +7,19 @@ import petproject.loskin.leonardo.base.db.dao.shop.MenuL
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapter
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 
-
 class ChipsAdapter(
-  private val click: (MenuL) -> Unit
+    private val click: (MenuL) -> Unit
 ) : BaseRecyclerAdapter<MenuL, ChipsAdapter.Holder>() {
-  override fun item(itemView: View) = Holder(itemView, click)
+    override fun item(itemView: View) = Holder(itemView, click)
 
-  override fun getItemViewType(position: Int) = R.layout.chips_cell
+    override fun getItemViewType(position: Int) = R.layout.chips_cell
 
-  class Holder(itemView: View, val click: (MenuL) -> Unit) : BaseRecyclerViewHolder<MenuL>(itemView) {
-    override fun bind(item: MenuL) {
-      with(itemView) {
-        setOnClickListener { click(item) }
-        newsTitle.text = item.name
-      }
+    class Holder(itemView: View, val click: (MenuL) -> Unit) : BaseRecyclerViewHolder<MenuL>(itemView) {
+        override fun bind(item: MenuL) {
+            with(itemView) {
+                setOnClickListener { click(item) }
+                newsTitle.text = item.name
+            }
+        }
     }
-  }
 }

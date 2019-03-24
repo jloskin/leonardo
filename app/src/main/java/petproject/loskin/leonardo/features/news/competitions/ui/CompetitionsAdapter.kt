@@ -12,18 +12,18 @@ import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewH
 import petproject.loskin.leonardo.util.glide.GlideApp
 
 class CompetitionsAdapter : BaseRecyclerAdapter<CompetitionsBlock, CompetitionsAdapter.Holder>() {
-  override fun item(itemView: View) = Holder(itemView)
+    override fun item(itemView: View) = Holder(itemView)
 
-  override fun getItemViewType(position: Int) = R.layout.news_cell
+    override fun getItemViewType(position: Int) = R.layout.news_cell
 
-  class Holder(itemView: View) : BaseRecyclerViewHolder<CompetitionsBlock>(itemView) {
-    override fun bind(item: CompetitionsBlock) {
-      itemView.newsTitle.text = item.titleName
-      itemView.newsDescription.text = item.text
-      GlideApp.with(itemView.newsImage)
-        .load(item.imgUrl)
-        .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(8)))
-        .into(itemView.newsImage)
+    class Holder(itemView: View) : BaseRecyclerViewHolder<CompetitionsBlock>(itemView) {
+        override fun bind(item: CompetitionsBlock) {
+            itemView.newsTitle.text = item.titleName
+            itemView.newsDescription.text = item.text
+            GlideApp.with(itemView.newsImage)
+                .load(item.imgUrl)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(8)))
+                .into(itemView.newsImage)
+        }
     }
-  }
 }

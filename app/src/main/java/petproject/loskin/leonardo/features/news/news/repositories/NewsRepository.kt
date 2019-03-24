@@ -7,8 +7,8 @@ import petproject.loskin.leonardo.features.news.news.services.NewsService
 import javax.inject.Inject
 
 class NewsRepository @Inject constructor(
-  private val service: NewsService,
-  private val mapper: NewsMapper
+    private val service: NewsService,
+    private val mapper: NewsMapper
 ) {
-  fun getNews(): Observable<List<NewsBlock>> = service.news().map(mapper::string2News)
+    fun getNews(): Observable<List<NewsBlock>> = service.news().map(mapper::string2News)
 }

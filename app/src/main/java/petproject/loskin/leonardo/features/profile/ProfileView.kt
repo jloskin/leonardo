@@ -6,5 +6,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface ProfileView : MvpView {
-  fun authorization(success: Boolean)
+    fun authorization(success: Boolean)
 }

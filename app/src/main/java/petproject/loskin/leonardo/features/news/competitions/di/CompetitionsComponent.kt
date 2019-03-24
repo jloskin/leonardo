@@ -6,5 +6,5 @@ import petproject.loskin.leonardo.features.news.competitions.ui.CompetitionsFrag
 
 @Component(modules = [CompetitionsModule::class, NavigationModule::class])
 interface CompetitionsComponent {
-  fun inject(fragment: CompetitionsFragment)
+    fun inject(fragment: CompetitionsFragment)
 }

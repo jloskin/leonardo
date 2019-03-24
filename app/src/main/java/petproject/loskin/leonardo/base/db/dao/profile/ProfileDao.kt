@@ -8,9 +8,9 @@ import io.reactivex.Flowable
 
 @Dao
 interface ProfileDao {
-  @Query("SELECT * FROM user")
-  fun getUser(): Flowable<List<User>>
+    @Query("SELECT * FROM user")
+    fun getUser(): Flowable<List<User>>
 
-  @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun insertUser(user: User)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUser(user: User)
 }

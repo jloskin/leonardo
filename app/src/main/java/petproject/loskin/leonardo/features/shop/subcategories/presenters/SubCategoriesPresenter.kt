@@ -9,12 +9,12 @@ import javax.inject.Inject
 
 @InjectViewState
 class SubCategoriesPresenter @Inject constructor(
-  link: String,
-  repository: SubCategoriesRepository
+    link: String,
+    repository: SubCategoriesRepository
 ) : MvpPresenter<SubCategoriesView>() {
-  init {
-    repository.load(link)
-      .applySchedulers()
-      .subscribe(viewState::update, Throwable::printStackTrace)
-  }
+    init {
+        repository.load(link)
+            .applySchedulers()
+            .subscribe(viewState::update, Throwable::printStackTrace)
+    }
 }

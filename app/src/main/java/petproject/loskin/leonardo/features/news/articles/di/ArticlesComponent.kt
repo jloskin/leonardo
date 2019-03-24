@@ -6,5 +6,5 @@ import petproject.loskin.leonardo.features.news.articles.ui.ArticlesFragment
 
 @Component(modules = [ArticlesModule::class, NavigationModule::class])
 interface ArticlesComponent {
-  fun inject(fragment: ArticlesFragment)
+    fun inject(fragment: ArticlesFragment)
 }

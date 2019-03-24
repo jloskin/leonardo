@@ -7,13 +7,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 fun <T> Observable<T>.applySchedulers(): Maybe<T> = this
-  .subscribeOn(Schedulers.io())
-  .unsubscribeOn(Schedulers.io())
-  .observeOn(AndroidSchedulers.mainThread())
-  .firstElement()
+    .subscribeOn(Schedulers.io())
+    .unsubscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .firstElement()
 
 fun <T> Flowable<T>.applySchedulers(): Maybe<T> = this
-  .subscribeOn(Schedulers.io())
-  .unsubscribeOn(Schedulers.io())
-  .observeOn(AndroidSchedulers.mainThread())
-  .firstElement()
+    .subscribeOn(Schedulers.io())
+    .unsubscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .firstElement()

@@ -9,18 +9,18 @@ import petproject.loskin.leonardo.features.profile.authorize.exceptions.UnAuthor
 import javax.inject.Inject
 
 class ProfileRepository @Inject constructor(
-  private val mapper: ProfileMapper,
-  private val dao: ProfileDao,
-  private val service: ProfileService
+    private val mapper: ProfileMapper,
+    private val dao: ProfileDao,
+    private val service: ProfileService
 ) {
-  fun authorize(login: String, password: String): Observable<Boolean> = service.authorize(login, password)
-    .map(mapper::string2Response)
-    .doOnNext { dao.insertUser(User(login, password)) }
-    .map { it.isNotEmpty() }
+    fun authorize(login: String, password: String): Observable<Boolean> = service.authorize(login, password)
+        .map(mapper::string2Response)
+        .doOnNext { dao.insertUser(User(login, password)) }
+        .map { it.isNotEmpty() }
 
-  fun checkAuthorize(): Observable<Boolean> = dao.getUser()
-    .map { it.firstOrNull() ?: throw UnAuthorized() }
-    .toObservable()
-    .flatMap { authorize(it.login, it.password) }
-    .onErrorReturn { false }
+    fun checkAuthorize(): Observable<Boolean> = dao.getUser()
+        .map { it.firstOrNull() ?: throw UnAuthorized() }
+        .toObservable()
+        .flatMap { authorize(it.login, it.password) }
+        .onErrorReturn { false }
 }

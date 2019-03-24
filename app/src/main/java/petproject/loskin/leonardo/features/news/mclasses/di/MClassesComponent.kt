@@ -6,5 +6,5 @@ import petproject.loskin.leonardo.features.news.mclasses.ui.MClassesFragment
 
 @Component(modules = [MClassesModule::class, NavigationModule::class])
 interface MClassesComponent {
-  fun inject(fragment: MClassesFragment)
+    fun inject(fragment: MClassesFragment)
 }

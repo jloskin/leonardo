@@ -7,16 +7,16 @@ import petproject.loskin.leonardo.base.db.AppDatabase
 
 @Module
 class DataBaseModule {
-  @get:Provides
-  val database = AppDatabase.getInstance(App.context)
+    @get:Provides
+    val database = AppDatabase.getInstance(App.context)
 
-  @Provides
-  fun categoriesDao(
-    appDatabase: AppDatabase
-  ) = appDatabase.categoriesDao()
+    @Provides
+    fun categoriesDao(
+        appDatabase: AppDatabase
+    ) = appDatabase.categoriesDao()
 
-  @Provides
-  fun profileDao(
-    appDatabase: AppDatabase
-  ) = appDatabase.profileDao()
+    @Provides
+    fun profileDao(
+        appDatabase: AppDatabase
+    ) = appDatabase.profileDao()
 }

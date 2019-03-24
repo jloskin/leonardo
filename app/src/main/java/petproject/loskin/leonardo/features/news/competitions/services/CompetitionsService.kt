@@ -4,6 +4,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface CompetitionsService {
-  @GET("/competitions/")
-  fun competitions(): Observable<String>
+    @GET("/competitions/")
+    fun competitions(): Observable<String>
 }

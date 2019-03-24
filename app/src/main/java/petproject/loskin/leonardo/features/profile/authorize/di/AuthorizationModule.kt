@@ -8,8 +8,8 @@ import retrofit2.Retrofit
 
 @Module(includes = [NetworkModule::class])
 class AuthorizationModule {
-  @Provides
-  fun service(
-    retrofit: Retrofit
-  ): ProfileService = retrofit.create(ProfileService::class.java)
+    @Provides
+    fun service(
+        retrofit: Retrofit
+    ): ProfileService = retrofit.create(ProfileService::class.java)
 }

@@ -15,34 +15,34 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CategoriesFragment : RootFragment(), CategoriesView {
-  @Inject @InjectPresenter lateinit var presenter: CategoriesPresenter
-  @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter lateinit var presenter: CategoriesPresenter
+    @ProvidePresenter fun provide() = presenter
 
-  init {
-    DaggerCategoriesComponent.create().inject(this)
-  }
+    init {
+        DaggerCategoriesComponent.create().inject(this)
+    }
 
-  private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }
+    private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }
 
-  override fun titleId(): Int = R.string.goods_catalog
+    override fun titleId(): Int = R.string.goods_catalog
 
-  override fun layoutId(): Int = R.layout.recycler_view
+    override fun layoutId(): Int = R.layout.recycler_view
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    mainActivity.setMenu(R.menu.categories, {
-      when (it.itemId) {
-        R.id.city -> {
-          router.navigateTo(Screens.FilterCity())
-          true
-        }
-        else -> false
-      }
-    })
-  }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mainActivity.setMenu(R.menu.categories, {
+            when (it.itemId) {
+                R.id.city -> {
+                    router.navigateTo(Screens.FilterCity())
+                    true
+                }
+                else -> false
+            }
+        })
+    }
 
-  override fun setValue(list: List<MenuL>) {
-    Utils.defaultList(recyclerView, adapter)
-    adapter.update(list)
-  }
+    override fun setValue(list: List<MenuL>) {
+        Utils.defaultList(recyclerView, adapter)
+        adapter.update(list)
+    }
 }

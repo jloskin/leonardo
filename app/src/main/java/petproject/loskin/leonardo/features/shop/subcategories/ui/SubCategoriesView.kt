@@ -7,5 +7,5 @@ import petproject.loskin.leonardo.base.db.dao.shop.MenuL
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface SubCategoriesView : MvpView {
-  fun update(list: List<MenuL>)
+    fun update(list: List<MenuL>)
 }

@@ -6,9 +6,9 @@ import petproject.loskin.leonardo.features.news.competitions.services.Competitio
 import javax.inject.Inject
 
 class CompetitionsRepositories @Inject constructor(
-  private val service: CompetitionsService,
-  private val mappers: CompetitionsMapper
+    private val service: CompetitionsService,
+    private val mappers: CompetitionsMapper
 ) {
-  fun getCompetitions(): Observable<List<CompetitionsBlock>> = service.competitions()
-    .map(mappers::page2Competitions)
+    fun getCompetitions(): Observable<List<CompetitionsBlock>> = service.competitions()
+        .map(mappers::page2Competitions)
 }

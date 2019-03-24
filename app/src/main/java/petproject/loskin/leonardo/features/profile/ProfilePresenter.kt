@@ -8,10 +8,10 @@ import javax.inject.Inject
 
 @InjectViewState
 class ProfilePresenter @Inject constructor(
-  profileRepository: ProfileRepository
+    profileRepository: ProfileRepository
 ) : MvpPresenter<ProfileView>() {
-  init {
-    profileRepository.checkAuthorize().applySchedulers()
-      .subscribe(viewState::authorization, Throwable::printStackTrace)
-  }
+    init {
+        profileRepository.checkAuthorize().applySchedulers()
+            .subscribe(viewState::authorization, Throwable::printStackTrace)
+    }
 }

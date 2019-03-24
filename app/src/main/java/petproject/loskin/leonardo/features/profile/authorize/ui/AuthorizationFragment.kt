@@ -14,23 +14,23 @@ import petproject.loskin.leonardo.features.profile.authorize.presenters.Authoriz
 import javax.inject.Inject
 
 class AuthorizationFragment : RootFragment(), AuthorizationView {
-  @Inject @InjectPresenter lateinit var presenter: AuthorizationPresenter
-  @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter lateinit var presenter: AuthorizationPresenter
+    @ProvidePresenter fun provide() = presenter
 
-  init {
-    DaggerAuthorizationComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
-  }
+    init {
+        DaggerAuthorizationComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+    }
 
-  override fun layoutId(): Int = R.layout.authorization_screen
+    override fun layoutId(): Int = R.layout.authorization_screen
 
-  override fun titleId(): Int = R.string.authorization
+    override fun titleId(): Int = R.string.authorization
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    enter.setOnClickListener { presenter.authorize(email.text.toString(), password.text.toString()) }
-  }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        enter.setOnClickListener { presenter.authorize(email.text.toString(), password.text.toString()) }
+    }
 
-  override fun authorize(success: Boolean) {
-    if (success) router.newRootScreen(Screens.ProfileScreen())
-  }
+    override fun authorize(success: Boolean) {
+        if (success) router.newRootScreen(Screens.ProfileScreen())
+    }
 }

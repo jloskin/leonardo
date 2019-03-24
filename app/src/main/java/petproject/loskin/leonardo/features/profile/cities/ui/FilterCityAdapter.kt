@@ -8,21 +8,21 @@ import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapt
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 
 class FilterCityAdapter(
-  private val click: (City) -> Unit
+    private val click: (City) -> Unit
 ) : BaseRecyclerAdapter<City, FilterCityAdapter.Holder>() {
-  override fun item(itemView: View) = Holder(itemView, click)
+    override fun item(itemView: View) = Holder(itemView, click)
 
-  override fun getItemViewType(position: Int) = R.layout.chips_cell
+    override fun getItemViewType(position: Int) = R.layout.chips_cell
 
-  class Holder(
-    itemView: View,
-    val click: (City) -> Unit
-  ) : BaseRecyclerViewHolder<City>(itemView) {
-    override fun bind(item: City) {
-      with(itemView) {
-        setOnClickListener { click(item) }
-        newsTitle.text = item.title
-      }
+    class Holder(
+        itemView: View,
+        val click: (City) -> Unit
+    ) : BaseRecyclerViewHolder<City>(itemView) {
+        override fun bind(item: City) {
+            with(itemView) {
+                setOnClickListener { click(item) }
+                newsTitle.text = item.title
+            }
+        }
     }
-  }
 }

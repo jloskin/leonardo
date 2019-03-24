@@ -8,12 +8,12 @@ import ru.terrakok.cicerone.Router
 
 @Module
 class NavigationModule {
-  @get:Provides
-  val cicerone: Cicerone<Router> by lazy { Cicerone.create() }
+    @get:Provides
+    val cicerone: Cicerone<Router> by lazy { Cicerone.create() }
 
-  @get:Provides
-  val holder: NavigatorHolder by lazy { cicerone.navigatorHolder }
+    @get:Provides
+    val holder: NavigatorHolder by lazy { cicerone.navigatorHolder }
 
-  @get:Provides
-  val router: Router by lazy { cicerone.router }
+    @get:Provides
+    val router: Router by lazy { cicerone.router }
 }

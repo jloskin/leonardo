@@ -10,6 +10,6 @@ import retrofit2.Retrofit
 class CategoriesModule {
     @Provides
     fun categoriesService(
-            retrofit: Retrofit
+        retrofit: Retrofit
     ): CategoriesService = retrofit.create(CategoriesService::class.java)
 }

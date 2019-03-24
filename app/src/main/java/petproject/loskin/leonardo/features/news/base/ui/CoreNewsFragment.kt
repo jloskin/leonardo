@@ -7,13 +7,13 @@ import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.base.ui.RootFragment
 
 class CoreNewsFragment : RootFragment() {
-  override fun layoutId(): Int = R.layout.news_tab
+    override fun layoutId(): Int = R.layout.news_tab
 
-  override fun titleId(): Int = R.string.leisure
+    override fun titleId(): Int = R.string.leisure
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    viewPager.adapter = CoreNewsPagerAdapter(context!!, childFragmentManager)
-    tabLayout.setupWithViewPager(viewPager)
-  }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewPager.adapter = CoreNewsPagerAdapter(context!!, childFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
+    }
 }

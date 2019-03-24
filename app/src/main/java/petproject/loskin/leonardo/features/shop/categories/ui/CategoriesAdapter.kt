@@ -9,22 +9,22 @@ import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewH
 import petproject.loskin.leonardo.util.glide.GlideApp
 
 class CategoriesAdapter(
-  private val click: (MenuL) -> Unit
+    private val click: (MenuL) -> Unit
 ) : BaseRecyclerAdapter<MenuL, CategoriesAdapter.Holder>() {
-  override fun item(itemView: View) = Holder(itemView, click)
+    override fun item(itemView: View) = Holder(itemView, click)
 
-  override fun getItemViewType(position: Int) = R.layout.magazine_cell
+    override fun getItemViewType(position: Int) = R.layout.magazine_cell
 
-  class Holder(itemView: View, val click: (MenuL) -> Unit) : BaseRecyclerViewHolder<MenuL>(itemView) {
-    override fun bind(item: MenuL) {
-      with(itemView) {
-        setOnClickListener { click(item) }
-        newsTitle.text = item.name
-        GlideApp.with(newsImage)
-          .load(item.image())
-          .placeholder(R.drawable.ic_leonardo_logo)
-          .circleCrop().into(newsImage)
-      }
+    class Holder(itemView: View, val click: (MenuL) -> Unit) : BaseRecyclerViewHolder<MenuL>(itemView) {
+        override fun bind(item: MenuL) {
+            with(itemView) {
+                setOnClickListener { click(item) }
+                newsTitle.text = item.name
+                GlideApp.with(newsImage)
+                    .load(item.image())
+                    .placeholder(R.drawable.ic_leonardo_logo)
+                    .circleCrop().into(newsImage)
+            }
+        }
     }
-  }
 }

@@ -13,20 +13,20 @@ import javax.inject.Inject
 
 @InjectViewState
 class GoodsPresenter @Inject constructor(
-  private val repository: GoodsRepository
+    private val repository: GoodsRepository
 ) : MvpPresenter<GoodsView>() {
-  val goods = MutableLiveData<List<GoodsData>>()
-  val chips = MutableLiveData<List<MenuL>>()
-  val filters = MutableLiveData<List<Filter>>()
+    val goods = MutableLiveData<List<GoodsData>>()
+    val chips = MutableLiveData<List<MenuL>>()
+    val filters = MutableLiveData<List<Filter>>()
 
-  fun loadGoods(item: String) {
-    repository.chips(item).applySchedulers()
-      .subscribe(chips::setValue, Throwable::printStackTrace)
+    fun loadGoods(item: String) {
+        repository.chips(item).applySchedulers()
+            .subscribe(chips::setValue, Throwable::printStackTrace)
 
-    repository.getGoods(item).applySchedulers()
-      .subscribe({
-        goods.value = it.first
-        filters.value = it.second
-      }, Throwable::printStackTrace)
-  }
+        repository.getGoods(item).applySchedulers()
+            .subscribe({
+                goods.value = it.first
+                filters.value = it.second
+            }, Throwable::printStackTrace)
+    }
 }

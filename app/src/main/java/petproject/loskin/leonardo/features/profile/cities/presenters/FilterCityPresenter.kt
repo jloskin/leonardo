@@ -9,11 +9,11 @@ import javax.inject.Inject
 
 @InjectViewState
 class FilterCityPresenter @Inject constructor(
-  categoriesRepository: CitiesRepository
+    categoriesRepository: CitiesRepository
 ) : MvpPresenter<FilterCityView>() {
-  init {
-    categoriesRepository.init()
-      .applySchedulers()
-      .subscribe(viewState::update, Throwable::printStackTrace)
-  }
+    init {
+        categoriesRepository.init()
+            .applySchedulers()
+            .subscribe(viewState::update, Throwable::printStackTrace)
+    }
 }

@@ -4,6 +4,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface NewsService {
-  @GET("/news/")
-  fun news(): Observable<String>
+    @GET("/news/")
+    fun news(): Observable<String>
 }

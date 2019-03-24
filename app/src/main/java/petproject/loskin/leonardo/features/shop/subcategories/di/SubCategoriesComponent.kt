@@ -7,5 +7,5 @@ import petproject.loskin.leonardo.features.shop.subcategories.ui.SubCategoriesFr
 
 @Component(modules = [SubCategoriesModule::class, NavigationModule::class, DataBaseModule::class])
 interface SubCategoriesComponent {
-  fun inject(fragment: SubCategoriesFragment)
+    fun inject(fragment: SubCategoriesFragment)
 }

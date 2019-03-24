@@ -7,5 +7,5 @@ import petproject.loskin.leonardo.features.news.competitions.models.Competitions
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface MClassesView : MvpView {
-  fun update(items: List<CompetitionsBlock>)
+    fun update(items: List<CompetitionsBlock>)
 }

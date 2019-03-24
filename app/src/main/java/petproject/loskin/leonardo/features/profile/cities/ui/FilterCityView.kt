@@ -7,5 +7,5 @@ import petproject.loskin.leonardo.base.db.dao.profile.City
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface FilterCityView : MvpView {
-  fun update(items: List<City>)
+    fun update(items: List<City>)
 }

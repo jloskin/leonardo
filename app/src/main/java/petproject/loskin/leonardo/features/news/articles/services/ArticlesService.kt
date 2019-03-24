@@ -4,6 +4,6 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 interface ArticlesService {
-  @GET("/articles/")
-  fun articles(): Observable<String>
+    @GET("/articles/")
+    fun articles(): Observable<String>
 }

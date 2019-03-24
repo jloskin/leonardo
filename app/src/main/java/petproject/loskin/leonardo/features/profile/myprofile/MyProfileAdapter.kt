@@ -7,16 +7,16 @@ import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapt
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 
 class MyProfileAdapter : BaseRecyclerAdapter<ProfileData, MyProfileAdapter.Holder>() {
-  override fun item(itemView: View): Holder = Holder(itemView)
+    override fun item(itemView: View): Holder = Holder(itemView)
 
-  override fun getItemViewType(position: Int) = R.layout.my_profile_cell
+    override fun getItemViewType(position: Int) = R.layout.my_profile_cell
 
-  class Holder(itemView: View) : BaseRecyclerViewHolder<ProfileData>(itemView) {
-    override fun bind(item: ProfileData) {
-      with(itemView) {
-        field.text = item.field
-        value.text = item.value
-      }
+    class Holder(itemView: View) : BaseRecyclerViewHolder<ProfileData>(itemView) {
+        override fun bind(item: ProfileData) {
+            with(itemView) {
+                field.text = item.field
+                value.text = item.value
+            }
+        }
     }
-  }
 }

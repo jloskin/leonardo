@@ -8,8 +8,8 @@ import retrofit2.Retrofit
 
 @Module(includes = [NetworkModule::class])
 class NewsModule {
-  @Provides
-  fun service(
-    retrofit: Retrofit
-  ): NewsService = retrofit.create(NewsService::class.java)
+    @Provides
+    fun service(
+        retrofit: Retrofit
+    ): NewsService = retrofit.create(NewsService::class.java)
 }

@@ -7,8 +7,8 @@ import retrofit2.Retrofit
 
 @Module(includes = [NetworkModule::class])
 class ProfileModule {
-  @Provides
-  fun provide(
-    retrofit: Retrofit
-  ): ProfileService = retrofit.create(ProfileService::class.java)
+    @Provides
+    fun provide(
+        retrofit: Retrofit
+    ): ProfileService = retrofit.create(ProfileService::class.java)
 }

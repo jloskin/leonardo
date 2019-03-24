@@ -7,5 +7,5 @@ import petproject.loskin.leonardo.features.news.base.models.NewsBlock
 
 @StateStrategyType(AddToEndSingleStrategy::class)
 interface NewsView : MvpView {
-  fun update(items: List<NewsBlock>)
+    fun update(items: List<NewsBlock>)
 }

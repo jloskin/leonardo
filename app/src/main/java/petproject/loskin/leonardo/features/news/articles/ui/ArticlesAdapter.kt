@@ -11,20 +11,19 @@ import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerAdapt
 import petproject.loskin.leonardo.util.components.recyclerview.BaseRecyclerViewHolder
 import petproject.loskin.leonardo.util.glide.GlideApp
 
-
 class ArticlesAdapter : BaseRecyclerAdapter<NewsBlock, ArticlesAdapter.Holder>() {
-  override fun item(itemView: View) = Holder(itemView)
+    override fun item(itemView: View) = Holder(itemView)
 
-  override fun getItemViewType(position: Int) = R.layout.news_cell
+    override fun getItemViewType(position: Int) = R.layout.news_cell
 
-  class Holder(itemView: View) : BaseRecyclerViewHolder<NewsBlock>(itemView) {
-    override fun bind(item: NewsBlock) {
-      itemView.newsTitle.text = item.titleName
-      itemView.newsDescription.text = item.text
-      GlideApp.with(itemView.newsImage)
-        .load(item.imgUrl)
-        .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(8)))
-        .into(itemView.newsImage)
+    class Holder(itemView: View) : BaseRecyclerViewHolder<NewsBlock>(itemView) {
+        override fun bind(item: NewsBlock) {
+            itemView.newsTitle.text = item.titleName
+            itemView.newsDescription.text = item.text
+            GlideApp.with(itemView.newsImage)
+                .load(item.imgUrl)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(8)))
+                .into(itemView.newsImage)
+        }
     }
-  }
 }

@@ -7,11 +7,11 @@ import javax.inject.Inject
 
 @InjectViewState
 class MyProfilePresenter @Inject constructor(
-  repository: MyProfileRepository
+    repository: MyProfileRepository
 ) : MvpPresenter<MyProfileView>() {
 
-  init {
-    repository.profile().applySchedulers()
-      .subscribe(viewState::update, Throwable::printStackTrace)
-  }
+    init {
+        repository.profile().applySchedulers()
+            .subscribe(viewState::update, Throwable::printStackTrace)
+    }
 }

@@ -7,5 +7,5 @@ import petproject.loskin.leonardo.features.profile.authorize.ui.AuthorizationFra
 
 @Component(modules = [NavigationModule::class, DataBaseModule::class, AuthorizationModule::class])
 interface AuthorizationComponent {
-  fun inject(fragment: AuthorizationFragment)
+    fun inject(fragment: AuthorizationFragment)
 }

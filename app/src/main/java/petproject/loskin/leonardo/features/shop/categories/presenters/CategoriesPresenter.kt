@@ -9,12 +9,12 @@ import javax.inject.Inject
 
 @InjectViewState
 class CategoriesPresenter @Inject constructor(
-  categoriesRepository: CategoriesRepository
+    categoriesRepository: CategoriesRepository
 ) : MvpPresenter<CategoriesView>() {
 
-  init {
-    categoriesRepository.initMenu()
-      .applySchedulers()
-      .subscribe(viewState::setValue, Throwable::printStackTrace)
-  }
+    init {
+        categoriesRepository.initMenu()
+            .applySchedulers()
+            .subscribe(viewState::setValue, Throwable::printStackTrace)
+    }
 }

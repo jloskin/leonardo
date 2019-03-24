@@ -5,5 +5,5 @@ import dagger.Provides
 
 @Module
 class SubCategoriesModule(
-  @get:Provides val link: String
+    @get:Provides val link: String
 )

@@ -9,10 +9,10 @@ import javax.inject.Inject
 
 @InjectViewState
 class AuthorizationPresenter @Inject constructor(
-  private val repository: ProfileRepository
+    private val repository: ProfileRepository
 ) : MvpPresenter<AuthorizationView>() {
 
-  fun authorize(login: String, password: String) =
-    repository.authorize(login, password).applySchedulers()
-      .subscribe(viewState::authorize, Throwable::printStackTrace)
+    fun authorize(login: String, password: String) =
+        repository.authorize(login, password).applySchedulers()
+            .subscribe(viewState::authorize, Throwable::printStackTrace)
 }

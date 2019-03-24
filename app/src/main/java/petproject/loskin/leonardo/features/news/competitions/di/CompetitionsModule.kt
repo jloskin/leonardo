@@ -8,8 +8,8 @@ import retrofit2.Retrofit
 
 @Module(includes = [NetworkModule::class])
 class CompetitionsModule {
-  @Provides
-  fun service(
-    retrofit: Retrofit
-  ): CompetitionsService = retrofit.create(CompetitionsService::class.java)
+    @Provides
+    fun service(
+        retrofit: Retrofit
+    ): CompetitionsService = retrofit.create(CompetitionsService::class.java)
 }

@@ -6,8 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'io.gitlab.arturbosch.detekt'
-
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -32,27 +30,6 @@ android {
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
-    }
-}
-
-detekt {
-    toolVersion = "1.0.0-RC14"
-    input = files(
-            "src/main/java",
-            "gensrc/main/java"
-    )
-    parallel = false
-    disableDefaultRuleSets = false
-    debug = false
-    reports {
-        xml {
-            enabled = true
-            destination = file("build/reports/detekt.xml")
-        }
-        html {
-            enabled = true
-            destination = file("build/reports/detekt.html")
-        }
     }
 }
 
@@ -108,28 +85,11 @@ dependencies {
 
     // Testing dependencies
     androidTestImplementation 'androidx.arch.core:core-testing:2.0.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
-    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0-alpha02'
-    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+
+    def espresso_version = '3.2.0-alpha02'
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0"
     testImplementation 'junit:junit:4.13-beta-2'
-
-    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.0.0.RC9"
-}
-
-detekt {
-    version = "1.0.0-RC14"
-    input = files("${project.rootDir}/${project.getName()}/src/main/")
-    config = files("${project.rootDir}/detekt/detekt-config.yml")
-    filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-    reports {
-        xml {
-            enabled = true
-            destination = file("build/reports/detekt.xml")
-        }
-        html {
-            enabled = true
-            destination = file("build/reports/detekt.html")
-        }
-    }
 }

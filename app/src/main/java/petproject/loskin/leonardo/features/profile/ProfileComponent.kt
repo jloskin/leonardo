@@ -6,5 +6,5 @@ import petproject.loskin.leonardo.base.navigation.NavigationModule
 
 @Component(modules = [NavigationModule::class, DataBaseModule::class, ProfileModule::class])
 interface ProfileComponent {
-  fun inject(fragment: ProfileFragment)
+    fun inject(fragment: ProfileFragment)
 }

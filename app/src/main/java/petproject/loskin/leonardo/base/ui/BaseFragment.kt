@@ -10,15 +10,17 @@ import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 abstract class BaseFragment : MvpAppCompatFragment() {
-  @Inject lateinit var router: Router
+    @Inject lateinit var router: Router
 
-  init {
-    DaggerNavigationComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
-  }
+    init {
+        DaggerNavigationComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+    }
 
-  override fun onCreateView(
-    inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-  ): View = inflater.inflate(layoutId(), container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(layoutId(), container, false)
 
-  abstract fun layoutId(): Int
+    abstract fun layoutId(): Int
 }

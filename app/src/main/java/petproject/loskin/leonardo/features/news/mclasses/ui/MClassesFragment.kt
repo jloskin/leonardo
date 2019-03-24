@@ -13,19 +13,19 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class MClassesFragment : BaseFragment(), MClassesView {
-  @Inject @InjectPresenter lateinit var presenter: MClassesPresenter
-  @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter lateinit var presenter: MClassesPresenter
+    @ProvidePresenter fun provide() = presenter
 
-  init {
-    DaggerMClassesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
-  }
+    init {
+        DaggerMClassesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+    }
 
-  private val adapter: MClassesAdapter by lazy { MClassesAdapter() }
+    private val adapter: MClassesAdapter by lazy { MClassesAdapter() }
 
-  override fun layoutId(): Int = R.layout.recycler_view
+    override fun layoutId(): Int = R.layout.recycler_view
 
-  override fun update(items: List<CompetitionsBlock>) {
-    Utils.defaultList(recyclerView, adapter)
-    adapter.update(items)
-  }
+    override fun update(items: List<CompetitionsBlock>) {
+        Utils.defaultList(recyclerView, adapter)
+        adapter.update(items)
+    }
 }

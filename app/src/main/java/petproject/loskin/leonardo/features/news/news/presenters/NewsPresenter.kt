@@ -9,10 +9,10 @@ import javax.inject.Inject
 
 @InjectViewState
 class NewsPresenter @Inject constructor(
-  interactor: NewsRepository
+    interactor: NewsRepository
 ) : MvpPresenter<NewsView>() {
-  init {
-    interactor.getNews().applySchedulers()
-      .subscribe(viewState::update, Throwable::printStackTrace)
-  }
+    init {
+        interactor.getNews().applySchedulers()
+            .subscribe(viewState::update, Throwable::printStackTrace)
+    }
 }

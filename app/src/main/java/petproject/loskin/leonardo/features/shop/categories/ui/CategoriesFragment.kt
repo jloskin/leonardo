@@ -16,8 +16,7 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CategoriesFragment : RootFragment(), CategoriesView {
-    @Inject @InjectPresenter lateinit var presenter: CategoriesPresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: CategoriesPresenter
 
     init {
         DaggerCategoriesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)

@@ -18,16 +18,30 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class SubCategoriesFragment : RootFragment(), SubCategoriesView {
-    @Inject @InjectPresenter lateinit var presenter: SubCategoriesPresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: SubCategoriesPresenter
 
     private val adapter: CategoriesAdapter by lazy {
         CategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.name, it.url)) }
     }
 
+    private val title: String
+        get() = arguments?.getString(SUBCATEGORY_TITLE) ?: throw RuntimeException()
+
+    private val link: String
+        get() = arguments?.getString(LINK) ?: throw RuntimeException()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        DaggerSubCategoriesComponent.builder()
+            .subCategoriesModule(SubCategoriesModule(link))
+            .navigationModule(MainActivity.ROOT)
+            .build()
+            .inject(this)
+        super.onCreate(savedInstanceState)
+    }
+
     override fun layoutId(): Int = R.layout.recycler_view
 
-    override fun title(): String = arguments?.getString(SUBCATEGORY_TITLE) ?: ""
+    override fun title(): String = title
 
     override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
 
@@ -50,18 +64,14 @@ class SubCategoriesFragment : RootFragment(), SubCategoriesView {
 
     companion object {
         private const val SUBCATEGORY_TITLE = "TITLE"
+        private const val LINK = "LINK"
 
         fun instance(title: String, link: String): SubCategoriesFragment =
             SubCategoriesFragment().apply {
                 arguments = Bundle().apply {
                     putString(SUBCATEGORY_TITLE, title)
+                    putString(LINK, link)
                 }
-            }.also {
-                DaggerSubCategoriesComponent.builder()
-                    .subCategoriesModule(SubCategoriesModule(link))
-                    .navigationModule(MainActivity.ROOT)
-                    .build()
-                    .inject(it)
             }
     }
 }

@@ -13,8 +13,7 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CompetitionsFragment : BaseFragment(), CompetitionsView {
-    @Inject @InjectPresenter lateinit var presenter: CompetitionsPresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: CompetitionsPresenter
 
     val adapter: CompetitionsAdapter by lazy { CompetitionsAdapter() }
 

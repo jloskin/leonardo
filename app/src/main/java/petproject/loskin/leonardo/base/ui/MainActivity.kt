@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
             .navigationModule(ROOT)
             .build()
             .inject(this)
-        router.newRootScreen(Screens.GoodsScreen())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             router.newRootScreen(supportAppxScreen)
             return@setOnNavigationItemSelectedListener true
         }
+        bottom_view.selectedItemId = R.id.categoriesFragment
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean =

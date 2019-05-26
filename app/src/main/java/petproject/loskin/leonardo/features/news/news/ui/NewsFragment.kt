@@ -13,8 +13,7 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class NewsFragment : BaseFragment(), NewsView {
-    @Inject @InjectPresenter lateinit var presenter: NewsPresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: NewsPresenter
 
     init {
         DaggerNewsComponent.builder()

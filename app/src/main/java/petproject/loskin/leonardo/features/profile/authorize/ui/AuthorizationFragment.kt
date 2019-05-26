@@ -14,8 +14,7 @@ import petproject.loskin.leonardo.features.profile.authorize.presenters.Authoriz
 import javax.inject.Inject
 
 class AuthorizationFragment : RootFragment(), AuthorizationView {
-    @Inject @InjectPresenter lateinit var presenter: AuthorizationPresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: AuthorizationPresenter
 
     init {
         DaggerAuthorizationComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)

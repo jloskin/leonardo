@@ -13,8 +13,7 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CitiesFragment : RootFragment(), CitiesView {
-    @Inject @InjectPresenter lateinit var presenter: CitiesPresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: CitiesPresenter
 
     init {
         DaggerCitiesComponent.builder()

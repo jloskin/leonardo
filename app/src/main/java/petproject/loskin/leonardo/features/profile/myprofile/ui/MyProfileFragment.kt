@@ -13,8 +13,7 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class MyProfileFragment : RootFragment(), MyProfileView {
-    @Inject @InjectPresenter lateinit var presenter: MyProfilePresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: MyProfilePresenter
 
     init {
         DaggerMyProfileComponent.builder()

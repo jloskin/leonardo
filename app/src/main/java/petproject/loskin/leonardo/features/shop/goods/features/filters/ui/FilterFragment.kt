@@ -17,12 +17,12 @@ class FilterFragment : RootFragment() {
 
     override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
 
+    private val arrayOfParcelables: List<Filter>
+        get() = (arguments?.getParcelableArray(FILTER_ITEMS) as? Array<Filter>)?.toList() ?: throw RuntimeException()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        arguments?.getParcelableArray(FILTER_ITEMS)?.let { (it as Array<Filter>).toList() }?.let { items ->
-            Utils.linearLayout(recyclerView, filterAdapter.also { it.update(items) })
-        }
+        Utils.linearLayout(recyclerView, filterAdapter.also { it.update(arrayOfParcelables) })
     }
 
     companion object {

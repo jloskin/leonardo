@@ -7,7 +7,6 @@ import petproject.loskin.leonardo.R
 import petproject.loskin.leonardo.base.ui.MainActivity
 import petproject.loskin.leonardo.base.ui.RootFragment
 import petproject.loskin.leonardo.features.Screens
-import petproject.loskin.leonardo.features.profile.DaggerProfileComponent
 import petproject.loskin.leonardo.features.profile.Menu.BILLS
 import petproject.loskin.leonardo.features.profile.Menu.EDIT
 import petproject.loskin.leonardo.features.profile.Menu.FEEDBACK
@@ -21,13 +20,13 @@ import petproject.loskin.leonardo.features.profile.Menu.REVIEWS
 import petproject.loskin.leonardo.features.profile.Menu.TICKETS
 import petproject.loskin.leonardo.features.profile.MenuType
 import petproject.loskin.leonardo.features.profile.PersonalAreaAdapter
+import petproject.loskin.leonardo.features.profile.base.di.DaggerProfileComponent
 import petproject.loskin.leonardo.features.profile.base.presenters.ProfilePresenter
 import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class ProfileFragment : RootFragment(), ProfileView {
-    @Inject @InjectPresenter lateinit var presenter: ProfilePresenter
-    @ProvidePresenter fun provide() = presenter
+    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: ProfilePresenter
 
     init {
         DaggerProfileComponent.builder()

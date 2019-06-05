@@ -27,10 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     init {
-        DaggerNavigationComponent.builder()
-            .navigationModule(ROOT)
-            .build()
-            .inject(this)
+        DaggerNavigationComponent.builder().navigationModule(ROOT).build().inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -18,10 +18,11 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class SubCategoriesFragment : RootFragment(), SubCategoriesView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: SubCategoriesPresenter
-
-    private val adapter: CategoriesAdapter by lazy {
-        CategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.name, it.url)) }
+    @Inject lateinit var presenterLazy: dagger.Lazy<SubCategoriesPresenter>
+    @InjectPresenter lateinit var presenter: SubCategoriesPresenter
+    @ProvidePresenter fun provide(): SubCategoriesPresenter {
+        DaggerSubCategoriesComponent.builder().subCategoriesModule(SubCategoriesModule(link)).navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     private val title: String
@@ -30,13 +31,8 @@ class SubCategoriesFragment : RootFragment(), SubCategoriesView {
     private val link: String
         get() = arguments?.getString(LINK) ?: throw RuntimeException()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerSubCategoriesComponent.builder()
-            .subCategoriesModule(SubCategoriesModule(link))
-            .navigationModule(MainActivity.ROOT)
-            .build()
-            .inject(this)
-        super.onCreate(savedInstanceState)
+    private val adapter: CategoriesAdapter by lazy {
+        CategoriesAdapter { router.navigateTo(Screens.GoodsFragmentScreen(it.name, it.url)) }
     }
 
     override fun layoutId(): Int = R.layout.recycler_view

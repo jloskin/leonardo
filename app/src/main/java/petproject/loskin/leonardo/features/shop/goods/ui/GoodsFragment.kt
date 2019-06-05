@@ -18,23 +18,21 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class GoodsFragment : RootFragment(), GoodsView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: GoodsPresenter
+    @Inject lateinit var presenterLazy: dagger.Lazy<GoodsPresenter>
+    @InjectPresenter lateinit var presenter: GoodsPresenter
+    @ProvidePresenter fun provide(): GoodsPresenter {
+        DaggerGoodsComponent.builder().goodsModule(GoodsModule(link)).navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
+    }
 
-    private val adapter: GoodsAdapter by lazy { GoodsAdapter {} }
-    private val chipsAdapter: ChipsAdapter by lazy { ChipsAdapter {} }
     private val title: String
         get() = arguments?.getString(SUBCATEGORY_TITLE) ?: throw RuntimeException()
+
     private val link: String
         get() = arguments?.getString(LINK) ?: throw RuntimeException()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerGoodsComponent.builder()
-            .goodsModule(GoodsModule(link))
-            .navigationModule(MainActivity.ROOT)
-            .build()
-            .inject(this)
-        super.onCreate(savedInstanceState)
-    }
+    private val adapter: GoodsAdapter by lazy { GoodsAdapter {} }
+    private val chipsAdapter: ChipsAdapter by lazy { ChipsAdapter {} }
 
     override fun title(): String = title
 

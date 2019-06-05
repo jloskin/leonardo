@@ -1,8 +1,8 @@
 package petproject.loskin.leonardo.features
 
 import petproject.loskin.leonardo.features.news.base.ui.CoreNewsFragment
-import petproject.loskin.leonardo.features.profile.base.ui.ProfileFragment
 import petproject.loskin.leonardo.features.profile.authorize.ui.AuthorizationFragment
+import petproject.loskin.leonardo.features.profile.base.ui.ProfileFragment
 import petproject.loskin.leonardo.features.profile.cities.ui.CitiesFragment
 import petproject.loskin.leonardo.features.profile.edit.EditFragment
 import petproject.loskin.leonardo.features.profile.myprofile.ui.MyProfileFragment
@@ -41,11 +41,16 @@ object Screens {
         override fun getFragment() = CategoriesFragment()
     }
 
-    class GoodsFragmentScreen(private val title: String, private val link: String) : SupportAppScreen() {
+    class GoodsFragmentScreen(
+        private val title: String,
+        private val link: String
+    ) : SupportAppScreen() {
         override fun getFragment() = GoodsFragment.instance(title, link)
     }
 
-    class FilterScreen(private val filters: List<Filter>) : SupportAppScreen() {
+    class FilterScreen(
+        private val filters: List<Filter>
+    ) : SupportAppScreen() {
         override fun getFragment() = FilterFragment.instance(filters)
     }
 

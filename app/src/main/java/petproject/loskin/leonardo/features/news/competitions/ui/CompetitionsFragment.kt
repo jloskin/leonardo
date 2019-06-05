@@ -13,13 +13,14 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CompetitionsFragment : BaseFragment(), CompetitionsView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: CompetitionsPresenter
+    @Inject lateinit var presenterLazy: dagger.Lazy<CompetitionsPresenter>
+    @InjectPresenter lateinit var presenter: CompetitionsPresenter
+    @ProvidePresenter fun provide(): CompetitionsPresenter {
+        DaggerCompetitionsComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
+    }
 
     val adapter: CompetitionsAdapter by lazy { CompetitionsAdapter() }
-
-    init {
-        DaggerCompetitionsComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
-    }
 
     override fun layoutId(): Int = R.layout.recycler_view
 

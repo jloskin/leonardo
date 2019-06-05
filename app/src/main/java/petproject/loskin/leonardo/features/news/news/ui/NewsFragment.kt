@@ -13,13 +13,11 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class NewsFragment : BaseFragment(), NewsView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: NewsPresenter
-
-    init {
-        DaggerNewsComponent.builder()
-            .navigationModule(MainActivity.ROOT)
-            .build()
-            .inject(this)
+    @Inject lateinit var presenterLazy: dagger.Lazy<NewsPresenter>
+    @InjectPresenter lateinit var presenter: NewsPresenter
+    @ProvidePresenter fun provide(): NewsPresenter {
+        DaggerNewsComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     val adapter: NewsAdapter by lazy { NewsAdapter() }

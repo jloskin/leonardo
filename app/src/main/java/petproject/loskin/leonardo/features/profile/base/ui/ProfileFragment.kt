@@ -26,13 +26,11 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class ProfileFragment : RootFragment(), ProfileView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: ProfilePresenter
-
-    init {
-        DaggerProfileComponent.builder()
-            .navigationModule(MainActivity.ROOT)
-            .build()
-            .inject(this)
+    @Inject lateinit var presenterLazy: dagger.Lazy<ProfilePresenter>
+    @InjectPresenter lateinit var presenter: ProfilePresenter
+    @ProvidePresenter fun provide(): ProfilePresenter {
+        DaggerProfileComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     override fun layoutId(): Int = R.layout.recycler_view

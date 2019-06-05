@@ -13,10 +13,11 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class MClassesFragment : BaseFragment(), MClassesView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: MClassesPresenter
-
-    init {
+    @Inject lateinit var presenterLazy: dagger.Lazy<MClassesPresenter>
+    @InjectPresenter lateinit var presenter: MClassesPresenter
+    @ProvidePresenter fun provide(): MClassesPresenter {
         DaggerMClassesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     private val adapter: MClassesAdapter by lazy { MClassesAdapter() }

@@ -13,13 +13,11 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CitiesFragment : RootFragment(), CitiesView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: CitiesPresenter
-
-    init {
-        DaggerCitiesComponent.builder()
-            .navigationModule(MainActivity.ROOT)
-            .build()
-            .inject(this)
+    @Inject lateinit var presenterLazy: dagger.Lazy<CitiesPresenter>
+    @InjectPresenter lateinit var presenter: CitiesPresenter
+    @ProvidePresenter fun provide(): CitiesPresenter {
+        DaggerCitiesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     private val adapter: CitiesAdapter by lazy { CitiesAdapter { } }

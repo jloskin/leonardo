@@ -9,6 +9,9 @@ import petproject.loskin.leonardo.features.shop.goods.features.filters.models.Fi
 import petproject.loskin.leonardo.util.components.recyclerview.Utils
 
 class FilterFragment : RootFragment() {
+    private val arrayOfParcelables: List<Filter>
+        get() = (arguments?.getParcelableArray(FILTER_ITEMS) as? Array<Filter>)?.toList() ?: throw RuntimeException()
+
     private val filterAdapter by lazy { FilterAdapter({}) }
 
     override fun layoutId(): Int = R.layout.filter_fragment
@@ -16,9 +19,6 @@ class FilterFragment : RootFragment() {
     override fun titleId(): Int = R.string.filter
 
     override fun navigationIconId(): Int = R.drawable.abc_ic_ab_back_material
-
-    private val arrayOfParcelables: List<Filter>
-        get() = (arguments?.getParcelableArray(FILTER_ITEMS) as? Array<Filter>)?.toList() ?: throw RuntimeException()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

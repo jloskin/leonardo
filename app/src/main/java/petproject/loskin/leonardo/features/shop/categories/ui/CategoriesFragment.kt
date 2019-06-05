@@ -16,10 +16,11 @@ import petproject.loskin.leonardo.util.components.recyclerview.Utils
 import javax.inject.Inject
 
 class CategoriesFragment : RootFragment(), CategoriesView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: CategoriesPresenter
-
-    init {
+    @Inject lateinit var presenterLazy: dagger.Lazy<CategoriesPresenter>
+    @InjectPresenter lateinit var presenter: CategoriesPresenter
+    @ProvidePresenter fun provide(): CategoriesPresenter {
         DaggerCategoriesComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     private val adapter: CategoriesAdapter by lazy { CategoriesAdapter { router.navigateTo(Screens.SubCategories(it.name, it.url)) } }

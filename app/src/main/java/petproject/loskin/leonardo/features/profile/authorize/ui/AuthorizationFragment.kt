@@ -14,10 +14,11 @@ import petproject.loskin.leonardo.features.profile.authorize.presenters.Authoriz
 import javax.inject.Inject
 
 class AuthorizationFragment : RootFragment(), AuthorizationView {
-    @Inject @InjectPresenter @get:ProvidePresenter lateinit var presenter: AuthorizationPresenter
-
-    init {
+    @Inject lateinit var presenterLazy: dagger.Lazy<AuthorizationPresenter>
+    @InjectPresenter lateinit var presenter: AuthorizationPresenter
+    @ProvidePresenter fun provide(): AuthorizationPresenter {
         DaggerAuthorizationComponent.builder().navigationModule(MainActivity.ROOT).build().inject(this)
+        return presenterLazy.get()
     }
 
     override fun layoutId(): Int = R.layout.authorization_screen
